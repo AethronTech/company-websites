@@ -1,32 +1,109 @@
-<nav class="main-navigation">
+<nav class="main-navigation" role="navigation" aria-label="Main navigation">
   <div class="nav-container">
-    <a href="/" class="nav-logo">Aethron Technology</a>
-    <ul class="nav-menu">
-      <li><a href="/">Home</a></li>
-      <li><a href="/about/">About</a></li>
-      <li><a href="/services/">Services</a></li>
-      <li><a href="/blog/">Blog</a></li>
-      <li><a href="/contact/">Contact</a></li>
-    </ul>
-    
-    <!-- Language Switcher Demo -->
-    <div class="language-switcher">
-      <label for="lang-select">Language:</label>
-      <select id="lang-select" onchange="switchLanguage(this.value)">
-        <option value="en" {% if (lang or 'en') == 'en' %}selected{% endif %}>English</option>
-        <option value="nl" {% if (lang or 'en') == 'nl' %}selected{% endif %}>Nederlands</option>
-      </select>
+    <!-- Logo/Brand -->
+    <div class="nav-brand">
+      <a href="/{{ lang or 'en' }}/" class="nav-logo" aria-label="{{ (lang or 'en') | t('site.title') }} homepage">
+        <span class="logo-text">{{ (lang or 'en') | t('site.title') }}</span>
+        <span class="logo-tagline">{{ (lang or 'en') | t('site.tagline') }}</span>
+      </a>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
+    <!-- Navigation Menu -->
+    <div class="nav-menu-wrapper" id="nav-menu">
+      <ul class="nav-menu" role="menubar">
+        <li role="none">
+          <a href="/{{ lang or 'en' }}/" 
+             class="nav-link {{ 'active' if page.url == '/' }}" 
+             role="menuitem"
+             aria-current="{{ 'page' if page.url == '/' else 'false' }}">
+            {{ (lang or 'en') | t('navigation.home') }}
+          </a>
+        </li>
+        <li role="none">
+          <a href="/{{ lang or 'en' }}/about/" 
+             class="nav-link {{ 'active' if '/about/' in page.url }}" 
+             role="menuitem"
+             aria-current="{{ 'page' if '/about/' in page.url else 'false' }}">
+            {{ (lang or 'en') | t('navigation.about') }}
+          </a>
+        </li>
+        <li role="none">
+          <a href="/{{ lang or 'en' }}/services/" 
+             class="nav-link {{ 'active' if '/services/' in page.url }}" 
+             role="menuitem"
+             aria-current="{{ 'page' if '/services/' in page.url else 'false' }}">
+            {{ (lang or 'en') | t('navigation.services') }}
+          </a>
+        </li>
+        <li role="none">
+          <a href="/{{ lang or 'en' }}/solutions/" 
+             class="nav-link {{ 'active' if '/solutions/' in page.url }}" 
+             role="menuitem"
+             aria-current="{{ 'page' if '/solutions/' in page.url else 'false' }}">
+            {{ (lang or 'en') | t('navigation.solutions') }}
+          </a>
+        </li>
+        <li role="none">
+          <a href="/{{ lang or 'en' }}/blog/" 
+             class="nav-link {{ 'active' if '/blog/' in page.url }}" 
+             role="menuitem"
+             aria-current="{{ 'page' if '/blog/' in page.url else 'false' }}">
+            {{ (lang or 'en') | t('navigation.blog') }}
+          </a>
+        </li>
+        <li role="none">
+          <a href="/{{ lang or 'en' }}/contact/" 
+             class="nav-link {{ 'active' if '/contact/' in page.url }}" 
+             role="menuitem"
+             aria-current="{{ 'page' if '/contact/' in page.url else 'false' }}">
+            {{ (lang or 'en') | t('navigation.contact') }}
+          </a>
+        </li>
+      </ul>
+
+      <!-- Enhanced Language Switcher -->
+      <div class="language-switcher" role="region" aria-label="{{ (lang or 'en') | t('navigation.language') }} switcher">
+        <button class="lang-toggle" 
+                type="button" 
+                aria-expanded="false" 
+                aria-controls="lang-dropdown"
+                aria-label="{{ (lang or 'en') | t('navigation.language') }}: {{ (lang or 'en') | langNativeName }}">
+          <span class="lang-flag">🌐</span>
+          <span class="lang-current">{{ (lang or 'en') | langNativeName }}</span>
+          <svg class="lang-arrow" width="12" height="8" viewBox="0 0 12 8" fill="currentColor" aria-hidden="true">
+            <path d="M6 8L0 2L1.4 0.6L6 5.2L10.6 0.6L12 2L6 8Z"/>
+          </svg>
+        </button>
+        
+        <ul class="lang-dropdown" id="lang-dropdown" role="menu" aria-hidden="true">
+          {% for language in i18nConfig.languages %}
+          <li role="none">
+            <a href="/{{ language.code }}{{ page.url | replace('/' + (lang or 'en'), '') }}" 
+               class="lang-option {{ 'active' if language.code == (lang or 'en') }}"
+               role="menuitem"
+               data-lang="{{ language.code }}"
+               lang="{{ language.code }}"
+               hreflang="{{ language.code }}"
+               aria-current="{{ 'page' if language.code == (lang or 'en') else 'false' }}">
+              <span class="lang-flag">{{ '🇺🇸' if language.code == 'en' else '🇳🇱' }}</span>
+              <span class="lang-name">{{ language.nativeName }}</span>
+              {% if language.code == (lang or 'en') %}
+              <svg class="lang-check" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              {% endif %}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
-
-<script>
-function switchLanguage(langCode) {
-  // Simple language switching for demo
-  if (langCode === 'nl') {
-    alert('Dutch version would be at /nl/ - Coming soon!');
-  } else {
-    window.location.href = '/';
-  }
-}
-</script>

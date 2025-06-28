@@ -35,6 +35,12 @@ module.exports = function(eleventyConfig) {
     const lang = config.languages.find(l => l.code === language);
     return lang ? lang.nativeName : language;
   });
+
+  eleventyConfig.addFilter("langDir", function(language = "en") {
+    const config = require("./src/_data/i18n/config.json");
+    const lang = config.languages.find(l => l.code === language);
+    return lang ? lang.dir : "ltr";
+  });
   
   // Copy static assets with organized directory structure
   eleventyConfig.addPassthroughCopy("src/assets");
