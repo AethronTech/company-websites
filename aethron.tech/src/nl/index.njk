@@ -1,105 +1,52 @@
 ---
 layout: layout.njk
 lang: nl
-title: "Aethron Technology - Mensgerichte software"
-description: "Mensgerichte software. Flexibel. Betrouwbaar. Slim. Aethron Technologies versterkt IT-teams met digitale oplossingen die écht werken."
+title: "{{ (lang or 'nl') | t('site.title') }} - {{ (lang or 'nl') | t('site.description') }}"
+description: "{{ (lang or 'nl') | t('site.description') }}"
 ---
 
-<section class="hero">
+<section class="hero i18n-content" lang="{{ lang or 'nl' }}">
   <div class="container">
     <div class="hero-content">
-      <h1>Mensgerichte software. Flexibel. Betrouwbaar. Slim.</h1>
+      <h1>{{ (lang or 'nl') | t('homepage.hero.title') }}</h1>
       <p class="hero-description">
-        Aethron Technologies versterkt IT-teams met digitale oplossingen die écht werken — van configureerbare pakketten tot maatwerk. Technologie in dienst van mensen, gedragen door beproefde methodes als Agile en ITIL.
+        {{ (lang or 'nl') | t('homepage.hero.description') }}
       </p>
       <div class="hero-actions">
-        <a href="/nl/solutions/" class="btn btn-primary">Ontdek Onze Oplossingen</a>
-        <a href="/nl/about/" class="btn btn-secondary">Leer Meer Over Ons</a>
+        <a href="{{ 'solutions/' | localizeUrl(lang or 'nl') }}" class="btn btn-primary">{{ (lang or 'nl') | t('homepage.hero.cta') }}</a>
+        <a href="{{ 'about/' | localizeUrl(lang or 'nl') }}" class="btn btn-secondary">{{ (lang or 'nl') | t('homepage.hero.cta_secondary') }}</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="services-overview">
+<section class="services-overview i18n-content" lang="{{ lang or 'nl' }}">
   <div class="container">
     <div class="services-grid">
+      {% for service in (lang or 'nl') | t('homepage.services.items') %}
       <div class="service-card">
-        <div class="service-icon">🔧</div>
-        <h3>Geoptimaliseerde IT-processen</h3>
-        <p>
-          Slimme technologie ondersteunt jullie serviceverlening, zonder het menselijke contact uit het oog te verliezen. Dankzij onze aanpak — gebaseerd op ITIL-best practices en versterkt door intelligente automatisering — maken we IT-processen sneller, overzichtelijker en betrouwbaarder. Minder fouten, kortere doorlooptijden, méér ruimte voor service en samenwerking.
-        </p>
+        <div class="service-icon">{{ service.icon }}</div>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
       </div>
-
-      <div class="service-card">
-        <div class="service-icon">⚡</div>
-        <h3>Versnelde Softwareontwikkeling</h3>
-        <p>
-          Of je nu werkt aan interne tools of aan klantgerichte applicaties: onze flexibele oplossingen en configureerbare bouwstenen versnellen elke ontwikkelcyclus. Door Agile-methodieken te combineren met slimme bouwstenen, reduceren we manueel werk en creëren we ruimte voor innovatie, samenwerking en focus.
-        </p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">📈</div>
-        <h3>Stapsgewijze Digitale Transformatie</h3>
-        <p>
-          Wij geloven in échte verandering, niet in big bang-transities. Samen bouwen we stap voor stap aan een toekomstgerichte IT-omgeving die wérkt voor jullie team. Of het nu gaat om kleine optimalisaties of een breder traject met AI-componenten: we denken strategisch mee en leveren technologie die klaar is voor morgen — én werkt voor jullie mensen vandaag.
-        </p>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
 
-<section class="about-summary">
+<section class="about-summary i18n-content" lang="{{ lang or 'nl' }}">
   <div class="container">
     <div class="summary-grid">
       <div class="summary-card">
-        <h3>Over Ons</h3>
-        <p>
-          Aethron.tech is ons platform voor digitale incidentopvolging. Wij bouwen gebruiksvriendelijke technologie met oog voor betrouwbaarheid en schaalbaarheid.
-        </p>
-        <a href="/nl/about/" class="btn btn-outline">Meer over ons →</a>
+        <h3>{{ (lang or 'nl') | t('homepage.about_summary.title') }}</h3>
+        <p>{{ (lang or 'nl') | t('homepage.about_summary.description') }}</p>
+        <a href="{{ (lang or 'nl') | t('homepage.about_summary.link_url') }}" class="btn btn-outline">{{ (lang or 'nl') | t('homepage.about_summary.link_text') }} →</a>
       </div>
 
       <div class="summary-card">
-        <h3>Onze Oplossingen</h3>
-        <p>
-          Wij ontwikkelen flexibele tools die teams ondersteunen in het stroomlijnen van hun digitale processen. Onze oplossingen zijn geïnspireerd op ITIL-principes, en groeien mee met jouw organisatie — van operationeel beheer tot maatwerk in procesautomatisatie.
-        </p>
-        <a href="/nl/solutions/" class="btn btn-outline">Bekijk oplossingen →</a>
-      </div>
-    </div>
-  </div>
-</section>
-  <div class="container">
-    <h2>Over Aethron Technology</h2>
-    <p>Opgericht met de visie om het technologische landschap te revolutioneren, combineert Aethron Technology diepgaande technische expertise met innovatief denken.</p>
-    <p>Onze missie is om bedrijven te versterken door technologie, door oplossingen te creëren die niet alleen functioneel zijn, maar ook transformationeel.</p>
-    <ul class="values-list">
-      <li>Innovatie-gedreven aanpak</li>
-      <li>Klantgerichte oplossingen</li>
-      <li>Technische excellentie</li>
-      <li>Duurzame groei</li>
-    </ul>
-  </div>
-</section>
-
-<section class="services">
-  <div class="container">
-    <h2>Onze Diensten</h2>
-    <p class="services-subtitle">Uitgebreide Technologische Oplossingen</p>
-    <div class="services-grid">
-      <div class="service-item">
-        <h3>Software Ontwikkeling</h3>
-        <p>Maatwerk software oplossingen afgestemd op uw bedrijfsbehoeften</p>
-      </div>
-      <div class="service-item">
-        <h3>Cloud Oplossingen</h3>
-        <p>Schaalbare cloud infrastructuur en migratie diensten</p>
-      </div>
-      <div class="service-item">
-        <h3>AI & Machine Learning</h3>
-        <p>Intelligente systemen die leren en zich aanpassen aan uw bedrijf</p>
+        <h3>{{ (lang or 'nl') | t('homepage.solutions_summary.title') }}</h3>
+        <p>{{ (lang or 'nl') | t('homepage.solutions_summary.description') }}</p>
+        <a href="{{ (lang or 'nl') | t('homepage.solutions_summary.link_url') }}" class="btn btn-outline">{{ (lang or 'nl') | t('homepage.solutions_summary.link_text') }} →</a>
       </div>
     </div>
   </div>

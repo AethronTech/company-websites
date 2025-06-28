@@ -1,35 +1,74 @@
 module.exports = function(eleventyConfig) {
-  // Add i18n filter for translations
-  eleventyConfig.addFilter("t", function(language, key) {
-    const i18nData = {
-      en: require("./src/_data/i18n/en.json"),
-      nl: require("./src/_data/i18n/nl.json")
-    };
+  // Enhanced i18n system with better caching and error handling
+  const i18nCache = new Map();
+  
+  function loadI18nData(language) {
+    if (!i18nCache.has(language)) {
+      try {
+        const data = require(`./src/_data/i18n/${language}.json`);
+        i18nCache.set(language, data);
+      } catch (error) {
+        console.warn(`[I18N] Warning: Could not load language file for '${language}'. Using fallback.`);
+        return null;
+      }
+    }
+    return i18nCache.get(language);
+  }
+  
+  // Enhanced translation filter with better fallback and interpolation
+  eleventyConfig.addFilter("t", function(language, key, interpolations = {}) {
+    const fallbackLang = 'en';
     
-    const keys = key.split('.');
-    let value = i18nData[language];
+    // Get translation data
+    let data = loadI18nData(language);
+    let fallbackData = language !== fallbackLang ? loadI18nData(fallbackLang) : null;
     
-    for (const k of keys) {
-      if (value && typeof value === 'object' && k in value) {
-        value = value[k];
-      } else {
-        // Fallback to English if key not found
-        value = i18nData.en;
-        for (const fallbackKey of keys) {
-          if (value && typeof value === 'object' && fallbackKey in value) {
-            value = value[fallbackKey];
-          } else {
-            return `[Missing: ${key}]`;
-          }
-        }
-        break;
+    // Helper function to get nested value
+    function getNestedValue(obj, keyPath) {
+      return keyPath.split('.').reduce((current, key) => {
+        return current && typeof current === 'object' ? current[key] : undefined;
+      }, obj);
+    }
+    
+    // Try to get value from primary language
+    let value = data ? getNestedValue(data, key) : undefined;
+    
+    // Fallback to default language if not found
+    if (value === undefined && fallbackData) {
+      value = getNestedValue(fallbackData, key);
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn(`[I18N] Using fallback for key '${key}' in language '${language}'`);
       }
     }
     
-    return value || `[Missing: ${key}]`;
+    // If still not found, return error indicator
+    if (value === undefined) {
+      return `[Missing: ${key}]`;
+    }
+    
+    // Handle interpolations (e.g., {{name}} in strings)
+    if (typeof value === 'string' && Object.keys(interpolations).length > 0) {
+      value = value.replace(/\{\{(\w+)\}\}/g, (match, key) => {
+        return interpolations[key] !== undefined ? interpolations[key] : match;
+      });
+    }
+    
+    return value;
+  });
+  
+  // Global function to get translations (for use in templates)
+  eleventyConfig.addGlobalData("i18n", function() {
+    return {
+      t: (key, interpolations = {}) => {
+        // This will be available in templates as i18n.t()
+        return (language) => {
+          return this.t(language, key, interpolations);
+        };
+      }
+    };
   });
 
-  // Add language helper filters
+  // Language helper filters
   eleventyConfig.addFilter("langNativeName", function(language = "en") {
     const config = require("./src/_data/i18n/config.json");
     const lang = config.languages.find(l => l.code === language);
@@ -40,6 +79,50 @@ module.exports = function(eleventyConfig) {
     const config = require("./src/_data/i18n/config.json");
     const lang = config.languages.find(l => l.code === language);
     return lang ? lang.dir : "ltr";
+  });
+  
+  // Locale-sensitive formatting filters
+  eleventyConfig.addFilter("formatDate", function(date, language = "en", format = "long") {
+    const config = require("./src/_data/i18n/config.json");
+    const langConfig = config.dateFormats[language] || config.dateFormats.en;
+    
+    const dateObj = new Date(date);
+    return dateObj.toLocaleDateString(langConfig.locale, {
+      year: "numeric",
+      month: format === "long" ? "long" : "short",
+      day: "numeric"
+    });
+  });
+  
+  eleventyConfig.addFilter("formatNumber", function(number, language = "en") {
+    const config = require("./src/_data/i18n/config.json");
+    const langConfig = config.numberFormats[language] || config.numberFormats.en;
+    
+    return new Intl.NumberFormat(langConfig.locale).format(number);
+  });
+  
+  eleventyConfig.addFilter("formatCurrency", function(amount, language = "en") {
+    const config = require("./src/_data/i18n/config.json");
+    const langConfig = config.numberFormats[language] || config.numberFormats.en;
+    
+    return new Intl.NumberFormat(langConfig.locale, {
+      style: 'currency',
+      currency: langConfig.currency
+    }).format(amount);
+  });
+  
+  // Locale-aware URL helper
+  eleventyConfig.addFilter("localizeUrl", function(url, language = "en") {
+    const config = require("./src/_data/i18n/config.json");
+    
+    // Don't prefix default language
+    if (language === config.defaultLanguage) {
+      return url;
+    }
+    
+    // Add language prefix
+    const cleanUrl = url.replace(/^\/+/, '');
+    return `/${language}/${cleanUrl}`;
   });
   
   // Copy static assets with organized directory structure

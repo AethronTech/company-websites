@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "Aethron Technology",
-    "description": "Leading technology solutions for the future",
+    "description": "People-centric software. Flexible. Reliable. Smart.",
     "tagline": "Innovation Through Technology"
   },
   "navigation": {
@@ -15,73 +15,198 @@
   },
   "homepage": {
     "hero": {
-      "title": "Welcome to Aethron Technology",
-      "subtitle": "Leading Innovation in Technology Solutions",
-      "description": "We are Aethron Technology, a forward-thinking company dedicated to delivering cutting-edge technology solutions that drive innovation and transform businesses.",
+      "title": "People-centric software. Flexible. Reliable. Smart.",
+      "description": "Aethron Technologies empowers IT teams with digital solutions that truly work — from configurable packages to custom solutions. Technology in service of people, supported by proven methodologies like Agile and ITIL.",
       "cta": "Discover Our Solutions",
       "cta_secondary": "Learn More About Us"
-    },
-    "about": {
-      "title": "About Aethron Technology",
-      "description": "Founded with a vision to revolutionize the technology landscape, Aethron Technology combines deep technical expertise with innovative thinking to deliver solutions that matter.",
-      "mission": "Our mission is to empower businesses through technology, creating solutions that are not just functional, but transformational.",
-      "values": [
-        "Innovation-driven approach",
-        "Client-centric solutions",
-        "Technical excellence",
-        "Sustainable growth"
-      ]
     },
     "services": {
       "title": "Our Services",
       "subtitle": "Comprehensive Technology Solutions",
       "items": [
         {
-          "title": "Software Development",
-          "description": "Custom software solutions tailored to your business needs"
+          "icon": "🔧",
+          "title": "Optimized IT Processes",
+          "description": "Smart technology supports your service delivery without losing sight of human contact. Thanks to our approach — based on ITIL best practices and enhanced by intelligent automation — we make IT processes faster, clearer, and more reliable. Fewer errors, shorter lead times, more space for service and collaboration."
         },
         {
-          "title": "Cloud Solutions",
-          "description": "Scalable cloud infrastructure and migration services"
+          "icon": "⚡",
+          "title": "Accelerated Software Development",
+          "description": "Whether you're working on internal tools or customer-facing applications: our flexible solutions and configurable building blocks accelerate every development cycle. By combining Agile methodologies with smart building blocks, we reduce manual work and create space for innovation, collaboration, and focus."
         },
         {
-          "title": "AI & Machine Learning",
-          "description": "Intelligent systems that learn and adapt to your business"
-        },
-        {
-          "title": "Cybersecurity",
-          "description": "Comprehensive security solutions to protect your digital assets"
+          "icon": "📈",
+          "title": "Step-by-Step Digital Transformation",
+          "description": "We believe in real change, not big bang transitions. Together we build step by step towards a future-oriented IT environment that works for your team. Whether it's small optimizations or a broader trajectory with AI components: we think strategically and deliver technology that's ready for tomorrow — and works for your people today."
         }
       ]
     },
-    "why_choose": {
-      "title": "Why Choose Aethron Technology",
-      "reasons": [
+    "about_summary": {
+      "title": "About Aethron Technology",
+      "description": "We are Aethron Technology, dedicated to creating people-centric software solutions that truly work. Our approach combines technical excellence with human-centered design.",
+      "link_text": "Learn more about our story",
+      "link_url": "/about/"
+    },
+    "solutions_summary": {
+      "title": "Our Solutions",
+      "description": "From configurable packages to custom development, we deliver technology solutions that empower your team and accelerate your digital transformation.",
+      "link_text": "Explore our solutions",
+      "link_url": "/solutions/"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "About Aethron Technology",
+      "subtitle": "People-Centric Software Solutions"
+    },
+    "intro": {
+      "title": "Our Mission",
+      "description": "At Aethron Technology, we believe that technology should serve people, not the other way around. We create software solutions that are flexible, reliable, and smart — designed with your team and your users in mind."
+    },
+    "story": {
+      "title": "Our Story",
+      "content": "Founded with a clear vision: to bridge the gap between complex technology and human needs. We've seen too many organizations struggle with rigid systems that don't adapt to how people actually work. That's why we've built our entire approach around people-centric design and proven methodologies like Agile and ITIL."
+    },
+    "approach": {
+      "title": "Our Approach",
+      "principles": [
         {
-          "title": "Proven Expertise",
-          "description": "Years of experience in delivering complex technology solutions"
+          "title": "People-Centric Design",
+          "description": "Technology that adapts to how your team works, not the other way around."
         },
         {
-          "title": "Innovation Focus",
-          "description": "We stay ahead of technology trends to benefit our clients"
+          "title": "Proven Methodologies",
+          "description": "Built on ITIL best practices and Agile development principles."
         },
         {
-          "title": "Client Success",
-          "description": "Your success is our primary measure of achievement"
+          "title": "Flexible Solutions",
+          "description": "From configurable packages to custom development — we find the right fit."
+        },
+        {
+          "title": "Continuous Partnership",
+          "description": "We don't just deliver and leave — we grow with your organization."
         }
       ]
     },
-    "contact": {
+    "highlights": {
+      "title": "Why Choose Aethron",
+      "items": [
+        "People-centric approach to technology",
+        "Proven methodologies (Agile, ITIL)",
+        "Flexible and scalable solutions",
+        "Focus on collaboration and service",
+        "Experience with digital transformation"
+      ]
+    }
+  },
+  "solutions": {
+    "hero": {
+      "title": "Our Solutions",
+      "subtitle": "Technology That Works for People"
+    },
+    "intro": {
+      "description": "We deliver flexible technology solutions that adapt to your organization's unique needs. From configurable packages to custom development, our approach is always people-centric."
+    },
+    "categories": [
+      {
+        "title": "IT Process Optimization",
+        "description": "Streamline your IT operations with smart automation while maintaining the human touch.",
+        "features": [
+          "ITIL-based process design",
+          "Intelligent automation",
+          "Service desk optimization",
+          "Performance monitoring"
+        ]
+      },
+      {
+        "title": "Software Development",
+        "description": "Accelerate your development cycles with our flexible building blocks and Agile approach.",
+        "features": [
+          "Configurable building blocks",
+          "Agile development practices",
+          "Custom application development",
+          "Integration solutions"
+        ]
+      },
+      {
+        "title": "Digital Transformation",
+        "description": "Step-by-step transformation that brings your organization into the digital future.",
+        "features": [
+          "Strategic planning",
+          "Gradual implementation",
+          "Change management",
+          "AI integration where appropriate"
+        ]
+      }
+    ],
+    "cta": {
+      "title": "Ready to Get Started?",
+      "description": "Let's discuss how our solutions can work for your organization.",
+      "button_text": "Contact Us Today"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Contact Us",
+      "subtitle": "Let's Build Something Great Together"
+    },
+    "intro": {
+      "description": "Ready to explore how Aethron Technology can help your organization? We'd love to hear about your challenges and discuss how our people-centric approach can make a difference."
+    },
+    "info": {
       "title": "Get In Touch",
-      "description": "Ready to transform your business with technology? Let's discuss your project.",
-      "email": "info@aethron.tech",
-      "phone": "+1 (555) 123-4567",
-      "address": "123 Innovation Drive, Tech City, TC 12345"
+      "email": {
+        "label": "Email",
+        "value": "info@aethron.tech",
+        "link": "mailto:info@aethron.tech"
+      },
+      "phone": {
+        "label": "Phone",
+        "value": "+32 (0)3 123 45 67",
+        "link": "tel:+3203123456"
+      },
+      "address": {
+        "label": "Address",
+        "value": "Innovation Park 1, 2000 Antwerp, Belgium"
+      }
+    },
+    "form": {
+      "title": "Send us a message",
+      "fields": {
+        "name": {
+          "label": "Name",
+          "placeholder": "Your name",
+          "required": true
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "your.email@company.com",
+          "required": true
+        },
+        "company": {
+          "label": "Company",
+          "placeholder": "Your company name",
+          "required": false
+        },
+        "subject": {
+          "label": "Subject",
+          "placeholder": "What can we help you with?",
+          "required": true
+        },
+        "message": {
+          "label": "Message",
+          "placeholder": "Tell us about your project or challenge...",
+          "required": true
+        }
+      },
+      "submit": "Send Message",
+      "success": "Thank you for your message! We'll get back to you soon.",
+      "error": "Sorry, there was an error sending your message. Please try again."
     }
   },
   "footer": {
     "company": "Aethron Technology",
-    "tagline": "Innovation Through Technology",
+    "tagline": "People-Centric Software Solutions",
     "copyright": "© 2025 Aethron Technology. All rights reserved.",
     "links": {
       "privacy": "Privacy Policy",
@@ -106,30 +231,7 @@
     "error": "An error occurred",
     "search": "Search",
     "menu": "Menu",
-    "close": "Close"
-  },
-  "blog": {
-    "title": "Blog",
-    "subtitle": "Latest insights and updates",
-    "read_more": "Read Full Article",
-    "published_on": "Published on",
-    "by_author": "By",
-    "categories": "Categories",
-    "tags": "Tags",
-    "related_posts": "Related Posts",
-    "no_posts": "No posts found"
-  },
-  "forms": {
-    "contact": {
-      "title": "Contact Form",
-      "name": "Name",
-      "email": "Email",
-      "subject": "Subject",
-      "message": "Message",
-      "send": "Send Message",
-      "required": "Required field",
-      "success": "Message sent successfully!",
-      "error": "Failed to send message. Please try again."
-    }
+    "close": "Close",
+    "required_field": "This field is required"
   }
 }

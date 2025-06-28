@@ -272,3 +272,121 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+/* WEBS-31: Enhanced I18n Styles for Locale-Sensitive Content Rendering */
+
+/* Language Direction Support */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Locale-specific typography adjustments */
+html[lang="nl"] {
+  /* Dutch-specific font preferences */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+html[lang="en"] {
+  /* English-specific font preferences */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Content adaptation for different languages */
+.i18n-content {
+  /* Ensure proper text wrapping for different languages */
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Dutch language adjustments */
+html[lang="nl"] .i18n-content {
+  /* Dutch typically needs slightly more line height */
+  line-height: 1.65;
+}
+
+/* English language adjustments */
+html[lang="en"] .i18n-content {
+  line-height: 1.6;
+}
+
+/* Responsive text sizing based on language */
+@media (max-width: 768px) {
+  html[lang="nl"] h1 {
+    /* Dutch words can be longer, adjust sizing */
+    font-size: 2.2rem;
+  }
+  
+  html[lang="en"] h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Currency and number formatting display */
+.i18n-currency,
+.i18n-number {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* Date formatting display */
+.i18n-date {
+  white-space: nowrap;
+}
+
+/* Loading states for dynamic content */
+.i18n-loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.i18n-loading::after {
+  content: "...";
+  animation: i18n-dots 1.5s infinite;
+}
+
+@keyframes i18n-dots {
+  0%, 20% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Error states for missing translations */
+.i18n-error {
+  color: #dc2626;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  font-family: 'Monaco', 'Consolas', monospace;
+}
+
+.i18n-error::before {
+  content: "⚠️ ";
+}
+
+/* Enhanced language switcher for WEBS-31 */
+.nav-menu .language-switcher .lang-flag {
+  margin-right: 0.5rem;
+}
+
+[dir="rtl"] .nav-menu .language-switcher .lang-flag {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+/* Locale-aware content spacing */
+.hero[lang="nl"] h1 {
+  /* Dutch headlines may need more breathing room */
+  margin-bottom: 1.5rem;
+}
+
+.hero[lang="en"] h1 {
+  margin-bottom: 1.25rem;
+}
