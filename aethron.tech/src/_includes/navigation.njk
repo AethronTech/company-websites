@@ -2,7 +2,7 @@
   <div class="nav-container">
     <!-- Logo/Brand -->
     <div class="nav-brand">
-      <a href="/{{ lang or 'en' }}/" class="nav-logo" aria-label="{{ 'site.title' | t(lang or 'en') }} homepage">
+      <a href="{{ routes.routes[lang or 'en'].home }}" class="nav-logo" aria-label="{{ 'site.title' | t(lang or 'en') }} homepage">
         <span class="logo-text">{{ 'site.title' | t(lang or 'en') }}</span>
         <span class="logo-tagline">{{ 'site.tagline' | t(lang or 'en') }}</span>
       </a>
@@ -19,34 +19,34 @@
     <div class="nav-menu-wrapper" id="nav-menu">
       <ul class="nav-menu" role="menubar">
         <li role="none">
-          <a href="/{{ lang or 'en' }}/" 
-             class="nav-link {{ 'active' if page.url == '/' }}" 
+          <a href="{{ routes.routes[lang or 'en'].home }}" 
+             class="nav-link {{ 'active' if page.url == routes.routes[lang or 'en'].home }}" 
              role="menuitem"
-             aria-current="{{ 'page' if page.url == '/' else 'false' }}">
+             aria-current="{{ 'page' if page.url == routes.routes[lang or 'en'].home else 'false' }}">
             {{ 'navigation.home' | t(lang or 'en') }}
           </a>
         </li>
         <li role="none">
-          <a href="/{{ lang or 'en' }}/about/" 
-             class="nav-link {{ 'active' if '/about/' in page.url }}" 
+          <a href="{{ routes.routes[lang or 'en'].about }}" 
+             class="nav-link {{ 'active' if routes.routes[lang or 'en'].about in page.url }}" 
              role="menuitem"
-             aria-current="{{ 'page' if '/about/' in page.url else 'false' }}">
+             aria-current="{{ 'page' if routes.routes[lang or 'en'].about in page.url else 'false' }}">
             {{ 'navigation.about' | t(lang or 'en') }}
           </a>
         </li>
         <li role="none">
-          <a href="/{{ lang or 'en' }}/solutions/" 
-             class="nav-link {{ 'active' if '/solutions/' in page.url }}" 
+          <a href="{{ routes.routes[lang or 'en'].solutions }}" 
+             class="nav-link {{ 'active' if routes.routes[lang or 'en'].solutions in page.url }}" 
              role="menuitem"
-             aria-current="{{ 'page' if '/solutions/' in page.url else 'false' }}">
+             aria-current="{{ 'page' if routes.routes[lang or 'en'].solutions in page.url else 'false' }}">
             {{ 'navigation.solutions' | t(lang or 'en') }}
           </a>
         </li>
         <li role="none">
-          <a href="/{{ lang or 'en' }}/contact/" 
-             class="nav-link {{ 'active' if '/contact/' in page.url }}" 
+          <a href="{{ routes.routes[lang or 'en'].contact }}" 
+             class="nav-link {{ 'active' if routes.routes[lang or 'en'].contact in page.url }}" 
              role="menuitem"
-             aria-current="{{ 'page' if '/contact/' in page.url else 'false' }}">
+             aria-current="{{ 'page' if routes.routes[lang or 'en'].contact in page.url else 'false' }}">
             {{ 'navigation.contact' | t(lang or 'en') }}
           </a>
         </li>
@@ -67,15 +67,15 @@
         </button>
         
         <ul class="lang-dropdown" id="lang-dropdown" role="menu" aria-hidden="true">
-          {% for language in i18nConfig.languages %}
+          {% for language in i18nGlobal.languages %}
           <li role="none">
-            <a href="/{{ language.code }}{{ page.url | replace('/' + (lang or 'en'), '') }}" 
+            <a href="{{ page.url | alternateUrl(language.code) }}" 
                class="lang-option {{ 'active' if language.code == (lang or 'en') }}"
                role="menuitem"
                data-lang="{{ language.code }}"
                lang="{{ language.code }}"
                hreflang="{{ language.code }}"
-               aria-current="{{ 'page' if language.code == (lang or 'en') else 'false' }}">
+               aria-current="{{ 'page' if language.code == (lang or 'en') else 'false' }}">>>
               <span class="lang-flag">{{ '🇺🇸' if language.code == 'en' else '🇳🇱' }}</span>
               <span class="lang-name">{{ language.nativeName }}</span>
               {% if language.code == (lang or 'en') %}
