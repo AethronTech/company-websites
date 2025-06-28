@@ -1,0 +1,34 @@
+{
+  "name": "aethron.tech",
+  "version": "1.0.0",
+  "description": "Official website for Aethron Technologies - cutting-edge technology solutions and digital transformation",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "echo \"Development server to be configured\"",
+    "build": "echo \"Build process to be configured\"",
+    "start": "echo \"Production server to be configured\"",
+    "test": "echo \"Tests to be configured\"",
+    "lint": "echo \"Linting to be configured\"",
+    "preview": "echo \"Preview to be configured\""
+  },
+  "keywords": [
+    "aethron",
+    "technology",
+    "website",
+    "digital-transformation",
+    "innovation"
+  ],
+  "author": "Aethron Technologies",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AethronTech/company-websites.git",
+    "directory": "aethron.tech"
+  },
+  "homepage": "https://aethron.tech"
+}
