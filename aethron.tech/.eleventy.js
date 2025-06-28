@@ -57,6 +57,11 @@ module.exports = function(eleventyConfig) {
     const langConfig = config.dateFormats[language] || config.dateFormats.en;
     
     const dateObj = new Date(date);
+    
+    if (format === "iso") {
+      return dateObj.toISOString();
+    }
+    
     return dateObj.toLocaleDateString(langConfig.locale, {
       year: "numeric",
       month: format === "long" ? "long" : "short",
@@ -94,6 +99,44 @@ module.exports = function(eleventyConfig) {
     const cleanUrl = url.replace(/^\/+/, '');
     return `/${language}/${cleanUrl}`;
   });
+
+  // Get alternate language URL
+  eleventyConfig.addFilter("alternateUrl", function(currentUrl, targetLanguage) {
+    const config = require("./src/_data/i18n/config.json");
+    
+    // Remove language prefix from current URL
+    let cleanUrl = currentUrl;
+    for (const lang of config.languages) {
+      if (lang.code !== config.defaultLanguage) {
+        const prefix = `/${lang.code}/`;
+        if (cleanUrl.startsWith(prefix)) {
+          cleanUrl = cleanUrl.substring(prefix.length - 1);
+          break;
+        }
+      }
+    }
+    
+    // Add target language prefix
+    return eleventyConfig.getFilter("localizeUrl").call(this, cleanUrl, targetLanguage);
+  });
+
+  // Get available languages for current page
+  eleventyConfig.addFilter("getAvailableLanguages", function() {
+    const config = require("./src/_data/i18n/config.json");
+    return config.languages;
+  });
+
+  // Get current language from URL
+  eleventyConfig.addFilter("getCurrentLanguage", function(url) {
+    const config = require("./src/_data/i18n/config.json");
+    
+    for (const lang of config.languages) {
+      if (lang.code !== config.defaultLanguage && url.startsWith(`/${lang.code}/`)) {
+        return lang.code;
+      }
+    }
+    return config.defaultLanguage;
+  });
   
   // Copy static assets with organized directory structure
   eleventyConfig.addPassthroughCopy("src/assets");
@@ -130,6 +173,53 @@ module.exports = function(eleventyConfig) {
   
   eleventyConfig.addCollection("pages", function(collection) {
     return collection.getFilteredByGlob("src/content/pages/*.md");
+  });
+
+  // Add i18n-specific collections
+  eleventyConfig.addCollection("englishPages", function(collection) {
+    return collection.getAll().filter(function(item) {
+      return item.data.lang === 'en' || (!item.data.lang && !item.inputPath.includes('/nl/'));
+    });
+  });
+
+  eleventyConfig.addCollection("dutchPages", function(collection) {
+    return collection.getAll().filter(function(item) {
+      return item.data.lang === 'nl' || item.inputPath.includes('/nl/');
+    });
+  });
+
+  // Collection for all pages by language
+  eleventyConfig.addCollection("pagesByLanguage", function(collection) {
+    const pages = {
+      en: [],
+      nl: []
+    };
+    
+    collection.getAll().forEach(function(item) {
+      const lang = item.data.lang || (item.inputPath.includes('/nl/') ? 'nl' : 'en');
+      if (pages[lang]) {
+        pages[lang].push(item);
+      }
+    });
+    
+    return pages;
+  });
+
+  // Navigation collection per language
+  eleventyConfig.addCollection("navigationItems", function(collection) {
+    const config = require("./src/_data/i18n/config.json");
+    const nav = {};
+    
+    config.languages.forEach(lang => {
+      nav[lang.code] = collection.getAll()
+        .filter(item => {
+          const itemLang = item.data.lang || (item.inputPath.includes('/nl/') ? 'nl' : 'en');
+          return itemLang === lang.code && item.data.eleventyNavigation;
+        })
+        .sort((a, b) => (a.data.eleventyNavigation.order || 0) - (b.data.eleventyNavigation.order || 0));
+    });
+    
+    return nav;
   });
   
   // Set up markdown processing

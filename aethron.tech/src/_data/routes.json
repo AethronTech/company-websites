@@ -1,0 +1,48 @@
+{
+  "routes": {
+    "en": {
+      "home": "/",
+      "about": "/about/",
+      "solutions": "/solutions/",
+      "contact": "/contact/"
+    },
+    "nl": {
+      "home": "/nl/",
+      "about": "/nl/about/",
+      "solutions": "/nl/solutions/",
+      "contact": "/nl/contact/"
+    }
+  },
+  "routeMapping": {
+    "/": {
+      "template": "index",
+      "en": "/",
+      "nl": "/nl/"
+    },
+    "/about/": {
+      "template": "about",
+      "en": "/about/",
+      "nl": "/nl/about/"
+    },
+    "/solutions/": {
+      "template": "solutions",
+      "en": "/solutions/",
+      "nl": "/nl/solutions/"
+    },
+    "/contact/": {
+      "template": "contact",
+      "en": "/contact/",
+      "nl": "/nl/contact/"
+    }
+  },
+  "seoRoutes": {
+    "en": {
+      "sitemap": "/sitemap.xml",
+      "robots": "/robots.txt"
+    },
+    "nl": {
+      "sitemap": "/nl/sitemap.xml",
+      "robots": "/nl/robots.txt"
+    }
+  }
+}
