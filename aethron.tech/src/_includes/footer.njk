@@ -1,0 +1,24 @@
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>{{ site.company.name }}</h3>
+        <p>{{ site.site.description }}</p>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>Email: {{ site.company.email }}</p>
+        <p>Phone: {{ site.company.phone }}</p>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <a href="{{ site.social.linkedin }}">LinkedIn</a>
+        <a href="{{ site.social.github }}">GitHub</a>
+        <a href="{{ site.social.twitter }}">Twitter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 {{ site.company.name }}. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
