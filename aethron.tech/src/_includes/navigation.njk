@@ -35,27 +35,11 @@
           </a>
         </li>
         <li role="none">
-          <a href="/{{ lang or 'en' }}/services/" 
-             class="nav-link {{ 'active' if '/services/' in page.url }}" 
-             role="menuitem"
-             aria-current="{{ 'page' if '/services/' in page.url else 'false' }}">
-            {{ (lang or 'en') | t('navigation.services') }}
-          </a>
-        </li>
-        <li role="none">
           <a href="/{{ lang or 'en' }}/solutions/" 
              class="nav-link {{ 'active' if '/solutions/' in page.url }}" 
              role="menuitem"
              aria-current="{{ 'page' if '/solutions/' in page.url else 'false' }}">
             {{ (lang or 'en') | t('navigation.solutions') }}
-          </a>
-        </li>
-        <li role="none">
-          <a href="/{{ lang or 'en' }}/blog/" 
-             class="nav-link {{ 'active' if '/blog/' in page.url }}" 
-             role="menuitem"
-             aria-current="{{ 'page' if '/blog/' in page.url else 'false' }}">
-            {{ (lang or 'en') | t('navigation.blog') }}
           </a>
         </li>
         <li role="none">
