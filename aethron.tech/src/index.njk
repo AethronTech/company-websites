@@ -1,0 +1,60 @@
+---
+layout: layout.njk
+lang: en
+title: "Aethron Technology - People-centric software. Flexible. Reliable. Smart."
+description: "Aethron Technologies empowers IT teams with digital solutions that truly work — from configurable packages to custom solutions. Technology in service of people, supported by proven methodologies like Agile and ITIL."
+---
+
+<section class="hero i18n-content" lang="{{ lang or 'en' }}">
+  <div class="container">
+    <div class="hero-content">
+      <h1>{{ 'homepage.hero.title' | t(lang or 'en') }}</h1>
+      <p class="hero-description">
+        {{ 'homepage.hero.description' | t(lang or 'en') }}
+      </p>
+      <div class="hero-actions">
+        <a href="{{ 'solutions/' | localizeUrl(lang or 'en') }}" class="btn btn-primary">{{ 'homepage.hero.cta' | t(lang or 'en') }}</a>
+        <a href="{{ 'about/' | localizeUrl(lang or 'en') }}" class="btn btn-secondary">{{ 'homepage.hero.cta_secondary' | t(lang or 'en') }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services-overview i18n-content" lang="{{ lang or 'en' }}">
+  <div class="container">
+    <div class="services-grid">
+      {% for service in 'homepage.services.items' | t(lang or 'en') %}
+      <div class="service-card">
+        <div class="service-icon">{{ service.icon }}</div>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="about-summary i18n-content" lang="{{ lang or 'en' }}">
+  <div class="container">
+    <div class="summary-grid">
+      <div class="summary-card">
+        <h3>{{ 'homepage.about_summary.title' | t(lang or 'en') }}</h3>
+        <p>{{ 'homepage.about_summary.description' | t(lang or 'en') }}</p>
+        <a href="{{ 'homepage.about_summary.link_url' | t(lang or 'en') }}" class="btn btn-outline">{{ 'homepage.about_summary.link_text' | t(lang or 'en') }} →</a>
+      </div>
+
+      <div class="summary-card">
+        <h3>{{ 'homepage.solutions_summary.title' | t(lang or 'en') }}</h3>
+        <p>{{ 'homepage.solutions_summary.description' | t(lang or 'en') }}</p>
+        <a href="{{ 'homepage.solutions_summary.link_url' | t(lang or 'en') }}" class="btn btn-outline">{{ 'homepage.solutions_summary.link_text' | t(lang or 'en') }} →</a>
+      </div>
+
+      <div class="summary-card">
+        <h3>{{ 'homepage.contact_summary.title' | t(lang or 'en') }}</h3>
+        <p>{{ 'homepage.contact_summary.description' | t(lang or 'en') }}</p>
+        <a href="{{ 'homepage.contact_summary.link_url' | t(lang or 'en') }}" class="btn btn-outline">{{ 'homepage.contact_summary.link_text' | t(lang or 'en') }} →</a>
+      </div>
+    </div>
+  </div>
+</section>
+

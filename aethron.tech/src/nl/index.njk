@@ -1,20 +1,20 @@
 ---
 layout: layout.njk
 lang: nl
-title: "{{ (lang or 'nl') | t('site.title') }} - {{ (lang or 'nl') | t('site.description') }}"
-description: "{{ (lang or 'nl') | t('site.description') }}"
+title: "Aethron Technology - Mensgerichte software. Flexibel. Betrouwbaar. Slim."
+description: "Aethron Technologies versterkt IT-teams met digitale oplossingen die écht werken — van configureerbare pakketten tot maatwerk. Technologie in dienst van mensen, gedragen door beproefde methodes als Agile en ITIL."
 ---
 
 <section class="hero i18n-content" lang="{{ lang or 'nl' }}">
   <div class="container">
     <div class="hero-content">
-      <h1>{{ (lang or 'nl') | t('homepage.hero.title') }}</h1>
+      <h1>{{ 'homepage.hero.title' | t(lang or 'nl') }}</h1>
       <p class="hero-description">
-        {{ (lang or 'nl') | t('homepage.hero.description') }}
+        {{ 'homepage.hero.description' | t(lang or 'nl') }}
       </p>
       <div class="hero-actions">
-        <a href="{{ 'solutions/' | localizeUrl(lang or 'nl') }}" class="btn btn-primary">{{ (lang or 'nl') | t('homepage.hero.cta') }}</a>
-        <a href="{{ 'about/' | localizeUrl(lang or 'nl') }}" class="btn btn-secondary">{{ (lang or 'nl') | t('homepage.hero.cta_secondary') }}</a>
+        <a href="{{ 'solutions/' | localizeUrl(lang or 'nl') }}" class="btn btn-primary">{{ 'homepage.hero.cta' | t(lang or 'nl') }}</a>
+        <a href="{{ 'about/' | localizeUrl(lang or 'nl') }}" class="btn btn-secondary">{{ 'homepage.hero.cta_secondary' | t(lang or 'nl') }}</a>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@ description: "{{ (lang or 'nl') | t('site.description') }}"
 <section class="services-overview i18n-content" lang="{{ lang or 'nl' }}">
   <div class="container">
     <div class="services-grid">
-      {% for service in (lang or 'nl') | t('homepage.services.items') %}
+      {% for service in 'homepage.services.items' | t(lang or 'nl') %}
       <div class="service-card">
         <div class="service-icon">{{ service.icon }}</div>
         <h3>{{ service.title }}</h3>
@@ -38,15 +38,15 @@ description: "{{ (lang or 'nl') | t('site.description') }}"
   <div class="container">
     <div class="summary-grid">
       <div class="summary-card">
-        <h3>{{ (lang or 'nl') | t('homepage.about_summary.title') }}</h3>
-        <p>{{ (lang or 'nl') | t('homepage.about_summary.description') }}</p>
-        <a href="{{ (lang or 'nl') | t('homepage.about_summary.link_url') }}" class="btn btn-outline">{{ (lang or 'nl') | t('homepage.about_summary.link_text') }} →</a>
+        <h3>{{ 'homepage.about_summary.title' | t(lang or 'nl') }}</h3>
+        <p>{{ 'homepage.about_summary.description' | t(lang or 'nl') }}</p>
+        <a href="{{ 'homepage.about_summary.link_url' | t(lang or 'nl') }}" class="btn btn-outline">{{ 'homepage.about_summary.link_text' | t(lang or 'nl') }} →</a>
       </div>
 
       <div class="summary-card">
-        <h3>{{ (lang or 'nl') | t('homepage.solutions_summary.title') }}</h3>
-        <p>{{ (lang or 'nl') | t('homepage.solutions_summary.description') }}</p>
-        <a href="{{ (lang or 'nl') | t('homepage.solutions_summary.link_url') }}" class="btn btn-outline">{{ (lang or 'nl') | t('homepage.solutions_summary.link_text') }} →</a>
+        <h3>{{ 'homepage.solutions_summary.title' | t(lang or 'nl') }}</h3>
+        <p>{{ 'homepage.solutions_summary.description' | t(lang or 'nl') }}</p>
+        <a href="{{ 'homepage.solutions_summary.link_url' | t(lang or 'nl') }}" class="btn btn-outline">{{ 'homepage.solutions_summary.link_text' | t(lang or 'nl') }} →</a>
       </div>
     </div>
   </div>

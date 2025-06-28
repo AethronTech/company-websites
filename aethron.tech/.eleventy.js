@@ -1,71 +1,41 @@
 module.exports = function(eleventyConfig) {
-  // Enhanced i18n system with better caching and error handling
-  const i18nCache = new Map();
-  
-  function loadI18nData(language) {
-    if (!i18nCache.has(language)) {
-      try {
-        const data = require(`./src/_data/i18n/${language}.json`);
-        i18nCache.set(language, data);
-      } catch (error) {
-        console.warn(`[I18N] Warning: Could not load language file for '${language}'. Using fallback.`);
-        return null;
-      }
-    }
-    return i18nCache.get(language);
-  }
-  
-  // Enhanced translation filter with better fallback and interpolation
-  eleventyConfig.addFilter("t", function(language, key, interpolations = {}) {
-    const fallbackLang = 'en';
-    
-    // Get translation data
-    let data = loadI18nData(language);
-    let fallbackData = language !== fallbackLang ? loadI18nData(fallbackLang) : null;
-    
-    // Helper function to get nested value
-    function getNestedValue(obj, keyPath) {
-      return keyPath.split('.').reduce((current, key) => {
-        return current && typeof current === 'object' ? current[key] : undefined;
-      }, obj);
+  // Add i18n filter for translations
+  eleventyConfig.addFilter("t", function(key, language) {
+    // If language is not provided, try to get it from the current page context
+    if (!language) {
+      language = this.ctx?.lang || 'en';
     }
     
-    // Try to get value from primary language
-    let value = data ? getNestedValue(data, key) : undefined;
-    
-    // Fallback to default language if not found
-    if (value === undefined && fallbackData) {
-      value = getNestedValue(fallbackData, key);
-      if (process.env.NODE_ENV !== 'production') {
-        console.warn(`[I18N] Using fallback for key '${key}' in language '${language}'`);
-      }
-    }
-    
-    // If still not found, return error indicator
-    if (value === undefined) {
-      return `[Missing: ${key}]`;
-    }
-    
-    // Handle interpolations (e.g., {{name}} in strings)
-    if (typeof value === 'string' && Object.keys(interpolations).length > 0) {
-      value = value.replace(/\{\{(\w+)\}\}/g, (match, key) => {
-        return interpolations[key] !== undefined ? interpolations[key] : match;
-      });
-    }
-    
-    return value;
-  });
-  
-  // Global function to get translations (for use in templates)
-  eleventyConfig.addGlobalData("i18n", function() {
-    return {
-      t: (key, interpolations = {}) => {
-        // This will be available in templates as i18n.t()
-        return (language) => {
-          return this.t(language, key, interpolations);
-        };
-      }
+    const i18nData = {
+      en: require("./src/_data/i18n/en.json"),
+      nl: require("./src/_data/i18n/nl.json")
     };
+    
+    if (!i18nData[language]) {
+      language = 'en';
+    }
+    
+    const keys = key.split('.');
+    let value = i18nData[language];
+    
+    for (const k of keys) {
+      if (value && typeof value === 'object' && k in value) {
+        value = value[k];
+      } else {
+        // Fallback to English if key not found
+        value = i18nData.en;
+        for (const fallbackKey of keys) {
+          if (value && typeof value === 'object' && fallbackKey in value) {
+            value = value[fallbackKey];
+          } else {
+            return `[Missing: ${key}]`;
+          }
+        }
+        break;
+      }
+    }
+    
+    return value || `[Missing: ${key}]`;
   });
 
   // Language helper filters

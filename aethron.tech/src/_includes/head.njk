@@ -10,15 +10,15 @@
   {% endif %}
   
   <!-- Title and SEO -->
-  <title>{% if title %}{{ title }}{% else %}{{ (lang or 'en') | t('site.title') }} - {{ (lang or 'en') | t('site.description') }}{% endif %}</title>
-  <meta name="description" content="{{ description or ((lang or 'en') | t('site.description')) }}">
+  <title>{% if title %}{{ title }}{% else %}{{ 'site.title' | t(lang or 'en') }} - {{ 'site.description' | t(lang or 'en') }}{% endif %}</title>
+  <meta name="description" content="{{ description or ('site.description' | t(lang or 'en')) }}">
   
   <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ (lang or 'en') | t('site.title') }}{% endif %}">
-  <meta property="og:description" content="{{ description or ((lang or 'en') | t('site.description')) }}">
+  <meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ 'site.title' | t(lang or 'en') }} - {{ 'site.description' | t(lang or 'en') }}{% endif %}">
+  <meta property="og:description" content="{{ description or ('site.description' | t(lang or 'en')) }}">
   <meta property="og:url" content="{{ site.site.url }}{{ page.url }}">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="{{ (lang or 'en') | t('site.title') }}">
+  <meta property="og:site_name" content="{{ 'site.title' | t(lang or 'en') }}">
   {% if (lang or 'en') == 'nl' %}
   <meta property="og:locale" content="nl_NL">
   {% else %}
@@ -27,8 +27,8 @@
   
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{% if title %}{{ title }}{% else %}{{ (lang or 'en') | t('site.title') }}{% endif %}">
-  <meta name="twitter:description" content="{{ description or ((lang or 'en') | t('site.description')) }}">
+  <meta name="twitter:title" content="{% if title %}{{ title }}{% else %}{{ 'site.title' | t(lang or 'en') }} - {{ 'site.description' | t(lang or 'en') }}{% endif %}">
+  <meta name="twitter:description" content="{{ description or ('site.description' | t(lang or 'en')) }}">
   
   <!-- Canonical URL -->
   <link rel="canonical" href="{{ site.site.url }}{{ page.url }}">
