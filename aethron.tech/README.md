@@ -10,10 +10,23 @@ Aethron Technologies is a cutting-edge technology company focused on innovative 
 
 ```
 aethron.tech/
-├── README.md           # This file
-├── .gitignore         # Git ignore rules
-├── .editorconfig      # Editor configuration
-└── src/               # Source code (to be added)
+├── README.md              # This file
+├── package.json           # NPM package configuration
+├── package-lock.json      # Dependency lock file
+├── .eleventy.js          # Eleventy configuration
+├── .gitignore            # Git ignore rules
+├── .editorconfig         # Editor configuration
+├── src/                  # Source code
+│   ├── _layouts/         # Eleventy layout templates
+│   │   └── base.njk     # Base HTML template
+│   ├── _includes/        # Reusable components (to be added)
+│   ├── _data/           # Site data files (to be added)
+│   ├── assets/          # Static assets (to be added)
+│   ├── css/             # Stylesheets (to be added)
+│   ├── js/              # JavaScript files (to be added)
+│   ├── images/          # Image files (to be added)
+│   └── index.md         # Homepage content
+└── _site/               # Built website (auto-generated)
 ```
 
 ## 🛠️ Development Setup
@@ -30,18 +43,24 @@ aethron.tech/
 git clone https://github.com/AethronTech/company-websites.git
 cd company-websites/aethron.tech
 
-# Install dependencies (when package.json is added)
+# Install dependencies
 npm install
 ```
 
 ### Development Commands
 
 ```bash
-# Start development server (to be configured)
+# Start development server with live reload
 npm run dev
 
-# Build for production (to be configured)
+# Build the website for production
 npm run build
+
+# Serve the built website
+npm run start
+
+# Preview the website on port 8080
+npm run preview
 
 # Run tests (to be configured)
 npm run test
@@ -50,9 +69,26 @@ npm run test
 ## 🔧 Configuration
 
 This project uses:
+- **Eleventy (11ty)** - Static site generator for fast, modern websites
+- **Nunjucks** - Template engine for layouts and components
+- **Markdown** - Content authoring with front matter
 - **EditorConfig** - Consistent coding styles across editors
 - **Git** - Version control with proper ignore rules
-- **Modern Web Technologies** - To be determined based on requirements
+
+## 🏗️ Architecture
+
+### Eleventy Configuration
+- **Input Directory**: `src/` - All source files
+- **Output Directory**: `_site/` - Built website
+- **Layouts**: `src/_layouts/` - HTML templates  
+- **Includes**: `src/_includes/` - Reusable components
+- **Data**: `src/_data/` - Global site data
+- **Assets**: Static files copied to output
+
+### Template Formats
+- **Markdown** (.md) - Content pages with front matter
+- **Nunjucks** (.njk) - Templates and layouts
+- **HTML** (.html) - Static HTML files
 
 ## 📝 Contributing
 
