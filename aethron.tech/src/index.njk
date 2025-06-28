@@ -1,33 +1,76 @@
 ---
 layout: layout.njk
 lang: en
-title: "Aethron Technology - Welcome"
-description: "Leading technology solutions"
+title: "Aethron Technology - People-Centric Software"
+description: "People-centric software. Flexible. Reliable. Smart. Aethron Technologies empowers IT teams with digital solutions that truly work."
 ---
 
 <section class="hero">
-  <div class="hero-content">
-    <h1>{{ (lang | t("homepage.hero.title")) or "Welcome to Aethron Technology" }}</h1>
-    <p class="hero-subtitle">Leading Innovation in Technology Solutions</p>
-    <p class="hero-description">We are Aethron Technology, delivering cutting-edge solutions.</p>
-    <div class="hero-actions">
-      <a href="/contact/" class="btn btn-primary">Get Started</a>
-      <a href="/about/" class="btn btn-secondary">Learn More</a>
+  <div class="container">
+    <div class="hero-content">
+      <h1>People-centric software. Flexible. Reliable. Smart.</h1>
+      <p class="hero-description">
+        Aethron Technologies empowers IT teams with digital solutions that truly work — from configurable packages to custom solutions. Technology in service of people, supported by proven methodologies like Agile and ITIL.
+      </p>
+      <div class="hero-actions">
+        <a href="/solutions/" class="btn btn-primary">Discover Our Solutions</a>
+        <a href="/about/" class="btn btn-secondary">Learn More About Us</a>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="about">
+<section class="services-overview">
   <div class="container">
-    <h2>About Aethron Technology</h2>
-    <p>Founded with a vision to revolutionize technology.</p>
-    <ul class="values-list">
-      <li>Innovation-driven approach</li>
-      <li>Client-centric solutions</li>
-      <li>Technical excellence</li>
-      <li>Sustainable growth</li>
-    </ul>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <h3>Optimized IT Processes</h3>
+        <p>
+          Smart technology supports your service delivery without losing sight of human contact. Thanks to our approach — based on ITIL best practices and enhanced by intelligent automation — we make IT processes faster, clearer, and more reliable. Fewer errors, shorter lead times, more space for service and collaboration.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <h3>Accelerated Software Development</h3>
+        <p>
+          Whether you're working on internal tools or customer-facing applications: our flexible solutions and configurable building blocks accelerate every development cycle. By combining Agile methodologies with smart building blocks, we reduce manual work and create space for innovation, collaboration, and focus.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📈</div>
+        <h3>Step-by-Step Digital Transformation</h3>
+        <p>
+          We believe in real change, not big bang transitions. Together we build step by step towards a future-oriented IT environment that works for your team. Whether it's small optimizations or a broader trajectory with AI components: we think strategically and deliver technology that's ready for tomorrow — and works for your people today.
+        </p>
+      </div>
+    </div>
   </div>
+</section>
+
+<section class="about-summary">
+  <div class="container">
+    <div class="summary-grid">
+      <div class="summary-card">
+        <h3>About Us</h3>
+        <p>
+          Aethron.tech is our platform for digital incident tracking. We build user-friendly technology with an eye for reliability and scalability.
+        </p>
+        <a href="/about/" class="btn btn-outline">More about us →</a>
+      </div>
+
+      <div class="summary-card">
+        <h3>Our Solutions</h3>
+        <p>
+          We develop flexible tools that support teams in streamlining their digital processes. Our solutions are inspired by ITIL principles and grow with your organization — from operational management to custom process automation.
+        </p>
+        <a href="/solutions/" class="btn btn-outline">View solutions →</a>
+      </div>
+    </div>
+  </div>
+</section>
 </section>
 
 <section class="services">
