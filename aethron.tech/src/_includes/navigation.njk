@@ -1,12 +1,32 @@
 <nav class="main-navigation">
   <div class="nav-container">
-    <a href="/" class="nav-logo">{{ site.site.title }}</a>
+    <a href="/" class="nav-logo">Aethron Technology</a>
     <ul class="nav-menu">
       <li><a href="/">Home</a></li>
       <li><a href="/about/">About</a></li>
       <li><a href="/services/">Services</a></li>
-      <li><a href="/posts/">Blog</a></li>
+      <li><a href="/blog/">Blog</a></li>
       <li><a href="/contact/">Contact</a></li>
     </ul>
+    
+    <!-- Language Switcher Demo -->
+    <div class="language-switcher">
+      <label for="lang-select">Language:</label>
+      <select id="lang-select" onchange="switchLanguage(this.value)">
+        <option value="en" {% if (lang or 'en') == 'en' %}selected{% endif %}>English</option>
+        <option value="nl" {% if (lang or 'en') == 'nl' %}selected{% endif %}>Nederlands</option>
+      </select>
+    </div>
   </div>
 </nav>
+
+<script>
+function switchLanguage(langCode) {
+  // Simple language switching for demo
+  if (langCode === 'nl') {
+    alert('Dutch version would be at /nl/ - Coming soon!');
+  } else {
+    window.location.href = '/';
+  }
+}
+</script>

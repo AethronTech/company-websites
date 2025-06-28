@@ -1,0 +1,135 @@
+{
+  "site": {
+    "title": "Aethron Technology",
+    "description": "Toonaangevende technologische oplossingen voor de toekomst",
+    "tagline": "Innovatie Door Technologie"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "Over Ons",
+    "services": "Diensten",
+    "solutions": "Oplossingen",
+    "blog": "Blog",
+    "contact": "Contact",
+    "language": "Taal"
+  },
+  "homepage": {
+    "hero": {
+      "title": "Welkom bij Aethron Technology",
+      "subtitle": "Leidend in Innovatieve Technologische Oplossingen",
+      "description": "Wij zijn Aethron Technology, een vooruitstrevend bedrijf dat zich toelegt op het leveren van geavanceerde technologische oplossingen die innovatie stimuleren en bedrijven transformeren.",
+      "cta": "Ontdek Onze Oplossingen",
+      "cta_secondary": "Leer Meer Over Ons"
+    },
+    "about": {
+      "title": "Over Aethron Technology",
+      "description": "Opgericht met de visie om het technologische landschap te revolutioneren, combineert Aethron Technology diepgaande technische expertise met innovatief denken om oplossingen te leveren die ertoe doen.",
+      "mission": "Onze missie is om bedrijven te versterken door technologie, door oplossingen te creëren die niet alleen functioneel zijn, maar ook transformationeel.",
+      "values": [
+        "Innovatie-gedreven aanpak",
+        "Klantgerichte oplossingen",
+        "Technische excellentie",
+        "Duurzame groei"
+      ]
+    },
+    "services": {
+      "title": "Onze Diensten",
+      "subtitle": "Uitgebreide Technologische Oplossingen",
+      "items": [
+        {
+          "title": "Software Ontwikkeling",
+          "description": "Maatwerk software oplossingen afgestemd op uw bedrijfsbehoeften"
+        },
+        {
+          "title": "Cloud Oplossingen",
+          "description": "Schaalbare cloud infrastructuur en migratie diensten"
+        },
+        {
+          "title": "AI & Machine Learning",
+          "description": "Intelligente systemen die leren en zich aanpassen aan uw bedrijf"
+        },
+        {
+          "title": "Cybersecurity",
+          "description": "Uitgebreide beveiligingsoplossingen om uw digitale assets te beschermen"
+        }
+      ]
+    },
+    "why_choose": {
+      "title": "Waarom Kiezen Voor Aethron Technology",
+      "reasons": [
+        {
+          "title": "Bewezen Expertise",
+          "description": "Jaren ervaring in het leveren van complexe technologische oplossingen"
+        },
+        {
+          "title": "Innovatie Focus",
+          "description": "We blijven voorop lopen met technologietrends ten voordele van onze klanten"
+        },
+        {
+          "title": "Klantsucces",
+          "description": "Uw succes is onze primaire maatstaf voor prestatie"
+        }
+      ]
+    },
+    "contact": {
+      "title": "Neem Contact Op",
+      "description": "Klaar om uw bedrijf te transformeren met technologie? Laten we uw project bespreken.",
+      "email": "info@aethron.tech",
+      "phone": "+32 (0)2 123-4567",
+      "address": "Innovatielaan 123, Tech City, TC 12345"
+    }
+  },
+  "footer": {
+    "company": "Aethron Technology",
+    "tagline": "Innovatie Door Technologie",
+    "copyright": "© 2025 Aethron Technology. Alle rechten voorbehouden.",
+    "links": {
+      "privacy": "Privacybeleid",
+      "terms": "Servicevoorwaarden",
+      "sitemap": "Sitemap"
+    },
+    "social": {
+      "follow": "Volg Ons",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "github": "GitHub"
+    }
+  },
+  "common": {
+    "read_more": "Lees Meer",
+    "learn_more": "Leer Meer",
+    "get_started": "Begin Nu",
+    "contact_us": "Contacteer Ons",
+    "view_all": "Bekijk Alles",
+    "back_to_top": "Terug Naar Boven",
+    "loading": "Laden...",
+    "error": "Er is een fout opgetreden",
+    "search": "Zoeken",
+    "menu": "Menu",
+    "close": "Sluiten"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Laatste inzichten en updates",
+    "read_more": "Lees Volledig Artikel",
+    "published_on": "Gepubliceerd op",
+    "by_author": "Door",
+    "categories": "Categorieën",
+    "tags": "Tags",
+    "related_posts": "Gerelateerde Posts",
+    "no_posts": "Geen posts gevonden"
+  },
+  "forms": {
+    "contact": {
+      "title": "Contact Formulier",
+      "name": "Naam",
+      "email": "E-mail",
+      "subject": "Onderwerp",
+      "message": "Bericht",
+      "send": "Verstuur Bericht",
+      "required": "Verplicht veld",
+      "success": "Bericht succesvol verzonden!",
+      "error": "Versturen mislukt. Probeer opnieuw."
+    }
+  }
+}

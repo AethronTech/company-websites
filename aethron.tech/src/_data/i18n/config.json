@@ -1,0 +1,44 @@
+{
+  "defaultLanguage": "en",
+  "languages": [
+    {
+      "code": "en",
+      "name": "English",
+      "nativeName": "English",
+      "dir": "ltr"
+    },
+    {
+      "code": "nl",
+      "name": "Dutch",
+      "nativeName": "Nederlands",
+      "dir": "ltr"
+    }
+  ],
+  "fallbackLanguage": "en",
+  "dateFormats": {
+    "en": {
+      "short": "MM/DD/YYYY",
+      "long": "MMMM D, YYYY",
+      "locale": "en-US"
+    },
+    "nl": {
+      "short": "DD/MM/YYYY",
+      "long": "D MMMM YYYY",
+      "locale": "nl-NL"
+    }
+  },
+  "numberFormats": {
+    "en": {
+      "decimal": ".",
+      "thousands": ",",
+      "currency": "USD",
+      "locale": "en-US"
+    },
+    "nl": {
+      "decimal": ",",
+      "thousands": ".",
+      "currency": "EUR",
+      "locale": "nl-NL"
+    }
+  }
+}

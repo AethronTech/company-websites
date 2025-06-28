@@ -1,0 +1,135 @@
+{
+  "site": {
+    "title": "Aethron Technology",
+    "description": "Leading technology solutions for the future",
+    "tagline": "Innovation Through Technology"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "solutions": "Solutions",
+    "blog": "Blog",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "homepage": {
+    "hero": {
+      "title": "Welcome to Aethron Technology",
+      "subtitle": "Leading Innovation in Technology Solutions",
+      "description": "We are Aethron Technology, a forward-thinking company dedicated to delivering cutting-edge technology solutions that drive innovation and transform businesses.",
+      "cta": "Discover Our Solutions",
+      "cta_secondary": "Learn More About Us"
+    },
+    "about": {
+      "title": "About Aethron Technology",
+      "description": "Founded with a vision to revolutionize the technology landscape, Aethron Technology combines deep technical expertise with innovative thinking to deliver solutions that matter.",
+      "mission": "Our mission is to empower businesses through technology, creating solutions that are not just functional, but transformational.",
+      "values": [
+        "Innovation-driven approach",
+        "Client-centric solutions",
+        "Technical excellence",
+        "Sustainable growth"
+      ]
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "Comprehensive Technology Solutions",
+      "items": [
+        {
+          "title": "Software Development",
+          "description": "Custom software solutions tailored to your business needs"
+        },
+        {
+          "title": "Cloud Solutions",
+          "description": "Scalable cloud infrastructure and migration services"
+        },
+        {
+          "title": "AI & Machine Learning",
+          "description": "Intelligent systems that learn and adapt to your business"
+        },
+        {
+          "title": "Cybersecurity",
+          "description": "Comprehensive security solutions to protect your digital assets"
+        }
+      ]
+    },
+    "why_choose": {
+      "title": "Why Choose Aethron Technology",
+      "reasons": [
+        {
+          "title": "Proven Expertise",
+          "description": "Years of experience in delivering complex technology solutions"
+        },
+        {
+          "title": "Innovation Focus",
+          "description": "We stay ahead of technology trends to benefit our clients"
+        },
+        {
+          "title": "Client Success",
+          "description": "Your success is our primary measure of achievement"
+        }
+      ]
+    },
+    "contact": {
+      "title": "Get In Touch",
+      "description": "Ready to transform your business with technology? Let's discuss your project.",
+      "email": "info@aethron.tech",
+      "phone": "+1 (555) 123-4567",
+      "address": "123 Innovation Drive, Tech City, TC 12345"
+    }
+  },
+  "footer": {
+    "company": "Aethron Technology",
+    "tagline": "Innovation Through Technology",
+    "copyright": "© 2025 Aethron Technology. All rights reserved.",
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "sitemap": "Sitemap"
+    },
+    "social": {
+      "follow": "Follow Us",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "github": "GitHub"
+    }
+  },
+  "common": {
+    "read_more": "Read More",
+    "learn_more": "Learn More",
+    "get_started": "Get Started",
+    "contact_us": "Contact Us",
+    "view_all": "View All",
+    "back_to_top": "Back to Top",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "search": "Search",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Latest insights and updates",
+    "read_more": "Read Full Article",
+    "published_on": "Published on",
+    "by_author": "By",
+    "categories": "Categories",
+    "tags": "Tags",
+    "related_posts": "Related Posts",
+    "no_posts": "No posts found"
+  },
+  "forms": {
+    "contact": {
+      "title": "Contact Form",
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message",
+      "required": "Required field",
+      "success": "Message sent successfully!",
+      "error": "Failed to send message. Please try again."
+    }
+  }
+}

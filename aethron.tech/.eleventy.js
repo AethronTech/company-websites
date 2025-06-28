@@ -1,4 +1,41 @@
 module.exports = function(eleventyConfig) {
+  // Add i18n filter for translations
+  eleventyConfig.addFilter("t", function(language, key) {
+    const i18nData = {
+      en: require("./src/_data/i18n/en.json"),
+      nl: require("./src/_data/i18n/nl.json")
+    };
+    
+    const keys = key.split('.');
+    let value = i18nData[language];
+    
+    for (const k of keys) {
+      if (value && typeof value === 'object' && k in value) {
+        value = value[k];
+      } else {
+        // Fallback to English if key not found
+        value = i18nData.en;
+        for (const fallbackKey of keys) {
+          if (value && typeof value === 'object' && fallbackKey in value) {
+            value = value[fallbackKey];
+          } else {
+            return `[Missing: ${key}]`;
+          }
+        }
+        break;
+      }
+    }
+    
+    return value || `[Missing: ${key}]`;
+  });
+
+  // Add language helper filters
+  eleventyConfig.addFilter("langNativeName", function(language = "en") {
+    const config = require("./src/_data/i18n/config.json");
+    const lang = config.languages.find(l => l.code === language);
+    return lang ? lang.nativeName : language;
+  });
+  
   // Copy static assets with organized directory structure
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/css");      // Legacy support

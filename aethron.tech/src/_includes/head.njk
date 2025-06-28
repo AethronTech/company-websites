@@ -1,21 +1,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
+  <!-- Language and Locale -->
+  <meta name="language" content="{{ lang or 'en' }}">
+  
   <!-- Title and SEO -->
-  <title>{% if title %}{{ title }} | {% endif %}{{ site.site.title }}</title>
-  <meta name="description" content="{{ description or site.site.description }}">
+  <title>{% if title %}{{ title }} | {% endif %}Aethron Technology</title>
+  <meta name="description" content="{{ description or 'Leading technology solutions' }}">
   
   <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="{% if title %}{{ title }} | {% endif %}{{ site.site.title }}">
-  <meta property="og:description" content="{{ description or site.site.description }}">
+  <meta property="og:title" content="{% if title %}{{ title }} | {% endif %}Aethron Technology">
+  <meta property="og:description" content="{{ description or 'Leading technology solutions' }}">
   <meta property="og:url" content="{{ site.site.url }}{{ page.url }}">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="{{ site.site.title }}">
+  <meta property="og:site_name" content="Aethron Technology">
   
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{% if title %}{{ title }} | {% endif %}{{ site.site.title }}">
-  <meta name="twitter:description" content="{{ description or site.site.description }}">
+  <meta name="twitter:title" content="{% if title %}{{ title }} | {% endif %}Aethron Technology">
+  <meta name="twitter:description" content="{{ description or 'Leading technology solutions' }}">
   
   <!-- Canonical URL -->
   <link rel="canonical" href="{{ site.site.url }}{{ page.url }}">
@@ -25,6 +28,7 @@
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/assets/styles/main.css">
+  <link rel="stylesheet" href="/assets/styles/i18n.css">
   
   <!-- Preload important resources -->
   <link rel="preload" href="/assets/fonts/main-font.woff2" as="font" type="font/woff2" crossorigin>

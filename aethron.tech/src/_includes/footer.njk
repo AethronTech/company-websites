@@ -2,23 +2,33 @@
   <div class="footer-container">
     <div class="footer-content">
       <div class="footer-section">
-        <h3>{{ site.company.name }}</h3>
-        <p>{{ site.site.description }}</p>
+        <h3>Aethron Technology</h3>
+        <p>Innovation Through Technology</p>
       </div>
       <div class="footer-section">
         <h4>Contact</h4>
-        <p>Email: {{ site.company.email }}</p>
-        <p>Phone: {{ site.company.phone }}</p>
+        <p>Email: info@aethron.tech</p>
+        <p>Phone: +1 (555) 123-4567</p>
       </div>
       <div class="footer-section">
         <h4>Follow Us</h4>
-        <a href="{{ site.social.linkedin }}">LinkedIn</a>
-        <a href="{{ site.social.github }}">GitHub</a>
-        <a href="{{ site.social.twitter }}">Twitter</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+        <a href="#">Twitter</a>
+      </div>
+      <div class="footer-section">
+        <h4>Languages</h4>
+        <a href="/" class="footer-lang-link {% if (lang or 'en') == 'en' %}active{% endif %}">English</a>
+        <a href="/nl/" class="footer-lang-link {% if (lang or 'en') == 'nl' %}active{% endif %}">Nederlands</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 {{ site.company.name }}. All rights reserved.</p>
+      <p>&copy; 2025 Aethron Technology. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/privacy/">Privacy Policy</a>
+        <a href="/terms/">Terms of Service</a>
+        <a href="/sitemap/">Sitemap</a>
+      </div>
     </div>
   </div>
 </footer>
