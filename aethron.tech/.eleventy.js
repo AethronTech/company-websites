@@ -1,10 +1,19 @@
 module.exports = function(eleventyConfig) {
   // Add i18n filter for translations
-  eleventyConfig.addFilter("t", function(language, key) {
+  eleventyConfig.addFilter("t", function(key, language) {
+    // If language is not provided, try to get it from the current page context
+    if (!language) {
+      language = this.ctx?.lang || 'en';
+    }
+    
     const i18nData = {
       en: require("./src/_data/i18n/en.json"),
       nl: require("./src/_data/i18n/nl.json")
     };
+    
+    if (!i18nData[language]) {
+      language = 'en';
+    }
     
     const keys = key.split('.');
     let value = i18nData[language];
@@ -29,7 +38,7 @@ module.exports = function(eleventyConfig) {
     return value || `[Missing: ${key}]`;
   });
 
-  // Add language helper filters
+  // Language helper filters
   eleventyConfig.addFilter("langNativeName", function(language = "en") {
     const config = require("./src/_data/i18n/config.json");
     const lang = config.languages.find(l => l.code === language);
@@ -40,6 +49,50 @@ module.exports = function(eleventyConfig) {
     const config = require("./src/_data/i18n/config.json");
     const lang = config.languages.find(l => l.code === language);
     return lang ? lang.dir : "ltr";
+  });
+  
+  // Locale-sensitive formatting filters
+  eleventyConfig.addFilter("formatDate", function(date, language = "en", format = "long") {
+    const config = require("./src/_data/i18n/config.json");
+    const langConfig = config.dateFormats[language] || config.dateFormats.en;
+    
+    const dateObj = new Date(date);
+    return dateObj.toLocaleDateString(langConfig.locale, {
+      year: "numeric",
+      month: format === "long" ? "long" : "short",
+      day: "numeric"
+    });
+  });
+  
+  eleventyConfig.addFilter("formatNumber", function(number, language = "en") {
+    const config = require("./src/_data/i18n/config.json");
+    const langConfig = config.numberFormats[language] || config.numberFormats.en;
+    
+    return new Intl.NumberFormat(langConfig.locale).format(number);
+  });
+  
+  eleventyConfig.addFilter("formatCurrency", function(amount, language = "en") {
+    const config = require("./src/_data/i18n/config.json");
+    const langConfig = config.numberFormats[language] || config.numberFormats.en;
+    
+    return new Intl.NumberFormat(langConfig.locale, {
+      style: 'currency',
+      currency: langConfig.currency
+    }).format(amount);
+  });
+  
+  // Locale-aware URL helper
+  eleventyConfig.addFilter("localizeUrl", function(url, language = "en") {
+    const config = require("./src/_data/i18n/config.json");
+    
+    // Don't prefix default language
+    if (language === config.defaultLanguage) {
+      return url;
+    }
+    
+    // Add language prefix
+    const cleanUrl = url.replace(/^\/+/, '');
+    return `/${language}/${cleanUrl}`;
   });
   
   // Copy static assets with organized directory structure

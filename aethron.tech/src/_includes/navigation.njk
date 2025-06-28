@@ -2,9 +2,9 @@
   <div class="nav-container">
     <!-- Logo/Brand -->
     <div class="nav-brand">
-      <a href="/{{ lang or 'en' }}/" class="nav-logo" aria-label="{{ (lang or 'en') | t('site.title') }} homepage">
-        <span class="logo-text">{{ (lang or 'en') | t('site.title') }}</span>
-        <span class="logo-tagline">{{ (lang or 'en') | t('site.tagline') }}</span>
+      <a href="/{{ lang or 'en' }}/" class="nav-logo" aria-label="{{ 'site.title' | t(lang or 'en') }} homepage">
+        <span class="logo-text">{{ 'site.title' | t(lang or 'en') }}</span>
+        <span class="logo-tagline">{{ 'site.tagline' | t(lang or 'en') }}</span>
       </a>
     </div>
 
@@ -23,7 +23,7 @@
              class="nav-link {{ 'active' if page.url == '/' }}" 
              role="menuitem"
              aria-current="{{ 'page' if page.url == '/' else 'false' }}">
-            {{ (lang or 'en') | t('navigation.home') }}
+            {{ 'navigation.home' | t(lang or 'en') }}
           </a>
         </li>
         <li role="none">
@@ -31,7 +31,7 @@
              class="nav-link {{ 'active' if '/about/' in page.url }}" 
              role="menuitem"
              aria-current="{{ 'page' if '/about/' in page.url else 'false' }}">
-            {{ (lang or 'en') | t('navigation.about') }}
+            {{ 'navigation.about' | t(lang or 'en') }}
           </a>
         </li>
         <li role="none">
@@ -39,7 +39,7 @@
              class="nav-link {{ 'active' if '/solutions/' in page.url }}" 
              role="menuitem"
              aria-current="{{ 'page' if '/solutions/' in page.url else 'false' }}">
-            {{ (lang or 'en') | t('navigation.solutions') }}
+            {{ 'navigation.solutions' | t(lang or 'en') }}
           </a>
         </li>
         <li role="none">
@@ -47,18 +47,18 @@
              class="nav-link {{ 'active' if '/contact/' in page.url }}" 
              role="menuitem"
              aria-current="{{ 'page' if '/contact/' in page.url else 'false' }}">
-            {{ (lang or 'en') | t('navigation.contact') }}
+            {{ 'navigation.contact' | t(lang or 'en') }}
           </a>
         </li>
       </ul>
 
       <!-- Enhanced Language Switcher -->
-      <div class="language-switcher" role="region" aria-label="{{ (lang or 'en') | t('navigation.language') }} switcher">
+      <div class="language-switcher" role="region" aria-label="{{ 'navigation.language' | t(lang or 'en') }} switcher">
         <button class="lang-toggle" 
                 type="button" 
                 aria-expanded="false" 
                 aria-controls="lang-dropdown"
-                aria-label="{{ (lang or 'en') | t('navigation.language') }}: {{ (lang or 'en') | langNativeName }}">
+                aria-label="{{ 'navigation.language' | t(lang or 'en') }}: {{ (lang or 'en') | langNativeName }}">
           <span class="lang-flag">🌐</span>
           <span class="lang-current">{{ (lang or 'en') | langNativeName }}</span>
           <svg class="lang-arrow" width="12" height="8" viewBox="0 0 12 8" fill="currentColor" aria-hidden="true">

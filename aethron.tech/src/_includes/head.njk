@@ -3,25 +3,42 @@
   
   <!-- Language and Locale -->
   <meta name="language" content="{{ lang or 'en' }}">
+  {% if (lang or 'en') == 'nl' %}
+  <meta name="locale" content="nl-NL">
+  {% else %}
+  <meta name="locale" content="en-US">
+  {% endif %}
   
   <!-- Title and SEO -->
-  <title>{% if title %}{{ title }} | {% endif %}Aethron Technology</title>
-  <meta name="description" content="{{ description or 'Leading technology solutions' }}">
+  <title>{% if title %}{{ title }}{% else %}{{ 'site.title' | t(lang or 'en') }} - {{ 'site.description' | t(lang or 'en') }}{% endif %}</title>
+  <meta name="description" content="{{ description or ('site.description' | t(lang or 'en')) }}">
   
   <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="{% if title %}{{ title }} | {% endif %}Aethron Technology">
-  <meta property="og:description" content="{{ description or 'Leading technology solutions' }}">
+  <meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ 'site.title' | t(lang or 'en') }} - {{ 'site.description' | t(lang or 'en') }}{% endif %}">
+  <meta property="og:description" content="{{ description or ('site.description' | t(lang or 'en')) }}">
   <meta property="og:url" content="{{ site.site.url }}{{ page.url }}">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Aethron Technology">
+  <meta property="og:site_name" content="{{ 'site.title' | t(lang or 'en') }}">
+  {% if (lang or 'en') == 'nl' %}
+  <meta property="og:locale" content="nl_NL">
+  {% else %}
+  <meta property="og:locale" content="en_US">
+  {% endif %}
   
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{% if title %}{{ title }} | {% endif %}Aethron Technology">
-  <meta name="twitter:description" content="{{ description or 'Leading technology solutions' }}">
+  <meta name="twitter:title" content="{% if title %}{{ title }}{% else %}{{ 'site.title' | t(lang or 'en') }} - {{ 'site.description' | t(lang or 'en') }}{% endif %}">
+  <meta name="twitter:description" content="{{ description or ('site.description' | t(lang or 'en')) }}">
   
   <!-- Canonical URL -->
   <link rel="canonical" href="{{ site.site.url }}{{ page.url }}">
+  
+  <!-- Alternate Language Links -->
+  {% for language in i18nConfig.languages %}
+  {% if language.code != (lang or 'en') %}
+  <link rel="alternate" hreflang="{{ language.code }}" href="{{ site.site.url }}/{{ language.code }}{{ page.url | replace('/' + (lang or 'en'), '') }}">
+  {% endif %}
+  {% endfor %}
   
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
