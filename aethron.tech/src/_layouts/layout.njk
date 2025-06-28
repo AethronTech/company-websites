@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ site.site.language or 'en' }}">
+<html lang="{{ lang or 'en' }}" dir="{{ (lang or 'en') | langDir }}">
 <head>
 {% include "head.njk" %}
 </head>
-<body>
+<body class="lang-{{ lang or 'en' }}">
   <header>
     {% include "navigation.njk" %}
   </header>
@@ -15,6 +15,6 @@
   {% include "footer.njk" %}
   
   <!-- Scripts -->
-  <script src="/assets/scripts/main.js"></script>
+  <script src="/assets/scripts/navigation.js"></script>
 </body>
 </html>
