@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-WEBS-36: OG Image Generator for Aethron Technology
+WEBS-36: OG Image Generator for Aethron Technologies
 Creates 1200x630px Open Graph images for each page/language combination
 """
 
@@ -27,12 +27,12 @@ OG_HEIGHT = 630
 PAGES = {
     'en': {
         'home': {
-            'title': 'Aethron Technology',
+            'title': 'Aethron Technologies',
             'subtitle': 'People-centric software. Flexible. Reliable. Smart.',
             'description': 'Technology in service of people'
         },
         'about': {
-            'title': 'About Aethron Technology',
+            'title': 'About Aethron Technologies',
             'subtitle': 'People-centric Software Solutions',
             'description': 'Our mission, story and approach'
         },
@@ -59,12 +59,12 @@ PAGES = {
     },
     'nl': {
         'home': {
-            'title': 'Aethron Technology',
+            'title': 'Aethron Technologies',
             'subtitle': 'Mensgerichte software. Flexibel. Betrouwbaar. Slim.',
             'description': 'Technologie in dienst van mensen'
         },
         'about': {
-            'title': 'Over Aethron Technology',
+            'title': 'Over Aethron Technologies',
             'subtitle': 'Mensgerichte Software Oplossingen',
             'description': 'Onze missie, verhaal en aanpak'
         },
@@ -223,7 +223,7 @@ def main():
     # Create output directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)
     
-    print("Generating OG images for Aethron Technology...")
+    print("Generating OG images for Aethron Technologies...")
     print(f"Output directory: {output_dir}")
     print(f"Image size: {OG_WIDTH}x{OG_HEIGHT}px")
     print("-" * 50)

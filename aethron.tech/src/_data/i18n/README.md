@@ -2,7 +2,7 @@
 
 ## Overview
 
-This implementation provides a complete internationalization system for the Aethron Technology website using Eleventy (11ty). The system supports multiple languages with structured JSON translation files and flexible template helpers.
+This implementation provides a complete internationalization system for the Aethron Technologies website using Eleventy (11ty). The system supports multiple languages with structured JSON translation files and flexible template helpers.
 
 ## Supported Languages
 

@@ -1,6 +1,6 @@
 {
   "site": {
-    "title": "Aethron Technology",
+    "title": "Aethron Technologies",
     "description": "People-centric software. Flexible. Reliable. Smart.",
     "tagline": "Innovation Through Technology"
   },
@@ -42,8 +42,8 @@
       ]
     },
     "about_summary": {
-      "title": "About Aethron Technology",
-      "description": "We are Aethron Technology, dedicated to creating people-centric software solutions that truly work. Our approach combines technical excellence with human-centered design.",
+      "title": "About Aethron Technologies",
+      "description": "We are Aethron Technologies, dedicated to creating people-centric software solutions that truly work. Our approach combines technical excellence with human-centered design.",
       "link_text": "Learn more about our story",
       "link_url": "/about/"
     },
@@ -62,12 +62,12 @@
   },
   "about": {
     "hero": {
-      "title": "About Aethron Technology",
+      "title": "About Aethron Technologies",
       "subtitle": "People-Centric Software Solutions"
     },
     "intro": {
       "title": "Our Mission",
-      "description": "At Aethron Technology, we believe that technology should serve people, not the other way around. We create software solutions that are flexible, reliable, and smart — designed with your team and your users in mind."
+      "description": "At Aethron Technologies, we believe that technology should serve people, not the other way around. We create software solutions that are flexible, reliable, and smart — designed with your team and your users in mind."
     },
     "story": {
       "title": "Our Story",
@@ -157,7 +157,7 @@
       "subtitle": "Let's Build Something Great Together"
     },
     "intro": {
-      "description": "Ready to explore how Aethron Technology can help your organization? We'd love to hear about your challenges and discuss how our people-centric approach can make a difference."
+      "description": "Ready to explore how Aethron Technologies can help your organization? We'd love to hear about your challenges and discuss how our people-centric approach can make a difference."
     },
     "info": {
       "title": "Get In Touch",
@@ -211,9 +211,9 @@
     }
   },
   "footer": {
-    "company": "Aethron Technology",
+    "company": "Aethron Technologies",
     "tagline": "People-Centric Software Solutions",
-    "copyright": "© 2025 Aethron Technology. All rights reserved.",
+    "copyright": "© 2025 Aethron Technologies. All rights reserved.",
     "rights": "All rights reserved.",
     "quick_links": {
       "title": "Navigation"

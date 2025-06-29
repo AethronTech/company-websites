@@ -1,7 +1,7 @@
 # Navigation and Language Switcher Implementation
 
 ## Overview
-This implementation provides a comprehensive, accessible, and i18n-aware navigation system for the Aethron Technology website.
+This implementation provides a comprehensive, accessible, and i18n-aware navigation system for the Aethron Technologies website.
 
 ## Features
 

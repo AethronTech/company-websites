@@ -1,7 +1,7 @@
 # WEBS-37: Meta and OG Tags Shortcodes Documentation
 
 ## Overview
-This feature adds powerful shortcodes for generating meta and Open Graph tags per page in the Aethron Technology website. The shortcodes allow for flexible, page-specific SEO and social media optimization.
+This feature adds powerful shortcodes for generating meta and Open Graph tags per page in the Aethron Technologies website. The shortcodes allow for flexible, page-specific SEO and social media optimization.
 
 ## Available Shortcodes
 
@@ -17,7 +17,7 @@ Creates standard HTML meta tags.
 **Examples:**
 ```njk
 {% meta "keywords", "technology, software, development" %}
-{% meta "author", "Aethron Technology" %}
+{% meta "author", "Aethron Technologies" %}
 {% meta "robots", "index, follow" %}
 {% meta "og:title", "Custom Title", true %}
 ```
@@ -74,7 +74,7 @@ Creates a complete set of SEO meta tags with one shortcode.
 **Example:**
 ```njk
 {% seo {
-  title: "About Aethron Technology",
+  title: "About Aethron Technologies",
   description: "Learn about our people-centric approach to software development",
   keywords: "aethron, technology, software, development, ITIL, agile",
   ogType: "website",
@@ -95,7 +95,7 @@ Creates structured data scripts for enhanced SEO.
 {% jsonld {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Aethron Technology",
+  "name": "Aethron Technologies",
   "url": "https://aethron.tech"
 } %}
 
@@ -147,7 +147,7 @@ title: Solutions
 ---
 
 {% seo {
-  title: "Our Solutions - Aethron Technology",
+  title: "Our Solutions - Aethron Technologies",
   description: "Discover our flexible technological solutions designed for people",
   keywords: "solutions, technology, software, custom development",
   ogType: "website"
@@ -163,9 +163,9 @@ Pages can set custom variables that the meta-tags.njk include will use:
 ---
 layout: base.njk
 title: Contact
-description: "Get in touch with Aethron Technology for your software needs"
+description: "Get in touch with Aethron Technologies for your software needs"
 keywords: "contact, aethron, technology, software"
-author: "Aethron Technology"
+author: "Aethron Technologies"
 customOGImage: "https://aethron.tech/assets/images/contact-special.png"
 ogType: "website"
 robots: "index, follow"
@@ -199,7 +199,7 @@ robots: "index, follow"
 {% jsonld {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Aethron Technology",
+  "name": "Aethron Technologies",
   "url": "https://aethron.tech",
   "description": "People-centric software solutions",
   "address": {

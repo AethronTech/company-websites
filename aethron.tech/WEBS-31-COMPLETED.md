@@ -56,13 +56,13 @@ Implementation of locale-sensitive (taalgevoelige/regionale) content rendering f
 ## 🎯 Results
 
 ### English Version (/)
-- Title: "Aethron Technology - People-centric software. Flexible. Reliable. Smart."
+- Title: "Aethron Technologies - People-centric software. Flexible. Reliable. Smart."
 - Hero: "People-centric software. Flexible. Reliable. Smart."
 - Services: "Optimized IT Processes", "Accelerated Software Development", etc.
 - CTAs: "Discover Our Solutions", "Learn More About Us"
 
 ### Dutch Version (/nl/)
-- Title: "Aethron Technology - Mensgerichte software. Flexibel. Betrouwbaar. Slim."
+- Title: "Aethron Technologies - Mensgerichte software. Flexibel. Betrouwbaar. Slim."
 - Hero: "Mensgerichte software. Flexibel. Betrouwbaar. Slim."
 - Services: "Geoptimaliseerde IT-processen", "Versnelde Softwareontwikkeling", etc.
 - CTAs: "Ontdek Onze Oplossingen", "Leer Meer Over Ons"

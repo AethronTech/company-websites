@@ -7,7 +7,7 @@ This system provides flexible shortcodes for generating meta and OG tags per pag
 ### 1. Basic Meta Tag Shortcode
 ```njk
 {% meta "keywords", "technology, software, development" %}
-{% meta "author", "Aethron Technology" %}
+{% meta "author", "Aethron Technologies" %}
 {% meta "robots", "index, follow" %}
 ```
 
@@ -55,7 +55,7 @@ This system provides flexible shortcodes for generating meta and OG tags per pag
 {% jsonld {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Aethron Technology",
+  "name": "Aethron Technologies",
   "url": "https://aethron.tech"
 } %}
 ```
@@ -68,7 +68,7 @@ This system provides flexible shortcodes for generating meta and OG tags per pag
 title: "Custom Page Title"
 description: "Custom page description"
 keywords: "technology, software, solutions"
-author: "Aethron Technology"
+author: "Aethron Technologies"
 ogType: "article"
 customOGImage: "https://aethron.tech/custom-image.jpg"
 twitterCard: "summary"
@@ -113,7 +113,7 @@ customMetaTags: |
 title: "Understanding Modern Software Development"
 description: "A comprehensive guide to modern software development practices and methodologies."
 keywords: "software development, programming, agile, methodology"
-author: "Aethron Technology Team"
+author: "Aethron Technologies Team"
 ogType: "article"
 customOGImage: "/assets/images/blog/software-development-og.jpg"
 structuredData: |
@@ -123,7 +123,7 @@ structuredData: |
     "headline": "Understanding Modern Software Development",
     "author": {
       "@type": "Organization",
-      "name": "Aethron Technology"
+      "name": "Aethron Technologies"
     },
     "datePublished": "2025-06-29",
     "image": "/assets/images/blog/software-development-og.jpg"
@@ -132,14 +132,14 @@ structuredData: |
 
 <!-- Additional custom meta tags -->
 {% meta "article:published_time", "2025-06-29T10:00:00Z" %}
-{% meta "article:author", "Aethron Technology Team" %}
+{% meta "article:author", "Aethron Technologies Team" %}
 {% og "article:section", "Technology" %}
 ```
 
 ### Product/Service Page
 ```njk
 ---
-title: "Our Solutions - Aethron Technology"
+title: "Our Solutions - Aethron Technologies"
 description: "Discover our comprehensive technology solutions designed for modern businesses."
 keywords: "business solutions, enterprise software, digital transformation"
 ogType: "website"
@@ -150,7 +150,7 @@ structuredData: |
     "name": "Technology Solutions",
     "provider": {
       "@type": "Organization",
-      "name": "Aethron Technology",
+      "name": "Aethron Technologies",
       "url": "https://aethron.tech"
     }
   }
