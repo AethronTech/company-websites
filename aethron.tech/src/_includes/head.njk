@@ -18,12 +18,23 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="{{ site.site.url }}{{ page.url }}">
   
-  <!-- Alternate Language Links -->
+  <!-- Alternate Language Links (hreflang) -->
   {% for language in i18nConfig.languages %}
-  {% if language.code != (lang or 'en') %}
-  <link rel="alternate" hreflang="{{ language.code }}" href="{{ site.site.url }}/{{ language.code }}{{ page.url | replace('/' + (lang or 'en'), '') }}">
+  {% if language.code == (lang or 'en') %}
+  <!-- Self-referencing hreflang for current language -->
+  <link rel="alternate" hreflang="{{ language.code }}" href="{{ site.site.url }}{{ page.url }}">
+  {% else %}
+  <!-- Alternate language hreflang -->
+  <link rel="alternate" hreflang="{{ language.code }}" href="{{ site.site.url }}{{ page.url | alternateUrl(language.code) }}">
   {% endif %}
   {% endfor %}
+  
+  <!-- Default language hreflang (x-default points to English version) -->
+  {% if (lang or 'en') == 'en' %}
+  <link rel="alternate" hreflang="x-default" href="{{ site.site.url }}{{ page.url }}">
+  {% else %}
+  <link rel="alternate" hreflang="x-default" href="{{ site.site.url }}{{ page.url | alternateUrl('en') }}">
+  {% endif %}
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/assets/images/favicon.png">
