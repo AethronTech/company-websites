@@ -2,21 +2,44 @@
 permalink: /robots.txt
 eleventyExcludeFromCollections: true
 ---
+# Robots.txt for Aethron Technologies
+# Last updated: June 2025
+
 User-agent: *
 Allow: /
 
-# Sitemap
+# Sitemap location
 Sitemap: {{ site.url }}/sitemap.xml
 
-# Disallow crawling of certain paths
+# Disallow crawling of development and admin paths
 Disallow: /admin/
 Disallow: /private/
 Disallow: /_site/
 Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /assets/dev/
 
-# Allow crawling of both language versions
+# Disallow crawling of demo and test pages
+Disallow: /webs-37-demo/
+Disallow: /seo-example/
+Disallow: /test-*/
+
+# Allow important directories
+Allow: /assets/
+Allow: /images/
+Allow: /css/
+Allow: /js/
+
+# Allow both language versions
 Allow: /
 Allow: /nl/
 
-# Crawl-delay (optional, in seconds)
+# Specific rules for search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl-delay for general crawlers (1 second)
 Crawl-delay: 1
