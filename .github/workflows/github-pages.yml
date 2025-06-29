@@ -88,6 +88,10 @@ jobs:
           echo "📦 Preparing files for GitHub Pages deployment..."
           # Copy built site to root level for GitHub Pages
           cp -r aethron.tech/_site/* ./
+          # Copy .nojekyll file to prevent Jekyll processing
+          cp aethron.tech/.nojekyll ./ 2>/dev/null || echo "No .nojekyll file found"
+          # Debug: show what files we're uploading
+          echo "Files to be uploaded:"
           ls -la
           echo "✅ Files prepared for deployment"
           
@@ -105,7 +109,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          # Upload entire repository root which now contains the site files
+          path: '.'
 
   # Deployment job
   deploy:
