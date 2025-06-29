@@ -249,5 +249,14 @@
     "menu": "Menu",
     "close": "Close",
     "required_field": "This field is required"
+  },
+  "cookies": {
+    "banner": {
+      "title": "Cookie Consent",
+      "description": "We use cookies to improve your experience and analyze website traffic. Our analytics cookies help us understand how visitors use our site to make improvements.",
+      "accept": "Accept",
+      "decline": "Decline",
+      "more_info": "Privacy Policy"
+    }
   }
 }

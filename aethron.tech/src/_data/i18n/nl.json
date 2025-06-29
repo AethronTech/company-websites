@@ -108,5 +108,14 @@
     "menu": "Menu",
     "close": "Sluiten",
     "required_field": "Dit veld is verplicht"
+  },
+  "cookies": {
+    "banner": {
+      "title": "Cookie Toestemming",
+      "description": "We gebruiken cookies om uw ervaring te verbeteren en websiteverkeer te analyseren. Onze analytics cookies helpen ons begrijpen hoe bezoekers onze site gebruiken om verbeteringen aan te brengen.",
+      "accept": "Accepteren",
+      "decline": "Weigeren",
+      "more_info": "Privacybeleid"
+    }
   }
 }

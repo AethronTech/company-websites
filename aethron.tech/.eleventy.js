@@ -51,6 +51,11 @@ module.exports = function(eleventyConfig) {
     const lang = config.languages.find(l => l.code === language);
     return lang ? lang.dir : "ltr";
   });
+
+  // JSON filter for GA4 analytics (WEBS-41)
+  eleventyConfig.addFilter("json", function(value) {
+    return JSON.stringify(value);
+  });
   
   // Locale-sensitive formatting filters
   eleventyConfig.addFilter("formatDate", function(date, language = "en", format = "long") {
