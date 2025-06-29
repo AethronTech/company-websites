@@ -1,0 +1,195 @@
+{#
+  Cookie Consent Banner for GA4 Integration
+  WEBS-41: Privacy-compliant cookie consent for analytics
+  
+  This component works with the GA4 analytics setup to provide
+  GDPR-compliant cookie consent functionality.
+#}
+
+<div id="cookie-consent-banner" class="cookie-consent-banner" style="display: none;" aria-live="polite">
+  <div class="cookie-consent-content">
+    <div class="cookie-consent-text">
+      <h3>{{ 'cookies.banner.title' | t(lang or 'en') }}</h3>
+      <p>{{ 'cookies.banner.description' | t(lang or 'en') }}</p>
+    </div>
+    <div class="cookie-consent-actions">
+      <button id="cookie-accept" class="btn btn-primary">
+        {{ 'cookies.banner.accept' | t(lang or 'en') }}
+      </button>
+      <button id="cookie-decline" class="btn btn-outline">
+        {{ 'cookies.banner.decline' | t(lang or 'en') }}
+      </button>
+      <a href="{{ 'privacy/' | localizeUrl(lang or 'en') }}" class="cookie-info-link">
+        {{ 'cookies.banner.more_info' | t(lang or 'en') }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+// Cookie Consent Management (WEBS-41: GA4 Privacy Integration)
+(function() {
+  'use strict';
+  
+  const CONSENT_KEY = 'aethron-cookie-consent';
+  const ANALYTICS_KEY = 'aethron-analytics-consent';
+  const banner = document.getElementById('cookie-consent-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const declineBtn = document.getElementById('cookie-decline');
+  
+  // Check if consent has already been given
+  const hasConsent = localStorage.getItem(CONSENT_KEY);
+  const analyticsConsent = localStorage.getItem(ANALYTICS_KEY);
+  
+  // Show banner if no consent decision has been made
+  if (!hasConsent) {
+    banner.style.display = 'block';
+    banner.setAttribute('aria-hidden', 'false');
+  } else if (analyticsConsent === 'granted' && typeof window.gaOptin === 'function') {
+    // If user previously consented, enable analytics
+    window.gaOptin();
+  }
+  
+  // Handle accept button click
+  acceptBtn.addEventListener('click', function() {
+    localStorage.setItem(CONSENT_KEY, 'given');
+    localStorage.setItem(ANALYTICS_KEY, 'granted');
+    hideBanner();
+    
+    // Enable Google Analytics
+    if (typeof window.gaOptin === 'function') {
+      window.gaOptin();
+    }
+    
+    // Track consent acceptance
+    if (typeof window.trackCustomEvent === 'function') {
+      window.trackCustomEvent('cookie_consent_accept', {
+        'consent_type': 'analytics',
+        'timestamp': new Date().toISOString()
+      });
+    }
+  });
+  
+  // Handle decline button click
+  declineBtn.addEventListener('click', function() {
+    localStorage.setItem(CONSENT_KEY, 'given');
+    localStorage.setItem(ANALYTICS_KEY, 'denied');
+    hideBanner();
+    
+    // Disable Google Analytics
+    if (typeof window.gaOptout === 'function') {
+      window.gaOptout();
+    }
+  });
+  
+  function hideBanner() {
+    banner.style.display = 'none';
+    banner.setAttribute('aria-hidden', 'true');
+  }
+  
+  // Keyboard navigation support
+  banner.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      declineBtn.click();
+    }
+  });
+  
+})();
+</script>
+
+<style>
+.cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 3px solid var(--aethron-blue, #0066cc);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+.cookie-consent-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cookie-consent-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.cookie-consent-text h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  color: var(--aethron-blue, #0066cc);
+}
+
+.cookie-consent-text p {
+  margin: 0;
+  color: #555;
+  line-height: 1.4;
+}
+
+.cookie-consent-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cookie-consent-actions .btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  min-width: 80px;
+}
+
+.cookie-info-link {
+  color: var(--aethron-blue, #0066cc);
+  text-decoration: underline;
+  font-size: 0.85rem;
+}
+
+.cookie-info-link:hover {
+  text-decoration: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .cookie-consent-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .cookie-consent-actions {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .cookie-consent-actions .btn {
+    flex: 1;
+    max-width: 120px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .cookie-consent-banner {
+    border-top-width: 4px;
+    border-top-color: #000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .cookie-consent-banner {
+    transition: none;
+  }
+}
+</style>

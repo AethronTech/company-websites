@@ -67,6 +67,14 @@ class NavigationController {
   }
 
   switchLanguage(langCode, url) {
+    // Get current language from URL or default to 'en'
+    const currentLang = window.location.pathname.startsWith('/nl/') ? 'nl' : 'en';
+    
+    // Track language switch event (WEBS-41: GA4 integration)
+    if (typeof window.trackLanguageSwitch === 'function' && currentLang !== langCode) {
+      window.trackLanguageSwitch(currentLang, langCode);
+    }
+    
     // Store language preference
     localStorage.setItem('preferred-language', langCode);
     
