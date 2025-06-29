@@ -1,0 +1,132 @@
+---
+layout: layout.njk
+lang: en
+title: "WEBS-37 Demo"
+description: "Demonstration page showing WEBS-37 shortcode functionality for meta and OG tags"
+# Custom variables for meta-tags.njk
+keywords: "demo, shortcodes, meta tags, og tags, webs-37"
+author: "Aethron Technology Development Team"
+customOGImage: "https://aethron.tech/assets/images/og/og-about-en.png"
+robots: "noindex, nofollow"
+ogType: "article"
+---
+
+<!-- WEBS-37 Shortcode Examples -->
+
+<!-- Example 1: Individual meta tags -->
+{% meta "keywords", "webs-37, shortcodes, meta tags, development" %}
+{% meta "author", "Aethron Technology" %}
+
+<!-- Example 2: Open Graph tags -->
+{% og "type", "article" %}
+{% og "article:author", "Aethron Technology" %}
+
+<!-- Example 3: Twitter Card -->
+{% twitter "card", "summary_large_image" %}
+{% twitter "site", "@AethronTech" %}
+
+<section class="hero hero-secondary">
+  <div class="container">
+    <div class="hero-content">
+      <h1>WEBS-37 Demo</h1>
+      <p class="hero-subtitle">Meta and OG Tags Shortcode System</p>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <div class="content-wrapper">
+      <div class="main-content">
+        
+        <div class="content-block">
+          <h2>🎯 Shortcode System Overview</h2>
+          <p>This page demonstrates the WEBS-37 shortcode system for generating meta and OG tags per page. The following shortcodes have been implemented:</p>
+          
+          <ul class="feature-list">
+            <li><strong>{% meta %}</strong> - Basic meta tag generation</li>
+            <li><strong>{% og %}</strong> - Open Graph tags for social sharing</li>
+            <li><strong>{% twitter %}</strong> - Twitter Card specific tags</li>
+            <li><strong>{% seo %}</strong> - Comprehensive SEO meta tags</li>
+            <li><strong>{% jsonld %}</strong> - JSON-LD structured data</li>
+            <li><strong>{% ogImage %}</strong> - Smart OG image selection</li>
+          </ul>
+        </div>
+
+        <div class="content-block">
+          <h2>🔧 What's in This Page's Head</h2>
+          <p>This demonstration page uses the following shortcodes (view page source to see the generated meta tags):</p>
+          
+          <div class="code-example">
+            <pre><code><!-- Custom meta tags -->
+{% meta "keywords", "webs-37, shortcodes, meta tags, development" %}
+{% meta "author", "Aethron Technology" %}
+
+<!-- Open Graph enhancements -->
+{% og "type", "article" %}
+{% og "article:author", "Aethron Technology" %}
+{% og "article:section", "Development" %}
+
+<!-- Twitter Card -->
+{% twitter "card", "summary_large_image" %}
+{% twitter "site", "@AethronTech" %}
+
+<!-- JSON-LD Structured Data -->
+{%- set sampleJson = '{"@context": "https://schema.org", "@type": "TechArticle", "headline": "WEBS-37 Demo"}' -%}
+{% jsonld sampleJson %}</code></pre>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h2>📊 Variable-Based Meta Tags</h2>
+          <p>This page also demonstrates using front matter variables that are automatically picked up by the <code>meta-tags.njk</code> include:</p>
+          
+          <div class="code-example">
+            <pre><code>---
+title: "WEBS-37 Demo"
+description: "Demonstration page..."
+keywords: "demo, shortcodes, meta tags, og tags, webs-37"
+author: "Aethron Technology Development Team"
+customOGImage: "https://aethron.tech/assets/images/og/og-about-en.png"
+robots: "noindex, nofollow"
+ogType: "article"
+---</code></pre>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h2>✅ Benefits</h2>
+          <div class="grid grid-2">
+            <div class="card">
+              <h3>🎯 Page-Specific Control</h3>
+              <p>Each page can define its own meta tags, OG properties, and structured data without modifying global templates.</p>
+            </div>
+            <div class="card">
+              <h3>🔄 Backward Compatible</h3>
+              <p>Existing pages continue to work unchanged while new pages can leverage the enhanced shortcode system.</p>
+            </div>
+            <div class="card">
+              <h3>📱 Social Media Ready</h3>
+              <p>Perfect Open Graph and Twitter Card support for optimized social media sharing.</p>
+            </div>
+            <div class="card">
+              <h3>🎨 Flexible & Powerful</h3>
+              <p>Mix and match shortcodes or use comprehensive SEO shortcode for complete control.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h2>🧪 Testing</h2>
+          <p>Test this page's social media appearance:</p>
+          <ul>
+            <li><a href="https://developers.facebook.com/tools/debug/" target="_blank">Facebook Sharing Debugger</a></li>
+            <li><a href="https://cards-dev.twitter.com/validator" target="_blank">Twitter Card Validator</a></li>
+            <li><a href="https://search.google.com/test/rich-results" target="_blank">Google Rich Results Test</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

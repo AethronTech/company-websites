@@ -1,0 +1,152 @@
+---
+layout: layout.njk
+lang: en
+title: "Advanced SEO Example - Aethron Technology"
+description: "This page demonstrates the advanced SEO and meta tag capabilities using WEBS-37 shortcodes."
+keywords: "SEO, meta tags, open graph, twitter cards, structured data"
+author: "Aethron Technology Team"
+ogType: "article"
+customOGImage: "/assets/images/og/og-solutions-en.png"
+twitterCard: "summary_large_image"
+robots: "index, follow"
+structuredData: |
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Advanced SEO Example",
+    "author": {
+      "@type": "Organization",
+      "name": "Aethron Technology",
+      "url": "https://aethron.tech"
+    },
+    "datePublished": "2025-06-29",
+    "dateModified": "2025-06-29",
+    "image": "/assets/images/og/og-solutions-en.png",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Aethron Technology",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/assets/images/logov2.png"
+      }
+    }
+  }
+customMetaTags: |
+  <meta name="article:published_time" content="2025-06-29T10:00:00Z">
+  <meta name="article:modified_time" content="2025-06-29T10:00:00Z">
+  <meta name="article:section" content="Technology">
+  <meta name="article:tag" content="SEO, Meta Tags, Web Development">
+---
+
+<!-- Additional custom meta tags using shortcodes -->
+{% meta "geo.region", "BE-VAN" %}
+{% meta "geo.placename", "Antwerp" %}
+{% meta "geo.position", "51.2194;4.4025" %}
+{% meta "ICBM", "51.2194, 4.4025" %}
+
+<!-- Custom Open Graph tags -->
+{% og "article:author", "Aethron Technology Team" %}
+{% og "article:section", "Technology" %}
+{% og "article:published_time", "2025-06-29T10:00:00Z" %}
+
+<!-- Custom Twitter tags -->
+{% twitter "site", "@aethrontech" %}
+{% twitter "creator", "@aethrontech" %}
+
+<section class="hero hero-secondary">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Advanced SEO Example</h1>
+      <p class="hero-subtitle">Demonstrating WEBS-37 Meta and OG Tag Shortcodes</p>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <div class="content-wrapper">
+      <div class="main-content">
+        <h2>SEO Enhancement Features</h2>
+        <p>This page demonstrates the advanced SEO capabilities implemented in WEBS-37:</p>
+        
+        <ul>
+          <li><strong>Custom Meta Tags:</strong> Keywords, author, robots, geographic data</li>
+          <li><strong>Enhanced Open Graph:</strong> Article-specific OG tags for social sharing</li>
+          <li><strong>Twitter Cards:</strong> Optimized for Twitter sharing with custom handles</li>
+          <li><strong>Structured Data:</strong> JSON-LD schema for rich search results</li>
+          <li><strong>Flexible Shortcodes:</strong> Easy-to-use shortcodes for custom meta tags</li>
+        </ul>
+
+        <h3>Shortcode Examples Used</h3>
+        <div class="code-example">
+          <h4>Geographic Meta Tags</h4>
+          <pre><code>{% raw %}{% meta "geo.region", "BE-VAN" %}
+{% meta "geo.placename", "Antwerp" %}
+{% meta "geo.position", "51.2194;4.4025" %}{% endraw %}</code></pre>
+        </div>
+
+        <div class="code-example">
+          <h4>Article Open Graph Tags</h4>
+          <pre><code>{% raw %}{% og "article:author", "Aethron Technology Team" %}
+{% og "article:section", "Technology" %}
+{% og "article:published_time", "2025-06-29T10:00:00Z" %}{% endraw %}</code></pre>
+        </div>
+
+        <div class="code-example">
+          <h4>Twitter Card Enhancement</h4>
+          <pre><code>{% raw %}{% twitter "site", "@aethrontech" %}
+{% twitter "creator", "@aethrontech" %}{% endraw %}</code></pre>
+        </div>
+
+        <h3>Structured Data Example</h3>
+        <p>This page includes JSON-LD structured data for enhanced search engine understanding:</p>
+        <ul>
+          <li>Article schema with author and publication info</li>
+          <li>Organization schema for Aethron Technology</li>
+          <li>Image schema for proper OG image handling</li>
+          <li>Publisher information for credibility</li>
+        </ul>
+
+        <h3>Benefits</h3>
+        <ul>
+          <li><strong>Better SEO:</strong> Rich meta tags improve search engine visibility</li>
+          <li><strong>Social Sharing:</strong> Optimized OG and Twitter cards for social media</li>
+          <li><strong>Rich Snippets:</strong> Structured data enables rich search results</li>
+          <li><strong>Flexibility:</strong> Per-page customization without code changes</li>
+          <li><strong>Maintainability:</strong> Centralized shortcode system for consistency</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.code-example {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-left: 4px solid var(--aethron-blue);
+  border-radius: 4px;
+}
+
+.code-example h4 {
+  margin-top: 0;
+  color: var(--aethron-blue);
+  font-size: 1rem;
+}
+
+.code-example pre {
+  margin: 0.5rem 0 0 0;
+  padding: 0.75rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 3px;
+  overflow-x: auto;
+}
+
+.code-example code {
+  font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #333;
+}
+</style>

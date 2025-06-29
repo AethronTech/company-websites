@@ -242,6 +242,144 @@ module.exports = function(eleventyConfig) {
   // Configure build options
   eleventyConfig.setQuietMode(true);
   
+  // WEBS-37: Meta and OG tag shortcodes for per-page customization
+  
+  // Meta tag shortcode
+  eleventyConfig.addShortcode("meta", function(name, content, property = false) {
+    const attr = property ? 'property' : 'name';
+    return `<meta ${attr}="${name}" content="${content}">`;
+  });
+  
+  // OG tag shortcode (Open Graph)
+  eleventyConfig.addShortcode("og", function(property, content) {
+    return `<meta property="og:${property}" content="${content}">`;
+  });
+  
+  // Twitter Card shortcode
+  eleventyConfig.addShortcode("twitter", function(name, content) {
+    return `<meta name="twitter:${name}" content="${content}">`;
+  });
+  
+  // Comprehensive SEO shortcode with all meta tags
+  eleventyConfig.addShortcode("seo", function(options = {}) {
+    const lang = this.ctx?.lang || 'en';
+    const site = this.ctx?.site?.site || {};
+    const page = this.ctx?.page || {};
+    
+    // Merge default options with provided options
+    const seoData = {
+      title: options.title || this.ctx?.title,
+      description: options.description || this.ctx?.description,
+      keywords: options.keywords,
+      author: options.author || site.author,
+      ogType: options.ogType || 'website',
+      ogImage: options.ogImage,
+      twitterCard: options.twitterCard || 'summary_large_image',
+      canonical: options.canonical || `${site.url}${page.url}`,
+      robots: options.robots || 'index, follow',
+      ...options
+    };
+    
+    let metaTags = [];
+    
+    // Basic meta tags
+    if (seoData.description) {
+      metaTags.push(`<meta name="description" content="${seoData.description}">`);
+    }
+    if (seoData.keywords) {
+      metaTags.push(`<meta name="keywords" content="${seoData.keywords}">`);
+    }
+    if (seoData.author) {
+      metaTags.push(`<meta name="author" content="${seoData.author}">`);
+    }
+    if (seoData.robots) {
+      metaTags.push(`<meta name="robots" content="${seoData.robots}">`);
+    }
+    
+    // Open Graph tags
+    if (seoData.title) {
+      metaTags.push(`<meta property="og:title" content="${seoData.title}">`);
+    }
+    if (seoData.description) {
+      metaTags.push(`<meta property="og:description" content="${seoData.description}">`);
+    }
+    if (seoData.ogType) {
+      metaTags.push(`<meta property="og:type" content="${seoData.ogType}">`);
+    }
+    if (seoData.canonical) {
+      metaTags.push(`<meta property="og:url" content="${seoData.canonical}">`);
+    }
+    if (seoData.ogImage) {
+      metaTags.push(`<meta property="og:image" content="${seoData.ogImage}">`);
+      metaTags.push(`<meta property="og:image:width" content="1200">`);
+      metaTags.push(`<meta property="og:image:height" content="630">`);
+      metaTags.push(`<meta property="og:image:type" content="image/png">`);
+    }
+    
+    // Twitter Card tags
+    if (seoData.twitterCard) {
+      metaTags.push(`<meta name="twitter:card" content="${seoData.twitterCard}">`);
+    }
+    if (seoData.title) {
+      metaTags.push(`<meta name="twitter:title" content="${seoData.title}">`);
+    }
+    if (seoData.description) {
+      metaTags.push(`<meta name="twitter:description" content="${seoData.description}">`);
+    }
+    if (seoData.ogImage) {
+      metaTags.push(`<meta name="twitter:image" content="${seoData.ogImage}">`);
+    }
+    
+    // Canonical link
+    if (seoData.canonical) {
+      metaTags.push(`<link rel="canonical" href="${seoData.canonical}">`);
+    }
+    
+    return metaTags.join('\n  ');
+  });
+  
+  // JSON-LD structured data shortcode
+  eleventyConfig.addShortcode("jsonld", function(data) {
+    const structuredData = typeof data === 'string' ? data : JSON.stringify(data, null, 2);
+    return `<script type="application/ld+json">\n${structuredData}\n</script>`;
+  });
+  
+  // Page-specific OG image shortcode with automatic fallback
+  eleventyConfig.addShortcode("ogImage", function(customImage) {
+    const lang = this.ctx?.lang || 'en';
+    const page = this.ctx?.page || {};
+    const site = this.ctx?.site?.site || {};
+    
+    let ogImage = customImage;
+    
+    // If no custom image provided, determine based on page URL
+    if (!ogImage) {
+      let pageType = 'home';
+      
+      if (page.url) {
+        if (page.url.includes('/about') || page.url.includes('/over')) {
+          pageType = 'about';
+        } else if (page.url.includes('/solutions') || page.url.includes('/oplossingen')) {
+          pageType = 'solutions';
+        } else if (page.url.includes('/contact')) {
+          pageType = 'contact';
+        } else if (page.url.includes('/privacy')) {
+          pageType = 'privacy';
+        } else if (page.url.includes('/terms') || page.url.includes('/voorwaarden')) {
+          pageType = 'terms';
+        }
+      }
+      
+      ogImage = `${site.url}/assets/images/og/og-${pageType}-${lang}.png`;
+    }
+    
+    return `<meta property="og:image" content="${ogImage}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta name="twitter:image" content="${ogImage}">`;
+  });
+  
   // Directory configuration
   return {
     dir: {
