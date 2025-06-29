@@ -17,6 +17,11 @@
     "lint:js:check": "eslint src/**/*.js .eleventy.js",
     "lint:html:check": "htmlhint \"_site/**/*.html\" --config .htmlhintrc",
     "lint:css:check": "stylelint \"src/**/*.css\"",
+    "lighthouse": "lighthouse http://localhost:8080 --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage' --output=json --output-path=./lighthouse-report.json --quiet",
+    "lighthouse:ci": "lighthouse http://localhost:8080 --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage' --output=json --output-path=./lighthouse-report.json --quiet --only-categories=performance,accessibility,best-practices,seo",
+    "pa11y": "pa11y http://localhost:8080 --reporter json > pa11y-report.json",
+    "pa11y:ci": "pa11y http://localhost:8080 --reporter json --threshold 10",
+    "quality:check": "npm run lighthouse:ci && npm run pa11y:ci",
     "preview": "eleventy --serve --port=8080"
   },
   "keywords": [
@@ -47,9 +52,12 @@
     "eslint-plugin-import": "^2.32.0",
     "globals": "^16.2.0",
     "htmlhint": "^1.6.3",
+    "lighthouse": "^12.2.0",
     "markdown-it": "^14.1.0",
     "markdown-it-anchor": "^9.2.0",
+    "pa11y": "^8.0.0",
     "stylelint": "^16.21.0",
-    "stylelint-config-standard": "^38.0.0"
+    "stylelint-config-standard": "^38.0.0",
+    "wait-on": "^8.0.1"
   }
 }

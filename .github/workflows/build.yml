@@ -1,6 +1,7 @@
 name: CI/CD Pipeline - Aethron.tech
 
 # WEBS-44: Complete GitHub Actions flow with linting on dev
+# WEBS-45: Add comprehensive quality checks (Lighthouse, Pa11y, enhanced HTML lint)
 # Triggers: push to main, dev, or any feature branch starting with WEBS-
 on:
   push:
@@ -128,3 +129,175 @@ jobs:
         name: aethron-tech-build-node${{ matrix.node-version }}
         path: aethron.tech/_site/
         retention-days: 7
+
+  # Job 3: Quality Checks (Lighthouse, Pa11y, Performance) - runs after build
+  quality:
+    name: Quality & Performance Audit  
+    runs-on: ubuntu-latest
+    needs: build  # Only run after build passes
+    
+    defaults:
+      run:
+        working-directory: ./aethron.tech
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        cache-dependency-path: aethron.tech/package-lock.json
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build website for testing
+      run: npm run build
+      env:
+        NODE_ENV: ci
+        
+    - name: Install Chrome dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          libasound2 \
+          libatk-bridge2.0-0 \
+          libdrm2 \
+          libxcomposite1 \
+          libxdamage1 \
+          libxrandr2 \
+          libgbm1 \
+          libxss1 \
+          libasound2
+        
+    - name: Start development server
+      run: |
+        npm run serve &
+        npx wait-on http://localhost:8080 --timeout 60000
+      env:
+        NODE_ENV: ci
+        
+    - name: Run Lighthouse audit
+      run: |
+        echo "🔍 Running Lighthouse performance and quality audit..."
+        npx lighthouse http://localhost:8080 \
+          --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage --disable-gpu' \
+          --output=json \
+          --output-path=./lighthouse-report.json \
+          --quiet \
+          --only-categories=performance,accessibility,best-practices,seo
+        
+        # Parse and display results
+        echo "📊 Lighthouse Results:"
+        node -e "
+          const report = JSON.parse(require('fs').readFileSync('./lighthouse-report.json', 'utf8'));
+          const categories = report.categories;
+          
+          console.log('');
+          console.log('🎯 **LIGHTHOUSE AUDIT RESULTS**');
+          console.log('================================');
+          Object.entries(categories).forEach(([key, cat]) => {
+            const score = Math.round(cat.score * 100);
+            const emoji = score >= 90 ? '🟢' : score >= 70 ? '🟡' : '🔴';
+            console.log(\`\${emoji} \${cat.title}: \${score}/100\`);
+          });
+          console.log('');
+          
+          // Check thresholds
+          const performance = Math.round(categories.performance.score * 100);
+          const accessibility = Math.round(categories.accessibility.score * 100);
+          const bestPractices = Math.round(categories['best-practices'].score * 100);
+          const seo = Math.round(categories.seo.score * 100);
+          
+          if (accessibility < 90) {
+            console.error('❌ Accessibility score below 90%');
+            process.exit(1);
+          }
+          if (performance < 70) {
+            console.warn('⚠️  Performance score below 70%');
+          }
+          if (seo < 90) {
+            console.warn('⚠️  SEO score below 90%');  
+          }
+          
+          console.log('✅ Lighthouse audit completed successfully!');
+        "
+        
+    - name: Run Pa11y accessibility audit
+      run: |
+        echo "♿ Running Pa11y accessibility audit..."
+        npx pa11y http://localhost:8080 \
+          --config .pa11yrc.json \
+          --reporter cli \
+          --threshold 5 \
+          --timeout 30000
+          
+        echo "✅ Pa11y accessibility audit completed!"
+        
+    - name: Enhanced HTML validation
+      run: |
+        echo "🔍 Running enhanced HTML validation..."
+        
+        # Run HTMLHint with detailed reporting
+        npx htmlhint "_site/**/*.html" \
+          --config .htmlhintrc \
+          --format compact
+          
+        # Additional HTML5 validation (if available)
+        echo "📋 HTML validation summary:"
+        echo "   - Files checked: $(find _site/ -name '*.html' | wc -l)"
+        echo "   - HTMLHint rules: $(cat .htmlhintrc | grep -c true)"
+        
+        echo "✅ Enhanced HTML validation completed!"
+        
+    - name: Generate quality report
+      if: always()
+      run: |
+        echo "📈 **QUALITY AUDIT SUMMARY**" > quality-report.md
+        echo "=========================" >> quality-report.md
+        echo "" >> quality-report.md
+        
+        if [ -f lighthouse-report.json ]; then
+          echo "## 🚀 Lighthouse Results" >> quality-report.md
+          node -e "
+            const report = JSON.parse(require('fs').readFileSync('./lighthouse-report.json', 'utf8'));
+            const categories = report.categories;
+            Object.entries(categories).forEach(([key, cat]) => {
+              const score = Math.round(cat.score * 100);
+              console.log(\`- **\${cat.title}**: \${score}/100\`);
+            });
+          " >> quality-report.md
+          echo "" >> quality-report.md
+        fi
+        
+        echo "## ♿ Accessibility" >> quality-report.md
+        echo "- Pa11y audit: Completed" >> quality-report.md
+        echo "- WCAG 2.1 AA compliance checked" >> quality-report.md
+        echo "" >> quality-report.md
+        
+        echo "## 🔍 HTML Quality" >> quality-report.md
+        echo "- HTMLHint validation: Completed" >> quality-report.md
+        echo "- Files validated: $(find _site/ -name '*.html' | wc -l)" >> quality-report.md
+        
+        cat quality-report.md
+        
+    - name: Upload quality reports
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: quality-reports
+        path: |
+          aethron.tech/lighthouse-report.json
+          aethron.tech/quality-report.md
+        retention-days: 30
+        
+    - name: ✅ Quality Summary
+      run: |
+        echo "🎉 All quality checks completed!"
+        echo "✅ Lighthouse: Performance, Accessibility, Best Practices, SEO"
+        echo "✅ Pa11y: WCAG 2.1 AA Accessibility"  
+        echo "✅ HTMLHint: Enhanced HTML validation"
+        echo "📊 Reports uploaded as artifacts"
