@@ -83,6 +83,14 @@ jobs:
           
           echo "✅ All quality checks completed"
           
+      - name: Prepare deployment files
+        run: |
+          echo "📦 Preparing files for GitHub Pages deployment..."
+          # Copy built site to root level for GitHub Pages
+          cp -r aethron.tech/_site/* ./
+          ls -la
+          echo "✅ Files prepared for deployment"
+          
       - name: Upload quality reports
         if: always()
         uses: actions/upload-artifact@v4
@@ -97,7 +105,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: aethron.tech/_site
+          path: .
 
   # Deployment job
   deploy:
