@@ -2,7 +2,7 @@
 
 .solutions-intro {
   padding: 60px 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, var(--aethron-gray-light) 0%, var(--aethron-gray) 100%);
 }
 
 .intro-content {
@@ -14,21 +14,21 @@
 .intro-content .lead {
   font-size: 1.3rem;
   font-weight: 500;
-  color: #2c3e50;
+  color: var(--aethron-blue);
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
 
 .intro-content .intro-subtitle {
   font-size: 1.1rem;
-  color: #6c757d;
+  color: var(--aethron-gray-medium);
   line-height: 1.6;
   font-style: italic;
 }
 
 .solutions-grid {
   padding: 80px 0;
-  background: white;
+  background: var(--aethron-white);
 }
 
 .solutions-wrapper {
@@ -39,13 +39,14 @@
 }
 
 .solution-card {
-  background: white;
+  background: var(--aethron-white);
   border-radius: 16px;
   padding: 0;
   box-shadow: 0 8px 30px rgba(0,0,0,0.12);
   transition: all 0.3s ease;
   overflow: hidden;
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--aethron-gray);
+  border-top: 4px solid var(--aethron-orange);
 }
 
 .solution-card:hover {
@@ -54,8 +55,8 @@
 }
 
 .solution-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--aethron-blue) 0%, var(--aethron-blue-dark) 100%);
+  color: var(--aethron-white);
   padding: 2.5rem 2rem 2rem;
   text-align: center;
   position: relative;
@@ -65,6 +66,7 @@
   font-size: 3rem;
   margin-bottom: 1rem;
   display: block;
+  color: var(--aethron-orange);
 }
 
 .solution-header h2 {
@@ -72,6 +74,7 @@
   font-weight: 600;
   margin: 0;
   line-height: 1.3;
+  color: var(--aethron-white);
 }
 
 .solution-content {
@@ -81,7 +84,7 @@
 .solution-content p {
   font-size: 1.05rem;
   line-height: 1.7;
-  color: #495057;
+  color: var(--aethron-gray-dark);
   margin-bottom: 2rem;
 }
 
@@ -95,9 +98,9 @@
   padding: 0.75rem 0;
   padding-left: 2rem;
   position: relative;
-  color: #2c3e50;
+  color: var(--aethron-blue);
   font-weight: 500;
-  border-bottom: 1px solid #f1f3f4;
+  border-bottom: 1px solid var(--aethron-gray);
   transition: color 0.2s ease;
 }
 
@@ -109,18 +112,18 @@
   content: "✓";
   position: absolute;
   left: 0;
-  color: #28a745;
+  color: var(--aethron-orange);
   font-weight: bold;
   font-size: 1.1rem;
 }
 
 .solution-benefits li:hover {
-  color: #667eea;
+  color: var(--aethron-orange);
 }
 
 .solutions-cta {
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--aethron-blue) 0%, var(--aethron-blue-dark) 100%);
+  color: var(--aethron-white);
   padding: 80px 0;
   text-align: center;
 }
@@ -129,7 +132,7 @@
   font-size: 2.2rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  color: white;
+  color: var(--aethron-white);
 }
 
 .cta-content p {
@@ -139,6 +142,7 @@
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  color: var(--aethron-white);
 }
 
 .cta-buttons {
@@ -159,27 +163,27 @@
 }
 
 .cta-buttons .btn-primary {
-  background: #fff;
-  color: #2c3e50;
-  border: 2px solid #fff;
+  background: var(--aethron-orange);
+  color: var(--aethron-white);
+  border: 2px solid var(--aethron-orange);
 }
 
 .cta-buttons .btn-primary:hover {
-  background: transparent;
-  color: #fff;
+  background: var(--aethron-orange-dark);
+  border-color: var(--aethron-orange-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+  box-shadow: 0 8px 25px rgba(255, 102, 0, 0.3);
 }
 
 .cta-buttons .btn-secondary {
   background: transparent;
-  color: #fff;
-  border: 2px solid #fff;
+  color: var(--aethron-white);
+  border: 2px solid var(--aethron-white);
 }
 
 .cta-buttons .btn-secondary:hover {
-  background: #fff;
-  color: #2c3e50;
+  background: var(--aethron-white);
+  color: var(--aethron-blue);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(255,255,255,0.2);
 }

@@ -3,8 +3,11 @@
     <!-- Logo/Brand -->
     <div class="nav-brand">
       <a href="{{ routes.routes[lang or 'en'].home }}" class="nav-logo" aria-label="{{ 'site.title' | t(lang or 'en') }} homepage">
-        <span class="logo-text">{{ 'site.title' | t(lang or 'en') }}</span>
-        <span class="logo-tagline">{{ 'site.tagline' | t(lang or 'en') }}</span>
+        <img src="/assets/images/logov2.png" alt="{{ 'site.title' | t(lang or 'en') }} logo" class="logo-image">
+        <div class="logo-text-container">
+          <span class="logo-text">{{ 'site.title' | t(lang or 'en') }}</span>
+          <span class="logo-tagline">{{ 'site.tagline' | t(lang or 'en') }}</span>
+        </div>
       </a>
     </div>
 
@@ -75,7 +78,7 @@
                data-lang="{{ language.code }}"
                lang="{{ language.code }}"
                hreflang="{{ language.code }}"
-               aria-current="{{ 'page' if language.code == (lang or 'en') else 'false' }}">>>
+               aria-current="{{ 'page' if language.code == (lang or 'en') else 'false' }}">
               <span class="lang-flag">{{ '🇺🇸' if language.code == 'en' else '🇳🇱' }}</span>
               <span class="lang-name">{{ language.nativeName }}</span>
               {% if language.code == (lang or 'en') %}

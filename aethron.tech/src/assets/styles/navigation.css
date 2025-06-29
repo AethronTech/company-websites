@@ -1,8 +1,8 @@
-/* Enhanced Navigation Styles */
+/* Enhanced Navigation Styles - Full white background with blue letters */
 
 /* Navigation Container */
 .main-navigation {
-  background: #ffffff;
+  background: #ffffff; /* Full white background */
   border-bottom: 1px solid #e2e8f0;
   position: sticky;
   top: 0;
@@ -28,14 +28,33 @@
 
 .nav-logo {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   text-decoration: none;
-  color: #1e293b;
+  color: #0066cc; /* Blue color for company logo */
   transition: color 0.2s ease;
+  gap: 0.75rem; /* Space between logo image and text */
 }
 
 .nav-logo:hover {
-  color: #0ea5e9;
+  color: #ff6600; /* Orange on hover */
+}
+
+/* Logo Image */
+.logo-image {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.nav-logo:hover .logo-image {
+  transform: scale(1.05);
+}
+
+/* Logo Text Container */
+.logo-text-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .logo-text {
@@ -47,7 +66,7 @@
 .logo-tagline {
   font-size: 0.75rem;
   font-weight: 400;
-  color: #64748b;
+  color: #0066cc; /* Blue color for tagline */
   margin-top: -2px;
 }
 
@@ -116,7 +135,7 @@
   display: block;
   padding: 0.5rem 1rem;
   text-decoration: none;
-  color: #475569;
+  color: #0066cc; /* Blue letters on white background */
   font-weight: 500;
   border-radius: 6px;
   transition: all 0.2s ease;
@@ -124,18 +143,18 @@
 }
 
 .nav-link:hover {
-  color: #0ea5e9;
-  background-color: #f0f9ff;
+  color: #ff6600; /* Orange letters on hover */
+  background-color: #ffffff; /* Keep white background */
 }
 
 .nav-link:focus {
-  outline: 2px solid #0ea5e9;
+  outline: 2px solid #ff6600; /* Orange focus outline */
   outline-offset: 2px;
 }
 
 .nav-link.active {
-  color: #0ea5e9;
-  background-color: #f0f9ff;
+  color: #ff6600; /* Orange for active state */
+  background-color: #ffffff;
 }
 
 .nav-link.active::after {
@@ -146,7 +165,7 @@
   transform: translateX(-50%);
   width: 20px;
   height: 2px;
-  background-color: #0ea5e9;
+  background-color: #ff6600; /* Orange underline for active */
   border-radius: 1px;
 }
 
@@ -278,6 +297,23 @@
 @media (max-width: 768px) {
   .mobile-menu-toggle {
     display: flex;
+  }
+
+  /* Mobile logo adjustments */
+  .logo-image {
+    height: 35px; /* Slightly smaller on mobile */
+  }
+
+  .nav-logo {
+    gap: 0.5rem; /* Reduce gap on mobile */
+  }
+
+  .logo-text {
+    font-size: 1.25rem; /* Slightly smaller text on mobile */
+  }
+
+  .logo-tagline {
+    font-size: 0.7rem; /* Smaller tagline on mobile */
   }
 
   .nav-menu-wrapper {

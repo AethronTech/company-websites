@@ -52,6 +52,12 @@
       "description": "From configurable packages to custom development, we deliver technology solutions that empower your team and accelerate your digital transformation.",
       "link_text": "Explore our solutions",
       "link_url": "/solutions/"
+    },
+    "contact_summary": {
+      "title": "Get In Touch",
+      "description": "Ready to transform your technology? Let's discuss how we can help your team achieve more with people-centric software solutions.",
+      "link_text": "Contact us",
+      "link_url": "/contact/"
     }
   },
   "about": {
@@ -208,6 +214,16 @@
     "company": "Aethron Technology",
     "tagline": "People-Centric Software Solutions",
     "copyright": "© 2025 Aethron Technology. All rights reserved.",
+    "rights": "All rights reserved.",
+    "quick_links": {
+      "title": "Navigation"
+    },
+    "contact": {
+      "title": "Contact Info"
+    },
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "sitemap": "Sitemap",
     "links": {
       "privacy": "Privacy Policy",
       "terms": "Terms of Service",
