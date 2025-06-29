@@ -159,19 +159,15 @@ jobs:
       env:
         NODE_ENV: ci
         
-    - name: Install Chrome dependencies
+    - name: Setup Chrome
+      uses: browser-actions/setup-chrome@v1
+      with:
+        chrome-version: stable
+        
+    - name: Verify Chrome installation  
       run: |
-        sudo apt-get update
-        sudo apt-get install -y \
-          libasound2 \
-          libatk-bridge2.0-0 \
-          libdrm2 \
-          libxcomposite1 \
-          libxdamage1 \
-          libxrandr2 \
-          libgbm1 \
-          libxss1 \
-          libasound2
+        which google-chrome
+        google-chrome --version
         
     - name: Start development server
       run: |
@@ -184,7 +180,7 @@ jobs:
       run: |
         echo "🔍 Running Lighthouse performance and quality audit..."
         npx lighthouse http://localhost:8080 \
-          --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage --disable-gpu' \
+          --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --disable-extensions' \
           --output=json \
           --output-path=./lighthouse-report.json \
           --quiet \
@@ -225,6 +221,8 @@ jobs:
           
           console.log('✅ Lighthouse audit completed successfully!');
         "
+      env:
+        CHROME_PATH: /opt/hostedtoolcache/chromium/*/x64/chrome
         
     - name: Run Pa11y accessibility audit
       run: |
