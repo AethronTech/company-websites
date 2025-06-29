@@ -283,6 +283,7 @@ module.exports = function(eleventyConfig) {
       twitterCard: options.twitterCard || 'summary_large_image',
       canonical: options.canonical || `${site.url}${page.url}`,
       robots: options.robots || 'index, follow',
+      lang: lang, // Use the lang variable for locale
       ...options
     };
     
