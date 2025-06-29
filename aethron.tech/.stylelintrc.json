@@ -1,0 +1,32 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "color-hex-length": "short",
+    "color-named": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null,
+    "color-function-alias-notation": null,
+    "declaration-no-important": null,
+    "media-feature-range-notation": null,
+    "selector-class-pattern": null,
+    "no-descending-specificity": null,
+    "comment-empty-line-before": ["always", {
+      "except": ["first-nested"],
+      "ignore": ["after-comment", "stylelint-commands"]
+    }],
+    "at-rule-empty-line-before": ["always", {
+      "except": ["blockless-after-same-name-blockless", "first-nested"],
+      "ignore": ["after-comment"]
+    }],
+    "selector-pseudo-element-colon-notation": "single",
+    "font-family-name-quotes": "always-unless-keyword",
+    "declaration-block-no-shorthand-property-overrides": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "shorthand-property-no-redundant-values": null,
+    "media-feature-name-value-no-unknown": null
+  },
+  "ignoreFiles": [
+    "_site/**/*.css",
+    "node_modules/**/*.css"
+  ]
+}

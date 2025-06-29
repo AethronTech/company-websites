@@ -286,7 +286,7 @@ module.exports = function(eleventyConfig) {
       ...options
     };
     
-    let metaTags = [];
+    const metaTags = [];
     
     // Basic meta tags
     if (seoData.description) {

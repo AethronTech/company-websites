@@ -1,5 +1,5 @@
 module.exports = {
-  url: process.env.NODE_ENV === 'production' 
+  url: process.env.NODE_ENV === 'production'
     ? 'https://aethron.tech'
     : 'http://localhost:8082',
   title: 'Aethron Technologies',

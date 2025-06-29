@@ -8,8 +8,15 @@
     "build": "eleventy",
     "start": "eleventy --serve",
     "serve": "eleventy --serve --port=8080",
-    "test": "echo \"Tests to be configured\"",
-    "lint": "echo \"Linting to be configured\"",
+    "test": "npm run lint && npm run build",
+    "lint": "npm run lint:js && npm run lint:html && npm run lint:css",
+    "lint:js": "eslint src/**/*.js .eleventy.js --fix",
+    "lint:html": "htmlhint \"_site/**/*.html\" --config .htmlhintrc",
+    "lint:css": "stylelint \"src/**/*.css\" --fix",
+    "lint:check": "npm run lint:js:check && npm run lint:html:check && npm run lint:css:check",
+    "lint:js:check": "eslint src/**/*.js .eleventy.js",
+    "lint:html:check": "htmlhint \"_site/**/*.html\" --config .htmlhintrc",
+    "lint:css:check": "stylelint \"src/**/*.css\"",
     "preview": "eleventy --serve --port=8080"
   },
   "keywords": [
@@ -22,6 +29,7 @@
   "author": "Aethron Technologies",
   "license": "UNLICENSED",
   "private": true,
+  "type": "module",
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=8.0.0"
@@ -34,7 +42,15 @@
   "homepage": "https://aethron.tech",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
+    "@eslint/js": "^9.30.0",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.32.0",
+    "globals": "^16.2.0",
+    "htmlhint": "^1.6.3",
     "markdown-it": "^14.1.0",
-    "markdown-it-anchor": "^9.2.0"
+    "markdown-it-anchor": "^9.2.0",
+    "stylelint": "^16.21.0",
+    "stylelint-config-standard": "^38.0.0"
   }
 }

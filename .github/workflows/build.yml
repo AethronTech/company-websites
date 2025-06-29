@@ -1,23 +1,81 @@
-name: CI Build Aethron.tech
+name: CI/CD Pipeline - Aethron.tech
 
-# Triggers: push to main, dev, or any feature branch
-# This ensures build errors are caught early in the development process
+# WEBS-44: Complete GitHub Actions flow with linting on dev
+# Triggers: push to main, dev, or any feature branch starting with WEBS-
 on:
   push:
     branches: 
       - main
       - dev
-      - 'feature/**'  # All feature branches (WEBS-*)
+      - 'WEBS-*'      # All WEBS feature branches
+      - 'feature/**'  # Legacy feature branches
     paths: 
       - 'aethron.tech/**'
+      - '.github/workflows/**'
   pull_request:
     branches: [ main, dev ]
     paths:
       - 'aethron.tech/**'
+      - '.github/workflows/**'
+
+# Ensure only one workflow runs at a time per branch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build:
+  # Job 1: Linting and Code Quality (runs first, fastest feedback)
+  lint:
+    name: Code Quality & Linting
     runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: ./aethron.tech
+        
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        cache-dependency-path: aethron.tech/package-lock.json
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run JavaScript linting
+      run: npm run lint:js:check
+      continue-on-error: false
+      
+    - name: Build site (required for HTML linting)
+      run: npm run build
+      env:
+        NODE_ENV: ci
+        
+    - name: Run HTML linting
+      run: npm run lint:html:check
+      continue-on-error: false
+      
+    - name: Run CSS linting
+      run: npm run lint:css:check
+      continue-on-error: false
+      
+    - name: ✅ Linting Summary
+      run: |
+        echo "🎉 All linting checks passed successfully!"
+        echo "✅ JavaScript (ESLint): PASSED"
+        echo "✅ HTML (HTMLHint): PASSED" 
+        echo "✅ CSS (Stylelint): PASSED"
+
+  # Job 2: Build and Test (runs after linting passes)
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    needs: lint  # Only run after linting passes
     
     defaults:
       run:
@@ -70,27 +128,3 @@ jobs:
         name: aethron-tech-build-node${{ matrix.node-version }}
         path: aethron.tech/_site/
         retention-days: 7
-        
-  lint:
-    runs-on: ubuntu-latest
-    
-    defaults:
-      run:
-        working-directory: ./aethron.tech
-        
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.x'
-        cache: 'npm'
-        cache-dependency-path: aethron.tech/package-lock.json
-        
-    - name: Install dependencies
-      run: npm ci
-      
-    - name: Run lint (when configured)
-      run: npm run lint || echo "Linting not yet configured"
