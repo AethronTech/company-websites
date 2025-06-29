@@ -208,12 +208,14 @@
 
 /* Show/hide at different breakpoints */
 .sm\:hidden { display: none; }
+
 @media (min-width: 30rem) {
   .sm\:block { display: block; }
   .sm\:hidden { display: none; }
 }
 
 .md\:hidden { display: none; }
+
 @media (min-width: 48rem) {
   .md\:block { display: block; }
   .md\:hidden { display: none; }

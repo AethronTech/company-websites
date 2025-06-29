@@ -2,7 +2,7 @@
 
 /* Navigation Container */
 .main-navigation {
-  background: #ffffff; /* Full white background */
+  background: #fff; /* Full white background */
   border-bottom: 1px solid #e2e8f0;
   position: sticky;
   top: 0;
@@ -30,13 +30,13 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #0066cc; /* Blue color for company logo */
+  color: #06c; /* Blue color for company logo */
   transition: color 0.2s ease;
   gap: 0.75rem; /* Space between logo image and text */
 }
 
 .nav-logo:hover {
-  color: #ff6600; /* Orange on hover */
+  color: #f60; /* Orange on hover */
 }
 
 /* Logo Image */
@@ -66,7 +66,7 @@
 .logo-tagline {
   font-size: 0.75rem;
   font-weight: 400;
-  color: #0066cc; /* Blue color for tagline */
+  color: #06c; /* Blue color for tagline */
   margin-top: -2px;
 }
 
@@ -91,18 +91,18 @@
 }
 
 .mobile-menu-toggle:hover .hamburger-line {
-  background-color: #ff6600; /* Orange hamburger lines on hover */
+  background-color: #f60; /* Orange hamburger lines on hover */
 }
 
 .mobile-menu-toggle:focus {
-  outline: 2px solid #ff6600; /* Orange focus outline */
+  outline: 2px solid #f60; /* Orange focus outline */
   outline-offset: 2px;
 }
 
 .hamburger-line {
   width: 24px;
   height: 2px;
-  background-color: #0066cc; /* Blue color matching navigation links */
+  background-color: #06c; /* Blue color matching navigation links */
   transition: all 0.3s ease;
   margin: 2px 0;
 }
@@ -139,7 +139,7 @@
   display: block;
   padding: 0.5rem 1rem;
   text-decoration: none;
-  color: #0066cc; /* Blue letters on white background */
+  color: #06c; /* Blue letters on white background */
   font-weight: 500;
   border-radius: 6px;
   transition: all 0.2s ease;
@@ -147,21 +147,21 @@
 }
 
 .nav-link:hover {
-  color: #ff6600; /* Orange letters on hover */
-  background-color: #ffffff; /* Keep white background */
+  color: #f60; /* Orange letters on hover */
+  background-color: #fff; /* Keep white background */
 }
 
 .nav-link:focus {
-  outline: 2px solid #ff6600; /* Orange focus outline */
+  outline: 2px solid #f60; /* Orange focus outline */
   outline-offset: 2px;
 }
 
 .nav-link.active {
-  color: #ff6600; /* Orange for active state */
-  background-color: #ffffff;
+  color: #f60; /* Orange for active state */
+  background-color: #fff;
 }
 
-.nav-link.active::after {
+.nav-link.active:after {
   content: '';
   position: absolute;
   bottom: -1px;
@@ -169,7 +169,7 @@
   transform: translateX(-50%);
   width: 20px;
   height: 2px;
-  background-color: #ff6600; /* Orange underline for active */
+  background-color: #f60; /* Orange underline for active */
   border-radius: 1px;
 }
 
@@ -361,7 +361,7 @@
     border-bottom: 1px solid #f1f5f9;
   }
 
-  .nav-link.active::after {
+  .nav-link.active:after {
     display: none;
   }
 

@@ -22,6 +22,7 @@
 
 .contact-grid {
   display: grid;
+
   /* Mobile: Single column layout */
   grid-template-columns: 1fr;
   gap: 2rem;
@@ -46,6 +47,7 @@
 /* Contact Info Section */
 .contact-info {
   background: var(--aethron-white);
+
   /* Mobile: Reduced padding */
   padding: 2rem;
   border-radius: 12px;
@@ -183,6 +185,7 @@
 
 .form-container {
   background: var(--aethron-white);
+
   /* Mobile: Reduced padding */
   padding: 2rem;
   border-radius: 12px;
@@ -211,6 +214,7 @@
 .contact-form {
   display: flex;
   flex-direction: column;
+
   /* Mobile: More spacing between form fields */
   gap: 1.75rem;
 }
@@ -230,6 +234,7 @@
   font-weight: 600;
   color: var(--aethron-blue);
   margin-bottom: 0.75rem;
+
   /* Mobile: Slightly larger labels for better readability */
   font-size: 1.125rem;
 }
@@ -246,10 +251,12 @@
 .form-group textarea {
   /* Mobile: Larger padding for better touch targets */
   padding: 1.25rem;
+
   /* Mobile: Minimum touch target height */
   min-height: 44px;
   border: 2px solid var(--aethron-gray);
   border-radius: 8px;
+
   /* Mobile: Prevent zoom on iOS */
   font-size: 16px;
   font-family: inherit;

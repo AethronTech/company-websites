@@ -2,21 +2,20 @@
 
 :root {
   /* Primary Brand Colors */
-  --aethron-blue: #0066cc;
-  --aethron-blue-dark: #004499;
+  --aethron-blue: #06c;
+  --aethron-blue-dark: #049;
   --aethron-blue-light: #3385d6;
-  
-  --aethron-orange: #ff6600;
+  --aethron-orange: #f60;
   --aethron-orange-dark: #e55a00;
   --aethron-orange-light: #ff8533;
   
   /* Neutral Colors */
-  --aethron-white: #ffffff;
-  --aethron-black: #000000;
+  --aethron-white: #fff;
+  --aethron-black: #000;
   --aethron-gray: #f5f5f5;
   --aethron-gray-light: #f8f9fa;
   --aethron-gray-medium: #6c757d;
-  --aethron-gray-dark: #333333;
+  --aethron-gray-dark: #333;
   
   /* Text Colors */
   --text-primary: var(--aethron-black);
