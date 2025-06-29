@@ -33,46 +33,119 @@
 }
 
 .about-content {
-  padding: 80px 0;
+  /* Mobile: Reduced padding */
+  padding: 40px 0;
   background-color: var(--aethron-gray-light);
+}
+
+/* Tablet and up: More spacious */
+@media (min-width: 48rem) {
+  .about-content {
+    padding: 60px 0;
+  }
+}
+
+/* Desktop: Full spacing */
+@media (min-width: 62rem) {
+  .about-content {
+    padding: 80px 0;
+  }
 }
 
 .content-wrapper {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 4rem;
+  /* Mobile: Single column layout */
+  grid-template-columns: 1fr;
+  gap: 2rem;
   align-items: start;
+}
+
+/* Tablet and up: Two column layout */
+@media (min-width: 48rem) {
+  .content-wrapper {
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+  }
+}
+
+/* Desktop: Full spacing */
+@media (min-width: 62rem) {
+  .content-wrapper {
+    gap: 4rem;
+  }
 }
 
 .main-content {
   background: var(--aethron-white);
-  padding: 3rem;
+  /* Mobile: Reduced padding */
+  padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   border-top: 4px solid var(--aethron-orange);
 }
 
+/* Tablet and up: More padding */
+@media (min-width: 48rem) {
+  .main-content {
+    padding: 2.5rem;
+  }
+}
+
+/* Desktop: Full padding */
+@media (min-width: 62rem) {
+  .main-content {
+    padding: 3rem;
+  }
+}
+
 .main-content .lead {
-  font-size: 1.25rem;
+  /* Mobile: Smaller lead text */
+  font-size: 1.125rem;
   font-weight: 500;
   color: var(--aethron-blue);
   line-height: 1.6;
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
   border-bottom: 2px solid var(--aethron-gray);
 }
 
+/* Tablet and up: Larger lead text */
+@media (min-width: 48rem) {
+  .main-content .lead {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
 .main-content p {
-  font-size: 1.1rem;
-  line-height: 1.7;
+  /* Mobile: Readable text size */
+  font-size: 1rem;
+  line-height: 1.6;
   color: var(--aethron-gray-dark);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Tablet and up: Slightly larger text */
+@media (min-width: 48rem) {
+  .main-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
+}
+
+/* Tablet and up: More spacing */
+@media (min-width: 48rem) {
+  .sidebar {
+    gap: 2rem;
+  }
 }
 
 .highlight-box,

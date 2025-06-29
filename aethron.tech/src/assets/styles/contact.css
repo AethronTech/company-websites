@@ -1,24 +1,70 @@
-/* Contact page specific styles */
+/* WEBS-34: Contact page Mobile First responsive styles */
 
 .contact-content {
-  padding: 80px 0;
+  /* Mobile: Reduced padding */
+  padding: 40px 0;
   background-color: var(--aethron-gray-light);
+}
+
+/* Tablet and up: More spacious */
+@media (min-width: 48rem) {
+  .contact-content {
+    padding: 60px 0;
+  }
+}
+
+/* Desktop: Full spacing */
+@media (min-width: 62rem) {
+  .contact-content {
+    padding: 80px 0;
+  }
 }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 3rem;
+  /* Mobile: Single column layout */
+  grid-template-columns: 1fr;
+  gap: 2rem;
   align-items: start;
+}
+
+/* Tablet and up: Two column layout */
+@media (min-width: 48rem) {
+  .contact-grid {
+    grid-template-columns: 1.3fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Desktop: Full spacing */
+@media (min-width: 62rem) {
+  .contact-grid {
+    gap: 3rem;
+  }
 }
 
 /* Contact Info Section */
 .contact-info {
   background: var(--aethron-white);
-  padding: 3rem;
+  /* Mobile: Reduced padding */
+  padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   border-top: 4px solid var(--aethron-orange);
+}
+
+/* Tablet and up: More padding */
+@media (min-width: 48rem) {
+  .contact-info {
+    padding: 2.5rem;
+  }
+}
+
+/* Desktop: Full padding */
+@media (min-width: 62rem) {
+  .contact-info {
+    padding: 3rem;
+  }
 }
 
 .contact-info > *:first-child {
@@ -125,15 +171,37 @@
 .form-sidebar {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
+}
+
+/* Tablet and up: More spacing */
+@media (min-width: 48rem) {
+  .form-sidebar {
+    gap: 2rem;
+  }
 }
 
 .form-container {
   background: var(--aethron-white);
-  padding: 3rem;
+  /* Mobile: Reduced padding */
+  padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   border-top: 4px solid var(--aethron-orange);
+}
+
+/* Tablet and up: More padding */
+@media (min-width: 48rem) {
+  .form-container {
+    padding: 2.5rem;
+  }
+}
+
+/* Desktop: Full padding */
+@media (min-width: 62rem) {
+  .form-container {
+    padding: 3rem;
+  }
 }
 
 .form-container > *:first-child {
@@ -143,7 +211,14 @@
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  /* Mobile: More spacing between form fields */
+  gap: 1.75rem;
+}
+
+@media (min-width: 48rem) {
+  .contact-form {
+    gap: 1.5rem;
+  }
 }
 
 .form-group {
@@ -154,20 +229,42 @@
 .form-group label {
   font-weight: 600;
   color: var(--aethron-blue);
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  /* Mobile: Slightly larger labels for better readability */
+  font-size: 1.125rem;
+}
+
+@media (min-width: 48rem) {
+  .form-group label {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-  padding: 1rem;
+  /* Mobile: Larger padding for better touch targets */
+  padding: 1.25rem;
+  /* Mobile: Minimum touch target height */
+  min-height: 44px;
   border: 2px solid var(--aethron-gray);
   border-radius: 8px;
-  font-size: 1rem;
+  /* Mobile: Prevent zoom on iOS */
+  font-size: 16px;
   font-family: inherit;
   transition: all 0.3s ease;
   background-color: var(--aethron-white);
+}
+
+/* Tablet and up: Standard styling */
+@media (min-width: 48rem) {
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 1rem;
+    font-size: 1rem;
+  }
 }
 
 .form-group input:focus,

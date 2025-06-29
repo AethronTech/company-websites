@@ -1,4 +1,4 @@
-/* Basic styles for Aethron Technology website */
+/* WEBS-34: Mobile First Responsive Styles for Aethron Technology website */
 
 /* Reset and base styles */
 * {
@@ -12,29 +12,87 @@ body {
   line-height: 1.6;
   color: #333;
   background-color: #fff;
+  /* Mobile-first: Base font size for mobile */
+  font-size: 16px;
 }
 
-/* Container */
+/* Container - Mobile First */
 .container {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 16px;
 }
 
-/* Typography */
+/* Small devices (480px and up) */
+@media (min-width: 30rem) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+/* Medium devices (768px and up) */
+@media (min-width: 48rem) {
+  .container {
+    max-width: 750px;
+    padding: 0 32px;
+  }
+}
+
+/* Large devices (992px and up) */
+@media (min-width: 62rem) {
+  .container {
+    max-width: 970px;
+  }
+}
+
+/* Extra large devices (1200px and up) */
+@media (min-width: 75rem) {
+  .container {
+    max-width: 1170px;
+  }
+}
+
+/* Typography - Mobile First */
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1rem;
   font-weight: 600;
   line-height: 1.3;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.5rem; }
-h4 { font-size: 1.25rem; }
+/* Mobile typography */
+h1 { font-size: 1.75rem; }  /* 28px */
+h2 { font-size: 1.5rem; }   /* 24px */
+h3 { font-size: 1.25rem; }  /* 20px */
+h4 { font-size: 1.125rem; } /* 18px */
+
+/* Tablet and up typography */
+@media (min-width: 48rem) {
+  h1 { font-size: 2.25rem; } /* 36px */
+  h2 { font-size: 1.875rem; } /* 30px */
+  h3 { font-size: 1.5rem; }   /* 24px */
+  h4 { font-size: 1.25rem; }  /* 20px */
+}
+
+/* Desktop typography */
+@media (min-width: 62rem) {
+  h1 { font-size: 2.5rem; }   /* 40px */
+  h2 { font-size: 2rem; }     /* 32px */
+  h3 { font-size: 1.5rem; }   /* 24px */
+  h4 { font-size: 1.25rem; }  /* 20px */
+}
 
 p {
   margin-bottom: 1rem;
+  /* Mobile-first: Slightly larger text for better readability */
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 48rem) {
+  p {
+    font-size: 1.125rem; /* 18px on tablet+ */
+    line-height: 1.7;
+  }
 }
 
 /* Links */
@@ -49,18 +107,32 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Buttons with Aethron Brand Colors */
+/* Buttons - Mobile First with Touch-Friendly Design */
 .btn {
   display: inline-block;
-  padding: 12px 24px;
+  /* Mobile: Larger padding for better touch targets */
+  padding: 16px 24px;
+  min-height: 44px; /* Minimum touch target size */
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 1rem;
   font-weight: 500;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease;
+  /* Mobile: Full width buttons by default */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Tablet and up: Inline buttons */
+@media (min-width: 48rem) {
+  .btn {
+    width: auto;
+    padding: 12px 24px;
+    display: inline-block;
+  }
 }
 
 .btn-primary {
@@ -86,31 +158,91 @@ a:hover {
   text-decoration: none;
 }
 
-/* Hero section - Blue background with white title and light gray text */
+.btn-large {
+  /* Mobile: Even larger touch targets for important buttons */
+  padding: 20px 32px;
+  font-size: 1.125rem;
+  min-height: 52px;
+}
+
+@media (min-width: 48rem) {
+  .btn-large {
+    padding: 16px 32px;
+    font-size: 1.125rem;
+  }
+}
+
+/* Hero section - Mobile First Design */
 .hero {
   background: #0066cc; /* Blue background */
   color: white; /* White text */
-  padding: 100px 0;
+  /* Mobile: Reduced padding for smaller screens */
+  padding: 60px 0;
   text-align: center;
 }
 
+/* Tablet and up: More spacious hero */
+@media (min-width: 48rem) {
+  .hero {
+    padding: 80px 0;
+  }
+}
+
+/* Desktop: Full hero spacing */
+@media (min-width: 62rem) {
+  .hero {
+    padding: 100px 0;
+  }
+}
+
 .hero-content h1 {
-  font-size: 3.2rem;
-  margin-bottom: 1.5rem;
+  /* Mobile: Smaller hero title */
+  font-size: 2rem;
+  margin-bottom: 1rem;
   font-weight: 700;
   line-height: 1.2;
   color: white; /* Ensure title is white */
 }
 
+/* Tablet: Medium hero title */
+@media (min-width: 48rem) {
+  .hero-content h1 {
+    font-size: 2.75rem;
+    margin-bottom: 1.25rem;
+  }
+}
+
+/* Desktop: Large hero title */
+@media (min-width: 62rem) {
+  .hero-content h1 {
+    font-size: 3.2rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
 .hero-subtitle {
-  font-size: 1.25rem;
+  /* Mobile: Smaller subtitle */
+  font-size: 1rem;
   margin-bottom: 1rem;
   color: #cccccc; /* Light gray for subtitle */
 }
 
+@media (min-width: 48rem) {
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 62rem) {
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+}
+
 .hero-description {
-  font-size: 1.2rem;
-  margin-bottom: 2.5rem;
+  /* Mobile: Readable description size */
+  font-size: 1rem;
+  margin-bottom: 2rem;
   color: #cccccc; /* Light gray for description text */
   max-width: 800px;
   margin-left: auto;
@@ -118,11 +250,36 @@ a:hover {
   line-height: 1.6;
 }
 
+@media (min-width: 48rem) {
+  .hero-description {
+    font-size: 1.125rem;
+    margin-bottom: 2.25rem;
+  }
+}
+
+@media (min-width: 62rem) {
+  .hero-description {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
 .hero-actions {
+  /* Mobile: Stack buttons vertically */
   display: flex;
+  flex-direction: column;
   gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+}
+
+/* Tablet and up: Horizontal layout */
+@media (min-width: 48rem) {
+  .hero-actions {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 
 /* Hero buttons - Use outline style like "about us" section */
@@ -156,26 +313,81 @@ section:nth-child(even) {
   background-color: #f8f9fa;
 }
 
-/* Services overview section - White blocks with blue titles */
+/* Services overview section - Mobile First */
 .services-overview {
-  padding: 80px 0;
+  /* Mobile: Reduced padding */
+  padding: 40px 0;
   background-color: #f8f9fa;
+}
+
+/* Tablet and up: More spacious */
+@media (min-width: 48rem) {
+  .services-overview {
+    padding: 60px 0;
+  }
+}
+
+/* Desktop: Full spacing */
+@media (min-width: 62rem) {
+  .services-overview {
+    padding: 80px 0;
+  }
 }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2.5rem;
-  margin-top: 2rem;
+  /* Mobile: Single column */
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+/* Small tablet: Try 2 columns if space allows */
+@media (min-width: 30rem) {
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+/* Tablet and up: Better grid */
+@media (min-width: 48rem) {
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.25rem;
+    margin-top: 2rem;
+  }
+}
+
+/* Desktop: Full spacing */
+@media (min-width: 62rem) {
+  .services-grid {
+    gap: 2.5rem;
+  }
 }
 
 .service-card {
   background: white; /* White background */
-  padding: 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  /* Mobile: Reduced padding */
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
   text-align: center;
+}
+
+/* Tablet and up: More padding */
+@media (min-width: 48rem) {
+  .service-card {
+    padding: 2.25rem;
+    border-radius: 16px;
+  }
+}
+
+/* Desktop: Full padding */
+@media (min-width: 62rem) {
+  .service-card {
+    padding: 2.5rem;
+  }
 }
 
 .service-card:hover {
