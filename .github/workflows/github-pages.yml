@@ -100,7 +100,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./aethron.tech/_site
+          path: _site
 
   # Deployment job
   deploy:
