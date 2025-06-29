@@ -1,20 +1,15 @@
-name: CI/CD Pipeline - Aethron.tech
+name: 🔍 Quality Checks & CI
 
-# WEBS-44: Complete GitHub Actions flow with linting on dev
-# WEBS-45: Add comprehensive quality checks (Lighthouse, Pa11y, enhanced HTML lint)
-# Triggers: push to main, dev, or any feature branch starting with WEBS-
+# WEBS-44, WEBS-45: Comprehensive CI/CD pipeline with strict quality gates
+# Note: Deployment happens via github-pages.yml when pushing to main
 on:
   push:
-    branches: 
-      - main
-      - dev
-      - 'WEBS-*'      # All WEBS feature branches
-      - 'feature/**'  # Legacy feature branches
-    paths: 
+    branches: [ dev ]  # Only run on dev - main triggers deployment
+    paths:
       - 'aethron.tech/**'
       - '.github/workflows/**'
   pull_request:
-    branches: [ main, dev ]
+    branches: [ dev, main ]
     paths:
       - 'aethron.tech/**'
       - '.github/workflows/**'
