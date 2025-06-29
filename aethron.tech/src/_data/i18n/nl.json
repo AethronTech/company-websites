@@ -73,6 +73,16 @@
     "company": "Aethron Technology",
     "tagline": "Mensgerichte Software Oplossingen",
     "copyright": "© 2025 Aethron Technology. Alle rechten voorbehouden.",
+    "rights": "Alle rechten voorbehouden.",
+    "quick_links": {
+      "title": "Navigatie"
+    },
+    "contact": {
+      "title": "Contactinfo"
+    },
+    "privacy": "Privacybeleid",
+    "terms": "Algemene Voorwaarden",
+    "sitemap": "Sitemap",
     "links": {
       "privacy": "Privacybeleid",
       "terms": "Algemene Voorwaarden",

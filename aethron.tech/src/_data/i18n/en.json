@@ -214,6 +214,16 @@
     "company": "Aethron Technology",
     "tagline": "People-Centric Software Solutions",
     "copyright": "© 2025 Aethron Technology. All rights reserved.",
+    "rights": "All rights reserved.",
+    "quick_links": {
+      "title": "Navigation"
+    },
+    "contact": {
+      "title": "Contact Info"
+    },
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "sitemap": "Sitemap",
     "links": {
       "privacy": "Privacy Policy",
       "terms": "Terms of Service",
