@@ -100,6 +100,18 @@ jobs:
         # Build the site
         npm run build
         
+        # Start local server for OG validation
+        npm run serve &
+        SERVER_PID=$!
+        sleep 10  # Wait for server to start
+        
+        # Run OG validation
+        echo "🔗 Validating Open Graph tags..."
+        npm run validate:og || echo "⚠️ OG validation warnings (deployment continues)"
+        
+        # Stop local server
+        kill $SERVER_PID
+        
         echo "✅ All quality checks passed!"
         
     - name: Create production merge

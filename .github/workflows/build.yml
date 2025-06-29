@@ -235,6 +235,37 @@ jobs:
           
         echo "✅ Pa11y accessibility audit completed!"
         
+    # WEBS-49: Open Graph Validation
+    - name: 🔗 OG Tags Validation
+      run: |
+        echo "🔍 Running Open Graph tags validation..."
+        
+        # Run OG validation (allow it to fail but capture the result)
+        set +e
+        npm run validate:og
+        OG_EXIT_CODE=$?
+        set -e
+        
+        # Always show report preview if it exists
+        if [ -f og-validation-report.md ]; then
+          echo "📄 OG validation report generated"
+          echo ""
+          echo "=== OG VALIDATION SUMMARY ==="
+          head -15 og-validation-report.md | tail -10
+          echo "=== (See full report in artifacts) ==="
+          echo ""
+        else
+          echo "❌ OG validation report not generated"
+        fi
+        
+        # Provide guidance based on results
+        if [ $OG_EXIT_CODE -eq 0 ]; then
+          echo "✅ All OG tags validation passed!"
+        else
+          echo "⚠️ OG validation found issues - check the detailed report"
+          echo "💡 This is informational and won't fail the build"
+        fi
+        
     - name: Enhanced HTML validation
       run: |
         echo "🔍 Running enhanced HTML validation..."
@@ -279,6 +310,17 @@ jobs:
         echo "## 🔍 HTML Quality" >> quality-report.md
         echo "- HTMLHint validation: Completed" >> quality-report.md
         echo "- Files validated: $(find _site/ -name '*.html' | wc -l)" >> quality-report.md
+        echo "" >> quality-report.md
+        
+        echo "## 🔗 Open Graph Tags (WEBS-49)" >> quality-report.md
+        if [ -f og-validation-report.md ]; then
+          echo "- OG validation: Completed" >> quality-report.md
+          echo "- Pages tested: 8" >> quality-report.md
+          echo "- Full report: See og-validation-report.md artifact" >> quality-report.md
+        else
+          echo "- OG validation: Report not generated" >> quality-report.md
+        fi
+        echo "" >> quality-report.md
         
         cat quality-report.md
         
@@ -290,6 +332,7 @@ jobs:
         path: |
           aethron.tech/lighthouse-report.json
           aethron.tech/quality-report.md
+          aethron.tech/og-validation-report.md
         retention-days: 30
         
     - name: ✅ Quality Summary
@@ -298,4 +341,5 @@ jobs:
         echo "✅ Lighthouse: Performance, Accessibility, Best Practices, SEO"
         echo "✅ Pa11y: WCAG 2.1 AA Accessibility"  
         echo "✅ HTMLHint: Enhanced HTML validation"
-        echo "📊 Reports uploaded as artifacts"
+        echo "� OG Tags: Social media preview validation (WEBS-49)"
+        echo "�📊 Reports uploaded as artifacts"

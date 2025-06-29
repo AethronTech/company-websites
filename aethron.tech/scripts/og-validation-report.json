@@ -1,0 +1,62 @@
+{
+  "timestamp": "2025-06-29T17:23:12.150Z",
+  "baseUrl": "http://localhost:8080",
+  "summary": {
+    "total": 8,
+    "passed": 0,
+    "failed": 8,
+    "successRate": "0%"
+  },
+  "errors": [
+    "Homepage EN: undefined",
+    "About EN: undefined",
+    "Solutions EN: undefined",
+    "Contact EN: undefined",
+    "Homepage NL: undefined",
+    "About NL: undefined",
+    "Solutions NL: undefined",
+    "Contact NL: undefined"
+  ],
+  "details": [
+    {
+      "page": "Homepage EN",
+      "url": "http://localhost:8080/",
+      "valid": false
+    },
+    {
+      "page": "About EN",
+      "url": "http://localhost:8080/about/",
+      "valid": false
+    },
+    {
+      "page": "Solutions EN",
+      "url": "http://localhost:8080/solutions/",
+      "valid": false
+    },
+    {
+      "page": "Contact EN",
+      "url": "http://localhost:8080/contact/",
+      "valid": false
+    },
+    {
+      "page": "Homepage NL",
+      "url": "http://localhost:8080/nl/",
+      "valid": false
+    },
+    {
+      "page": "About NL",
+      "url": "http://localhost:8080/nl/over/",
+      "valid": false
+    },
+    {
+      "page": "Solutions NL",
+      "url": "http://localhost:8080/nl/oplossingen/",
+      "valid": false
+    },
+    {
+      "page": "Contact NL",
+      "url": "http://localhost:8080/nl/contact/",
+      "valid": false
+    }
+  ]
+}
