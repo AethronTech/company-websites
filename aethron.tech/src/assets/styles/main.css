@@ -86,7 +86,7 @@ a:hover {
   text-decoration: none;
 }
 
-/* Hero section - Blue background with white text */
+/* Hero section - Blue background with white title and light gray text */
 .hero {
   background: #0066cc; /* Blue background */
   color: white; /* White text */
@@ -99,18 +99,19 @@ a:hover {
   margin-bottom: 1.5rem;
   font-weight: 700;
   line-height: 1.2;
+  color: white; /* Ensure title is white */
 }
 
 .hero-subtitle {
   font-size: 1.25rem;
   margin-bottom: 1rem;
-  opacity: 0.9;
+  color: #cccccc; /* Light gray for subtitle */
 }
 
 .hero-description {
   font-size: 1.2rem;
   margin-bottom: 2.5rem;
-  opacity: 0.95;
+  color: #cccccc; /* Light gray for description text */
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -122,6 +123,28 @@ a:hover {
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+/* Hero buttons - Use outline style like "about us" section */
+.hero .btn-primary,
+.hero .btn-secondary {
+  background: white; /* White background when not hovering */
+  color: #ff6600; /* Orange text */
+  border: 2px solid #ff6600; /* Orange border */
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.hero .btn-primary:hover,
+.hero .btn-secondary:hover {
+  background: #ff6600; /* Orange background on hover */
+  color: white; /* White text on hover */
+  text-decoration: none;
+  transform: translateY(-2px);
 }
 
 /* Sections */
