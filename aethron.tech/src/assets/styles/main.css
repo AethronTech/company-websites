@@ -49,7 +49,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Buttons */
+/* Buttons with Aethron Brand Colors */
 .btn {
   display: inline-block;
   padding: 12px 24px;
@@ -64,32 +64,32 @@ a:hover {
 }
 
 .btn-primary {
-  background-color: #0066cc;
-  color: white;
+  background-color: #ff6600; /* Orange background */
+  color: white; /* White text */
 }
 
 .btn-primary:hover {
-  background-color: #004499;
+  background-color: #e55a00; /* Darker orange on hover */
   color: white;
   text-decoration: none;
 }
 
 .btn-secondary {
-  background-color: transparent;
-  color: #0066cc;
-  border: 2px solid #0066cc;
+  background-color: #ff6600; /* Orange background */
+  color: white; /* White text */
+  border: 2px solid #ff6600;
 }
 
 .btn-secondary:hover {
-  background-color: #0066cc;
+  background-color: #e55a00; /* Darker orange on hover */
   color: white;
   text-decoration: none;
 }
 
-/* Hero section */
+/* Hero section - Blue background with white text */
 .hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: #0066cc; /* Blue background */
+  color: white; /* White text */
   padding: 100px 0;
   text-align: center;
 }
@@ -133,7 +133,7 @@ section:nth-child(even) {
   background-color: #f8f9fa;
 }
 
-/* Services overview section */
+/* Services overview section - White blocks with blue titles */
 .services-overview {
   padding: 80px 0;
   background-color: #f8f9fa;
@@ -147,7 +147,7 @@ section:nth-child(even) {
 }
 
 .service-card {
-  background: white;
+  background: white; /* White background */
   padding: 2.5rem;
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.08);
@@ -161,11 +161,12 @@ section:nth-child(even) {
 }
 
 .service-icon {
-  font-size: 3rem;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
   height: 80px;
   width: 80px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #ff6600; /* Orange background for circular icon */
+  color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -174,22 +175,22 @@ section:nth-child(even) {
 }
 
 .service-card h3 {
-  color: #2c3e50;
+  color: #0066cc; /* Blue title */
   margin-bottom: 1.5rem;
   font-size: 1.4rem;
   font-weight: 600;
 }
 
 .service-card p {
-  color: #5a6c7d;
+  color: #000000; /* Black text */
   line-height: 1.7;
   font-size: 1rem;
 }
 
-/* About summary section */
+/* About summary section - Black titles and text on gray background */
 .about-summary {
   padding: 80px 0;
-  background: white;
+  background: #f5f5f5; /* Gray background */
 }
 
 .summary-grid {
@@ -205,30 +206,31 @@ section:nth-child(even) {
   border-radius: 16px;
   transition: all 0.3s ease;
   text-align: left;
+  background: white; /* White card background on gray section */
 }
 
 .summary-card:hover {
-  border-color: #667eea;
+  border-color: #0066cc; /* Blue border on hover */
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 12px 30px rgba(0, 102, 204, 0.1);
 }
 
 .summary-card h3 {
-  color: #2c3e50;
+  color: #000000; /* Black title */
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
 }
 
 .summary-card p {
-  color: #5a6c7d;
+  color: #000000; /* Black text */
   line-height: 1.7;
   margin-bottom: 2rem;
 }
 
 .btn-outline {
   background: transparent;
-  color: #667eea;
-  border: 2px solid #667eea;
+  color: #ff6600; /* Orange text for outline button */
+  border: 2px solid #ff6600; /* Orange border */
   padding: 12px 24px;
   border-radius: 8px;
   font-weight: 500;
@@ -238,8 +240,8 @@ section:nth-child(even) {
 }
 
 .btn-outline:hover {
-  background: #667eea;
-  color: white;
+  background: #ff6600; /* Orange background on hover */
+  color: white; /* White text on hover */
   text-decoration: none;
   transform: translateY(-2px);
 }
