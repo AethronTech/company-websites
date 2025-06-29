@@ -1,0 +1,27 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  {% for item in collections.all %}
+    {% if not item.data.draft and item.url %}
+      <url>
+        <loc>{{ site.url }}{{ item.url }}</loc>
+        {% if item.data.lang == 'en' %}
+          <xhtml:link rel="alternate" hreflang="nl" href="{{ site.url }}{{ item.url | alternateUrl('nl') }}" />
+        {% elif item.data.lang == 'nl' %}
+          <xhtml:link rel="alternate" hreflang="en" href="{{ site.url }}{{ item.url | alternateUrl('en') }}" />
+        {% endif %}
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ item.url | alternateUrl('en') }}" />
+        {% if item.data.modified %}
+          <lastmod>{{ item.data.modified | formatDate('en', 'iso') }}</lastmod>
+        {% elif item.date %}
+          <lastmod>{{ item.date | formatDate('en', 'iso') }}</lastmod>
+        {% endif %}
+        <changefreq>{{ item.data.changefreq or 'monthly' }}</changefreq>
+        <priority>{{ item.data.priority or '0.5' }}</priority>
+      </url>
+    {% endif %}
+  {% endfor %}
+</urlset>

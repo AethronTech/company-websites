@@ -1,4 +1,5 @@
 module.exports = function(eleventyConfig) {
+
   // Add i18n filter for translations
   eleventyConfig.addFilter("t", function(key, language) {
     // If language is not provided, try to get it from the current page context
