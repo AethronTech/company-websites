@@ -22,6 +22,8 @@
     "pa11y": "pa11y http://localhost:8080 --reporter json > pa11y-report.json",
     "pa11y:ci": "pa11y http://localhost:8080 --reporter json --threshold 10",
     "quality:check": "npm run lighthouse:ci && npm run pa11y:ci",
+    "deploy:check": "npm run lint:check && npm run build && echo '✅ Ready for deployment!'",
+    "deploy:prep": "npm run deploy:check && echo '🚀 Run the GitHub Actions deployment workflow to deploy to production'",
     "preview": "eleventy --serve --port=8080"
   },
   "keywords": [
