@@ -78,7 +78,7 @@
                data-lang="{{ language.code }}"
                lang="{{ language.code }}"
                hreflang="{{ language.code }}"
-               aria-current="{{ 'page' if language.code == (lang or 'en') else 'false' }}">>>
+               aria-current="{{ 'page' if language.code == (lang or 'en') else 'false' }}">
               <span class="lang-flag">{{ '🇺🇸' if language.code == 'en' else '🇳🇱' }}</span>
               <span class="lang-name">{{ language.nativeName }}</span>
               {% if language.code == (lang or 'en') %}
