@@ -23,6 +23,9 @@ This folder contains all the deliverable documentation for the Aethron.tech webs
 - **[SBOM.md](./SBOM.md)** - Manual Software Bill of Materials
 - **[SBOM-CI-CD-INTEGRATION.md](./SBOM-CI-CD-INTEGRATION.md)** - Guide for automated SBOM integration
 
+### Service Quality & Performance
+- **[SERVICE-LEVEL-OBJECTIVES.md](./SERVICE-LEVEL-OBJECTIVES.md)** - Measurable service commitments and SLO framework
+
 ## 🚀 Project Status
 
 ✅ **COMPLETED**: Full CI/CD pipeline implementation with GitHub Actions  
@@ -30,6 +33,7 @@ This folder contains all the deliverable documentation for the Aethron.tech webs
 ✅ **COMPLETED**: GitHub Pages deployment automation  
 ✅ **COMPLETED**: DNS configuration and go-live  
 ✅ **COMPLETED**: Comprehensive documentation suite  
+✅ **COMPLETED**: Service Level Objectives and monitoring framework  
 
 ## 📁 Quick Navigation
 
@@ -46,6 +50,7 @@ This folder contains all the deliverable documentation for the Aethron.tech webs
 | SECURITY-OVERVIEW | Comprehensive security documentation | Security/Compliance |
 | SBOM | Security & dependency tracking | Security/Compliance |
 | SBOM-CI-CD-INTEGRATION | Future automation guide | DevOps/Security |
+| SERVICE-LEVEL-OBJECTIVES | Measurable service commitments & SLOs | Operations/Management |
 
 ## 🌐 Live Site
 
