@@ -8,6 +8,9 @@ This folder contains all the deliverable documentation for the Aethron.tech webs
 - **[GO-LIVE-STEPS.md](./GO-LIVE-STEPS.md)** - Complete go-live instructions and DNS setup guide
 - **[DEPLOYMENT-OVERVIEW.md](./DEPLOYMENT-OVERVIEW.md)** - Executive summary of the deployment process
 
+### Operations & Monitoring
+- **[MONITORING-INCIDENT-RESPONSE.md](./MONITORING-INCIDENT-RESPONSE.md)** - Comprehensive monitoring and incident management
+
 ### Technical Documentation
 - **[CI-CD-PIPELINE-DOCUMENTATION.md](./CI-CD-PIPELINE-DOCUMENTATION.md)** - Detailed CI/CD pipeline documentation
 - **[TECH-STACK-DOCUMENTATION.md](./TECH-STACK-DOCUMENTATION.md)** - Complete technology stack overview
@@ -32,6 +35,7 @@ This folder contains all the deliverable documentation for the Aethron.tech webs
 |----------|---------|----------|
 | GO-LIVE-STEPS | Step-by-step deployment guide | DevOps/Technical |
 | DEPLOYMENT-OVERVIEW | High-level project summary | Management/Stakeholders |
+| MONITORING-INCIDENT-RESPONSE | Monitoring and incident management | Operations/DevOps |
 | CI-CD-PIPELINE-DOCUMENTATION | Technical pipeline details | Developers/DevOps |
 | TECH-STACK-DOCUMENTATION | Technology inventory | Technical Teams |
 | ARCHITECTURE-DOCUMENTATION | System design & flow | Architects/Developers |
