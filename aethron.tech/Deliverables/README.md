@@ -10,6 +10,7 @@ This folder contains all the deliverable documentation for the Aethron.tech webs
 
 ### Operations & Monitoring
 - **[MONITORING-INCIDENT-RESPONSE.md](./MONITORING-INCIDENT-RESPONSE.md)** - Comprehensive monitoring and incident management
+- **[BACKUP-RECOVERY-PLAN.md](./BACKUP-RECOVERY-PLAN.md)** - Disaster recovery and business continuity planning
 
 ### Technical Documentation
 - **[CI-CD-PIPELINE-DOCUMENTATION.md](./CI-CD-PIPELINE-DOCUMENTATION.md)** - Detailed CI/CD pipeline documentation
@@ -37,6 +38,7 @@ This folder contains all the deliverable documentation for the Aethron.tech webs
 | GO-LIVE-STEPS | Step-by-step deployment guide | DevOps/Technical |
 | DEPLOYMENT-OVERVIEW | High-level project summary | Management/Stakeholders |
 | MONITORING-INCIDENT-RESPONSE | Monitoring and incident management | Operations/DevOps |
+| BACKUP-RECOVERY-PLAN | Disaster recovery and business continuity | Operations/Management |
 | CI-CD-PIPELINE-DOCUMENTATION | Technical pipeline details | Developers/DevOps |
 | TECH-STACK-DOCUMENTATION | Technology inventory | Technical Teams |
 | ARCHITECTURE-DOCUMENTATION | System design & flow | Architects/Developers |
