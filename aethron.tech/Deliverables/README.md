@@ -15,6 +15,7 @@ This folder contains all the deliverable documentation for the Aethron.tech webs
 - **[CI-CD-PIPELINE-DOCUMENTATION.md](./CI-CD-PIPELINE-DOCUMENTATION.md)** - Detailed CI/CD pipeline documentation
 - **[TECH-STACK-DOCUMENTATION.md](./TECH-STACK-DOCUMENTATION.md)** - Complete technology stack overview
 - **[ARCHITECTURE-DOCUMENTATION.md](./ARCHITECTURE-DOCUMENTATION.md)** - System architecture with diagrams
+- **[TEST-STRATEGY.md](./TEST-STRATEGY.md)** - Comprehensive testing strategy and coverage
 
 ### Security & Compliance
 - **[SECURITY-OVERVIEW.md](./SECURITY-OVERVIEW.md)** - Comprehensive security documentation
@@ -39,6 +40,7 @@ This folder contains all the deliverable documentation for the Aethron.tech webs
 | CI-CD-PIPELINE-DOCUMENTATION | Technical pipeline details | Developers/DevOps |
 | TECH-STACK-DOCUMENTATION | Technology inventory | Technical Teams |
 | ARCHITECTURE-DOCUMENTATION | System design & flow | Architects/Developers |
+| TEST-STRATEGY | Comprehensive testing approach | QA/Developers |
 | SECURITY-OVERVIEW | Comprehensive security documentation | Security/Compliance |
 | SBOM | Security & dependency tracking | Security/Compliance |
 | SBOM-CI-CD-INTEGRATION | Future automation guide | DevOps/Security |
