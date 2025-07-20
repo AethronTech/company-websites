@@ -37,6 +37,7 @@
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
+
   .contact-grid {
     grid-template-columns: 450px 450px;
     gap: 6rem;
@@ -61,12 +62,14 @@
     width: auto;
     margin: 0 auto;
   }
+
   .contact-info {
     margin-left: 0;
     min-width: 450px !important;
     max-width: 450px !important;
     width: 450px !important;
   }
+
   .form-sidebar {
     margin-right: 0;
     width: 450px;
@@ -80,6 +83,7 @@
     padding-left: 0.25rem;
     padding-right: 0.25rem;
   }
+
   .contact-grid {
     gap: 8rem;
   }
@@ -391,6 +395,7 @@
   justify-content: center;
   background: var(--aethron-gray-light);
 }
+
 .not-found-content {
   text-align: center;
   background: var(--aethron-white);
@@ -398,12 +403,14 @@
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
 }
+
 .not-found-title {
   font-size: 6rem;
   font-weight: 800;
   color: var(--aethron-orange);
   margin-bottom: 1rem;
 }
+
 .not-found-message {
   font-size: 1.5rem;
   color: var(--aethron-blue);
