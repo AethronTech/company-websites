@@ -105,4 +105,5 @@ jobs:
           password: ${{ secrets.SFTP_PASSWORD }}
           port: ${{ secrets.SFTP_PORT }}
           source: "aethron.tech/_site/*"
-          target: "/customers/6/6/3/cxg5ze2ln/webroots/8a1d294a"
+          target: "/customers/6/6/3/cxg5ze2ln/webroots/8a1d294a/"
+          strip_components: 2
