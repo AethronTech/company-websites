@@ -1,0 +1,4 @@
+# Netlify redirects
+
+# Redirect all not-found URLs to the custom 404 page
+/*    /404.html   404

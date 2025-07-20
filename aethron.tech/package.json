@@ -1,6 +1,6 @@
 {
   "name": "aethron.tech",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Official website for Aethron Technologies - cutting-edge technology solutions and digital transformation",
   "main": "src/index.js",
   "scripts": {
