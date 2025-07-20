@@ -1,4 +1,4 @@
-name: 🚀 Deploy to GitHub Pages
+name: 🚀 Deploy to one.com via SFTP
 
 on:
   push:
@@ -10,13 +10,9 @@ on:
         required: false
         type: string
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -37,9 +33,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: aethron.tech/package-lock.json
           
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        
       - name: Install dependencies
         run: cd aethron.tech && npm ci
         
@@ -85,11 +78,9 @@ jobs:
           
       - name: Prepare deployment files
         run: |
-          echo "📦 Preparing files for GitHub Pages deployment..."
-          # Copy built site to root level for GitHub Pages
+          echo "📦 Preparing files for SFTP deployment..."
+          # Copy built site to root level for deployment
           cp -r aethron.tech/_site/* ./
-          # Copy .nojekyll file to prevent Jekyll processing
-          cp aethron.tech/.nojekyll ./ 2>/dev/null || echo "No .nojekyll file found"
           # Debug: show what files we're uploading
           echo "Files to be uploaded:"
           ls -la
@@ -106,32 +97,12 @@ jobs:
             aethron.tech/og-validation-report.md
           retention-days: 30
           
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to one.com via SFTP
+        uses: appleboy/scp-action@v0.1.7
         with:
-          # Upload entire repository root which now contains the site files
-          path: '.'
-
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-        
-      - name: Deployment summary
-        run: |
-          echo "# 🎉 GitHub Pages Deployment Complete" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "## Deployment Details" >> $GITHUB_STEP_SUMMARY
-          echo "- **Site URL:** ${{ steps.deployment.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Deployed from:** main branch" >> $GITHUB_STEP_SUMMARY
-          echo "- **Build time:** $(date -u)" >> $GITHUB_STEP_SUMMARY
-          echo "- **Release notes:** ${{ github.event.inputs.release_notes || 'Automatic deployment from main branch' }}" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "✅ **Site is now live!** 🚀" >> $GITHUB_STEP_SUMMARY
+          host: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          port: ${{ secrets.SFTP_PORT }}
+          source: "aethron.tech/_site/*"
+          target: "public_html"
