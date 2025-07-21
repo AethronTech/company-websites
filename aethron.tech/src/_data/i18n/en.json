@@ -25,37 +25,37 @@
       "subtitle": "Comprehensive Technology Solutions",
       "items": [
         {
-          "icon": "🔧",
-          "title": "Optimized IT Processes",
-          "description": "Smart technology supports your service delivery without losing sight of human contact. Thanks to our approach — based on ITIL best practices and enhanced by intelligent automation — we make IT processes faster, clearer, and more reliable. Fewer errors, shorter lead times, more space for service and collaboration."
+          "icon": "\ud83d\udd27",
+          "title": "Intelligent IT Service Management with Caelis",
+          "description": "Optimize your ICT services with Caelis, our intuitive ITSM solution. Based on ITIL best practices, Caelis makes incident management and future processes faster, clearer, and more reliable. In the coming months, we are integrating AI-driven automation to further streamline your workflows. Reduce errors, shorten lead times, and create more space for strategic collaboration within your team."
         },
         {
           "icon": "⚡",
-          "title": "Accelerated Software Development",
-          "description": "Whether you're working on internal tools or customer-facing applications: our flexible solutions and configurable building blocks accelerate every development cycle. By combining Agile methodologies with smart building blocks, we reduce manual work and create space for innovation, collaboration, and focus."
+          "title": "Agile Software Components & Accelerated Development",
+          "description": "Accelerate the development of internal tools and customer-facing applications with our configurable software components. By combining Agile methodologies with AI-driven building blocks, we streamline your development process and reduce manual work. This not only enables faster innovation and deeper focus, but also allows us to deliver highly competitive pricing and high-quality products through advanced automation. Think of Celesta for robust DNS and hosting components that integrate directly into your ICT solutions."
         },
         {
           "icon": "📈",
-          "title": "Step-by-Step Digital Transformation",
-          "description": "We believe in real change, not big bang transitions. Together we build step by step towards a future-oriented IT environment that works for your team. Whether it's small optimizations or a broader trajectory with AI components: we think strategically and deliver technology that's ready for tomorrow — and works for your people today."
+          "title": "Strategic Digital Transformation with AI",
+          "description": "We guide IT departments and IT companies through a strategic, step-by-step digital transformation. We don't believe in 'big bang' transitions, but in targeted optimizations and innovation projects tailored to your organization. Together, we build a future-proof ICT environment, combining AI techniques with best-practice frameworks to quickly deliver solutions that work today and are ready for tomorrow."
         }
       ]
     },
     "about_summary": {
       "title": "About Aethron Technologies",
-      "description": "We are Aethron Technologies, dedicated to creating people-centric software solutions that truly work. Our approach combines technical excellence with human-centered design.",
+      "description": "We are Aethron Technologies, your strategic partner for people-centric ICT solutions that truly work. We are dedicated to empowering IT departments and IT companies by combining technical excellence with a deep understanding of human processes. Discover how our innovative approach, enriched with AI and best-practice frameworks, can help realize your digital ambitions.",
       "link_text": "Learn more about our story",
       "link_url": "/about/"
     },
     "solutions_summary": {
       "title": "Our Solutions",
-      "description": "From configurable packages to custom development, we deliver technology solutions that empower your team and accelerate your digital transformation.",
+      "description": "From configurable software packages like Caelis (ITSM) to flexible software components, we deliver people-centric ICT solutions that empower your team and accelerate your digital transformation. Discover how our innovative approach with AI and best practices can help your organization move forward.",
       "link_text": "Explore our solutions",
       "link_url": "/solutions/"
     },
     "contact_summary": {
       "title": "Get In Touch",
-      "description": "Ready to transform your technology? Let's discuss how we can help your team achieve more with people-centric software solutions.",
+      "description": "Ready to tackle your ICT challenges with people-centric software solutions? Whether it's optimizing your ITSM processes with Caelis, integrating flexible software components via Celesta, or a strategic digital transformation: we're here to help your team achieve more. Contact us for a no-obligation conversation!",
       "link_text": "Contact us",
       "link_url": "/contact/"
     }

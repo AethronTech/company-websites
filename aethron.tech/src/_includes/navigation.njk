@@ -37,13 +37,21 @@
             {{ 'navigation.about' | t(lang or 'en') }}
           </a>
         </li>
-        <li role="none">
-          <a href="{{ routes.routes[lang or 'en'].solutions }}" 
-             class="nav-link {{ 'active' if routes.routes[lang or 'en'].solutions in page.url }}" 
-             role="menuitem"
-             aria-current="{{ 'page' if routes.routes[lang or 'en'].solutions in page.url else 'false' }}">
+        <li role="none" class="nav-item nav-solutions has-submenu">
+          <button class="nav-link nav-solutions-toggle" type="button" aria-haspopup="true" aria-expanded="false">
             {{ 'navigation.solutions' | t(lang or 'en') }}
-          </a>
+            <svg class="submenu-arrow" width="12" height="8" viewBox="0 0 12 8" fill="currentColor" aria-hidden="true"><path d="M6 8L0 2L1.4 0.6L6 5.2L10.6 0.6L12 2L6 8Z"/></svg>
+          </button>
+          <ul class="submenu" role="menu" aria-hidden="true">
+            <li role="none">
+              <a href="{{ routes.routes[lang or 'en'].solutions }}" class="nav-link" role="menuitem">
+                {% if lang == 'nl' %}Alle Oplossingen{% else %}All Solutions{% endif %}
+              </a>
+            </li>
+            <li role="none">
+              <a href="{{ '/nl/caelis/' if lang == 'nl' else '/caelis/' }}" class="nav-link" role="menuitem">Caelis</a>
+            </li>
+          </ul>
         </li>
         <li role="none">
           <a href="{{ routes.routes[lang or 'en'].contact }}" 
@@ -94,3 +102,87 @@
     </div>
   </div>
 </nav>
+
+<script>
+// Solutions submenu toggle (click only)
+document.addEventListener('DOMContentLoaded', function() {
+  var solutionsToggle = document.querySelector('.nav-solutions-toggle');
+  var submenu = document.querySelector('.nav-solutions .submenu');
+  var navItem = document.querySelector('.nav-solutions');
+
+  if (solutionsToggle && submenu && navItem) {
+    // Toggle submenu on click
+    solutionsToggle.addEventListener('click', function(e) {
+      var expanded = solutionsToggle.getAttribute('aria-expanded') === 'true';
+      solutionsToggle.setAttribute('aria-expanded', !expanded);
+      submenu.setAttribute('aria-hidden', expanded);
+      submenu.classList.toggle('open', !expanded);
+      e.stopPropagation();
+    });
+    // Close submenu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!navItem.contains(e.target)) {
+        solutionsToggle.setAttribute('aria-expanded', false);
+        submenu.setAttribute('aria-hidden', true);
+        submenu.classList.remove('open');
+      }
+    });
+  }
+});
+</script>
+<style>
+/* Ensure nav-menu is horizontal and submenu is absolute below Solutions */
+.nav-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+}
+.nav-item.has-submenu {
+  position: relative;
+}
+.nav-solutions-toggle {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.submenu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  min-width: 180px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  z-index: 100;
+}
+.submenu.open {
+  display: block;
+}
+.submenu li {
+  width: 100%;
+}
+.submenu .nav-link {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  color: #333;
+  text-align: left;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.submenu .nav-link:hover {
+  background: #f8f9fa;
+  color: #f60;
+}
+</style>
