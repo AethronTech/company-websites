@@ -97,6 +97,10 @@ jobs:
     - name: Install dependencies
       run: npm ci
       
+    - name: Check for vulnerabilities (npm audit)
+      run: npm audit --audit-level=moderate --production
+      continue-on-error: false
+      
     - name: Build website
       run: npm run build
       env:
@@ -124,6 +128,31 @@ jobs:
         name: aethron-tech-build-node${{ matrix.node-version }}
         path: aethron.tech/_site/
         retention-days: 7
+
+    - name: Generate SBOM (CycloneDX)
+      run: npm run sbom:generate
+      continue-on-error: false
+
+    - name: Upload SBOM artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: sbom
+        path: aethron.tech/sbom/sbom.json
+        retention-days: 30
+
+    - name: Run npm audit (dependency vulnerability scan)
+      run: |
+        echo "🔍 Running npm audit for vulnerabilities..."
+        npm audit --audit-level=moderate --json > audit-report.json || true
+        cat audit-report.json | jq '.metadata.vulnerabilities' || true
+        if grep -q '"critical": 0' audit-report.json && grep -q '"high": 0' audit-report.json; then
+          echo "✅ No critical or high vulnerabilities found."
+        else
+          echo "⚠️ Vulnerabilities found. See audit-report.json for details."
+        fi
+      continue-on-error: true
+      env:
+        NODE_ENV: ci
 
   # Job 3: Quality Checks (Lighthouse, Pa11y, Performance) - runs after build
   quality:
@@ -277,6 +306,29 @@ jobs:
         
         echo "✅ Enhanced HTML validation completed!"
         
+    - name: Detect Lighthouse performance regression
+      run: |
+        echo "🔍 Checking for Lighthouse performance regression..."
+        PERF_SCORE=$(node -e "console.log(Math.round(JSON.parse(require('fs').readFileSync('./lighthouse-report.json', 'utf8')).categories.performance.score * 100))")
+        BASELINE_FILE="lighthouse-baseline.json"
+        THRESHOLD=5
+        if [ -f "$BASELINE_FILE" ]; then
+          BASELINE_SCORE=$(node -e "console.log(Math.round(JSON.parse(require('fs').readFileSync('$BASELINE_FILE', 'utf8')).categories.performance.score * 100))")
+          echo "Baseline performance score: $BASELINE_SCORE"
+          echo "Current performance score: $PERF_SCORE"
+          if [ $((BASELINE_SCORE - PERF_SCORE)) -gt $THRESHOLD ]; then
+            echo "❌ Performance regression detected! Score dropped by more than $THRESHOLD points."
+            exit 1
+          else
+            echo "✅ No significant performance regression detected."
+          fi
+        else
+          echo "No baseline found. Saving current Lighthouse report as baseline."
+          cp lighthouse-report.json $BASELINE_FILE
+        fi
+      env:
+        NODE_ENV: ci
+        
     - name: Generate quality report
       if: always()
       run: |
@@ -338,3 +390,133 @@ jobs:
         echo "✅ HTMLHint: Enhanced HTML validation"
         echo "� OG Tags: Social media preview validation (WEBS-49)"
         echo "�📊 Reports uploaded as artifacts"
+
+  # Job 4: Create .env from GitHub Secrets
+  env:
+    name: Create .env from GitHub Secrets
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Create .env file from GitHub Secrets
+      run: |
+        echo "SMTP_HOST=${{ secrets.SMTP_HOST }}" >> aethron.tech/.env
+        echo "SMTP_USER=${{ secrets.SMTP_USER }}" >> aethron.tech/.env
+        echo "SMTP_PASS=${{ secrets.SMTP_PASS }}" >> aethron.tech/.env
+        echo "CONTACT_RECEIVER=${{ secrets.CONTACT_RECEIVER }}" >> aethron.tech/.env
+        echo "SMTP_PORT=${{ secrets.SMTP_PORT }}" >> aethron.tech/.env
+
+  # Job 5: Dependency Review (GitHub Action)
+  dependency-review:
+    name: Dependency Review (GitHub Action)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Dependency Review Action
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high
+          comment-summary-in-pr: true
+          allow-licenses: MIT,Apache-2.0,BSD-2-Clause,BSD-3-Clause,ISC
+          # Adjust allowed licenses as needed
+          
+  # Job 6: Incident Notification (GitHub Issue)
+  incident-notify:
+    name: Incident Notification (GitHub Issue)
+    runs-on: ubuntu-latest
+    needs: [lint, build, quality, env, dependency-review]
+    if: failure()
+    steps:
+      - name: Create GitHub Issue for Incident
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const failedJobs = [
+              'lint',
+              'build',
+              'quality',
+              'env',
+              'dependency-review'
+            ].filter(job => core.getInput(`needs.${job}.result`) === 'failure');
+            const title = `🚨 CI Incident: Workflow failed on ${{ github.ref }}`;
+            const body = `### Incident detected\n\n- **Workflow:** ${{ github.workflow }}\n- **Branch/Ref:** ${{ github.ref }}\n- **Commit:** ${{ github.sha }}\n- **Failed Jobs:** ${failedJobs.join(', ') || 'Unknown'}\n- **Actor:** ${{ github.actor }}\n- **Run:** [View run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})\n\nPlease investigate and resolve the incident.\n`;
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body,
+              labels: ['ci-incident', 'automated']
+            });
+            
+  # Job 7: Error Budget Tracking & Alerting
+  error-budget:
+    name: Error Budget Tracking & Alerting
+    runs-on: ubuntu-latest
+    needs: [lint, build, quality, env, dependency-review]
+    if: always()
+    steps:
+      - name: Track error budget in GitHub Issue
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // Settings
+            const ERROR_BUDGET_ISSUE_TITLE = '🚦 CI/CD Error Budget Log';
+            const ERROR_BUDGET_ALERT_THRESHOLD = 0.05; // 5% error budget
+            const WINDOW_SIZE = 30; // Last 30 runs
+            const runStatus = '${{ job.status }}';
+            const runTime = new Date().toISOString();
+            // 1. Find or create the error budget log issue
+            let issue;
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'error-budget-log',
+              per_page: 5
+            });
+            issue = issues.find(i => i.title === ERROR_BUDGET_ISSUE_TITLE);
+            if (!issue) {
+              const { data: newIssue } = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: ERROR_BUDGET_ISSUE_TITLE,
+                body: 'This issue logs the last 30 CI/CD workflow results for error budget tracking.\n\nFormat: `timestamp | status | run_id`',
+                labels: ['error-budget-log', 'automated']
+              });
+              issue = newIssue;
+            }
+            // 2. Append this run to the log (as a comment)
+            const logLine = `${runTime} | ${runStatus} | ${{ github.run_id }}`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              body: logLine
+            });
+            // 3. Get last WINDOW_SIZE results
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              per_page: WINDOW_SIZE,
+              direction: 'desc',
+              sort: 'created'
+            });
+            const recent = comments.slice(0, WINDOW_SIZE).map(c => c.body);
+            const failures = recent.filter(l => l.includes('failure')).length;
+            const errorRate = failures / Math.max(recent.length, 1);
+            // 4. Alert if error budget exceeded
+            if (errorRate > ERROR_BUDGET_ALERT_THRESHOLD) {
+              const alertTitle = `🚨 Error Budget Exceeded: ${Math.round(errorRate*100)}% failures in last ${recent.length} runs`;
+              const alertBody = `Error budget exceeded!\n\n- **Threshold:** ${ERROR_BUDGET_ALERT_THRESHOLD*100}%\n- **Actual:** ${Math.round(errorRate*100)}%\n- **Window:** Last ${recent.length} runs\n- **Time:** ${runTime}\n\nSee [error budget log issue #${issue.number}](https://github.com/${{ github.repository }}/issues/${issue.number}) for details.`;
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: alertTitle,
+                body: alertBody,
+                labels: ['error-budget', 'automated']
+              });
+            }

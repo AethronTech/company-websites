@@ -68,7 +68,7 @@ description: "Neem contact op met Aethron Technologies. Wij helpen u graag met u
 
       <div class="form-sidebar">
         <div class="form-container">
-          <form class="contact-form" action="https://formspree.io/f/xwpqvdke" method="POST">
+          <form class="contact-form" action="/api/sendmail" method="POST">
             <input type="hidden" name="language" value="nl">
 
             <div class="form-group">
@@ -116,10 +116,12 @@ description: "Neem contact op met Aethron Technologies. Wij helpen u graag met u
               </label>
             </div>
 
+            <div class="g-recaptcha" data-sitekey="6Lf2M4srAAAAAOWyPpvg76p3EVFcbDVQNXc7GM3-"></div>
             <button type="submit" class="btn btn-primary btn-large">
               Bericht versturen 📤
             </button>
           </form>
+          <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         </div>
       </div>
       </div>

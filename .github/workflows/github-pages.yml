@@ -107,3 +107,11 @@ jobs:
           source: "aethron.tech/_site/*"
           target: "/customers/6/6/3/cxg5ze2ln/webroots/8a1d294a/"
           strip_components: 2
+
+      - name: Create .env file from GitHub Secrets
+        run: |
+          echo "SMTP_HOST=${{ secrets.SMTP_HOST }}" >> aethron.tech/.env
+          echo "SMTP_USER=${{ secrets.SMTP_USER }}" >> aethron.tech/.env
+          echo "SMTP_PASS=${{ secrets.SMTP_PASS }}" >> aethron.tech/.env
+          echo "CONTACT_RECEIVER=${{ secrets.CONTACT_RECEIVER }}" >> aethron.tech/.env
+          echo "SMTP_PORT=${{ secrets.SMTP_PORT }}" >> aethron.tech/.env

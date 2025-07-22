@@ -8,7 +8,7 @@
     "build": "eleventy",
     "start": "eleventy --serve",
     "serve": "eleventy --serve --port=8080",
-    "test": "npm run lint && npm run build",
+    "test": "npm run lint && npm run build && npm run sbom:generate",
     "lint": "npm run lint:js && npm run lint:html && npm run lint:css",
     "lint:js": "eslint src/**/*.js .eleventy.js --fix",
     "lint:html": "htmlhint \"_site/**/*.html\" --config .htmlhintrc",
@@ -25,7 +25,8 @@
     "quality:check": "npm run lighthouse:ci && npm run pa11y:ci",
     "deploy:check": "npm run lint:check && npm run build && echo '✅ Ready for deployment!'",
     "deploy:prep": "npm run deploy:check && echo '🚀 Run the GitHub Actions deployment workflow to deploy to production'",
-    "preview": "eleventy --serve --port=8080"
+    "preview": "eleventy --serve --port=8080",
+    "sbom:generate": "cyclonedx-bom -o sbom/sbom.json"
   },
   "keywords": [
     "aethron",

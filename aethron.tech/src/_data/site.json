@@ -15,5 +15,10 @@
   "social": {
     "linkedin": "https://www.linkedin.com/company/aethron-technologies",
     "x": "https://x.com/AethronTech"
+  },
+  "analytics": {
+    "ga4": {
+      "measurementId": "G-82YVN907TD"
+    }
   }
 }
