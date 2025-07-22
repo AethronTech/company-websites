@@ -50,6 +50,7 @@
   "homepage": "https://aethron.tech",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
+    "@cyclonedx/bom": "^4.1.0",
     "@eslint/js": "^9.30.0",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
