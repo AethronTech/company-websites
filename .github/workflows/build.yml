@@ -19,6 +19,11 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  issues: write
+  actions: read
+  contents: read
+
 jobs:
   # Job 1: Linting and Code Quality (runs first, fastest feedback)
   lint:
@@ -131,6 +136,7 @@ jobs:
 
     - name: Generate SBOM (CycloneDX)
       run: npm run sbom:generate
+      working-directory: ./aethron.tech
       continue-on-error: false
 
     - name: Upload SBOM artifact
