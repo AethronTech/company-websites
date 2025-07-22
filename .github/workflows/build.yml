@@ -134,6 +134,10 @@ jobs:
         path: aethron.tech/_site/
         retention-days: 7
 
+    - name: List node_modules/.bin before SBOM
+      run: ls -l node_modules/.bin
+      working-directory: ./aethron.tech
+
     - name: Generate SBOM (CycloneDX)
       run: npm run sbom:generate
       working-directory: ./aethron.tech
