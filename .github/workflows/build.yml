@@ -138,17 +138,17 @@ jobs:
       run: ls -l node_modules/.bin
       working-directory: ./aethron.tech
 
-    - name: Generate SBOM (CycloneDX)
-      run: npm run sbom:generate
-      working-directory: ./aethron.tech
-      continue-on-error: false
+    # - name: Generate SBOM (CycloneDX)
+    #   run: npm run sbom:generate
+    #   working-directory: ./aethron.tech
+    #   continue-on-error: false
 
-    - name: Upload SBOM artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: sbom
-        path: aethron.tech/sbom/sbom.json
-        retention-days: 30
+    # - name: Upload SBOM artifact
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: sbom
+    #     path: aethron.tech/sbom/sbom.json
+    #     retention-days: 30
 
     - name: Run npm audit (dependency vulnerability scan)
       run: |
