@@ -32,7 +32,7 @@
         {
           "icon": "⚡",
           "title": "Agile Software Components & Accelerated Development",
-          "description": "Accelerate the development of internal tools and customer-facing applications with our configurable software components. By combining Agile methodologies with AI-driven building blocks, we streamline your development process and reduce manual work. This not only enables faster innovation and deeper focus, but also allows us to deliver highly competitive pricing and high-quality products through advanced automation. Think of Celesta for robust DNS and hosting components that integrate directly into your ICT solutions."
+          "description": "Accelerate the development of internal tools and customer-facing applications with our configurable software components. By combining Agile methodologies with AI-driven building blocks, we streamline your development process and reduce manual work. This not only enables faster innovation and deeper focus, but also allows us to deliver highly competitive pricing and high-quality products through advanced automation. Think of Corion Hosting for robust DNS and hosting components that integrate directly into your ICT solutions."
         },
         {
           "icon": "📈",
@@ -55,7 +55,7 @@
     },
     "contact_summary": {
       "title": "Get In Touch",
-      "description": "Ready to tackle your ICT challenges with people-centric software solutions? Whether it's optimizing your ITSM processes with Caelis, integrating flexible software components via Celesta, or a strategic digital transformation: we're here to help your team achieve more. Contact us for a no-obligation conversation!",
+      "description": "Ready to tackle your ICT challenges with people-centric software solutions? Whether it's optimizing your ITSM processes with Caelis, integrating flexible software components via Corion Hosting, or a strategic digital transformation: we're here to help your team achieve more. Contact us for a no-obligation conversation!",
       "link_text": "Contact us",
       "link_url": "/contact/"
     }
@@ -168,12 +168,12 @@
       },
       "phone": {
         "label": "Phone",
-        "value": "+32 (0)3 123 45 67",
-        "link": "tel:+3203123456"
+        "value": "+32 (0)495 32 85 58",
+        "link": "tel:+32495328558"
       },
       "address": {
         "label": "Address",
-        "value": "Innovation Park 1, 2000 Antwerp, Belgium"
+        "value": "Oude Pastoriedreef 50, 1745 Opwijk, Belgium"
       }
     },
     "form": {
